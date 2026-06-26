@@ -17,7 +17,7 @@ const team = [
   {
     name: 'Membre 2', /* TODO: contenu réel à insérer */
     role: 'Designer UI/UX', /* TODO: contenu réel à insérer */
-    photo: 'https://images.unsplash.com/photo-1494790108755-2616b612b0bc?w=300&auto=format',
+    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&auto=format',
     bio: 'Bio courte du membre.', /* TODO: contenu réel à insérer */
     linkedinUrl: '#', /* TODO: contenu réel à insérer */
   },
