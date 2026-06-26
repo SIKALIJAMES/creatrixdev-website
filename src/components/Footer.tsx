@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Github } from 'lucide-react'
 // import AnimatedCircuitLogo from './AnimatedCircuitLogo'
 import SectionDivider from './SectionDivider'
 
@@ -27,7 +27,8 @@ const quickLinks = [
 
 const socials = [
   { icon: Instagram, href: 'https://www.instagram.com/creatrixdev?igsh=cXM3N2VhNTMyendo', label: 'Instagram' },
-  { icon: Facebook, href: 'https://www.fb.com/6lp1kJRRR', label: 'Facebook' },
+  { icon: Facebook, href: 'https://www.fb.com/I/6Ip1kJRRR', label: 'Facebook' },
+  { icon: Github, href: 'https://github.com/creatrixdevteam-coder', label: 'GitHub' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
   // Replacing Twitter with TikTok since user provided TikTok instead
   { icon: () => (
