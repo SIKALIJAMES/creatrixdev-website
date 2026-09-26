@@ -6,38 +6,10 @@ import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
 import { ArrowRight } from 'lucide-react'
 
-const team = [
-  {
-    name: 'Membre 1', /* TODO: contenu réel à insérer */
-    role: 'Fondateur & Lead Dev', /* TODO: contenu réel à insérer */
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format',
-    bio: 'Bio courte du membre.', /* TODO: contenu réel à insérer */
-    linkedinUrl: '#', /* TODO: contenu réel à insérer */
-  },
-  {
-    name: 'Membre 2', /* TODO: contenu réel à insérer */
-    role: 'Designer UI/UX', /* TODO: contenu réel à insérer */
-    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&auto=format',
-    bio: 'Bio courte du membre.', /* TODO: contenu réel à insérer */
-    linkedinUrl: '#', /* TODO: contenu réel à insérer */
-  },
-  {
-    name: 'Membre 3', /* TODO: contenu réel à insérer */
-    role: 'Expert Marketing Digital', /* TODO: contenu réel à insérer */
-    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format',
-    bio: 'Bio courte du membre.', /* TODO: contenu réel à insérer */
-    linkedinUrl: '#', /* TODO: contenu réel à insérer */
-  },
-  {
-    name: 'Membre 4', /* TODO: contenu réel à insérer */
-    role: 'Créateur de Contenu', /* TODO: contenu réel à insérer */
-    photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format',
-    bio: 'Bio courte du membre.', /* TODO: contenu réel à insérer */
-    linkedinUrl: '#', /* TODO: contenu réel à insérer */
-  },
-]
+import { teamMembers } from '@/data/team'
 
 export default function EquipeClient() {
+  const team = teamMembers
   return (
     <>
       {/* Hero */}

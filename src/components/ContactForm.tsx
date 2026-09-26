@@ -15,6 +15,7 @@ interface FormData {
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const {
     register,
@@ -25,13 +26,28 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     setStatus('loading')
+    setErrorMessage(null)
     try {
-      // TODO: remplacer par l'appel réel à votre API / service d'email
-      await new Promise((r) => setTimeout(r, 1500))
-      console.log('Form data:', data)
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      const resData = await res.json()
+
+      if (!res.ok) {
+        throw new Error(resData.error || "Une erreur est survenue lors de l'envoi.")
+      }
+
       setStatus('success')
       reset()
-    } catch {
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMessage(err.message)
+      } else {
+        setErrorMessage('Une erreur est survenue.')
+      }
       setStatus('error')
     }
   }
@@ -173,7 +189,7 @@ export default function ContactForm() {
             className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400"
           >
             <XCircle size={18} />
-            <p className="text-sm">Une erreur est survenue. Veuillez réessayer ou nous contacter directement.</p>
+            <p className="text-sm">{errorMessage || 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.'}</p>
           </motion.div>
         )}
       </AnimatePresence>

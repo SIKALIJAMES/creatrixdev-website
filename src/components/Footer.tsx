@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Github } from 'lucide-react'
-// import AnimatedCircuitLogo from './AnimatedCircuitLogo'
 import SectionDivider from './SectionDivider'
 
 const services = [
@@ -129,7 +127,14 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-text-muted text-sm">
                 <MapPin size={15} className="text-accent-cyan mt-0.5 shrink-0" />
-                <span>Douala-Cameroon, A village, lieu dit Premier entrée Cogefar</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Premi%C3%A8re+Entr%C3%A9e+Cogefar+Douala"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent-cyan transition-colors"
+                >
+                  Première Entrée Cogefar, N3, Douala
+                </a>
               </li>
             </ul>
 

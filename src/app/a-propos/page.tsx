@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Metadata as M } from 'next'
 import AProposClient from './AProposClient'
 
 export const metadata: Metadata = {

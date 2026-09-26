@@ -17,9 +17,9 @@ const config: Config = {
         'text-muted': '#8B9CB3',
       },
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        display: ['var(--font-space-grotesk)', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'monospace'],
       },
       animation: {
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',

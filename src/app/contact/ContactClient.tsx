@@ -21,8 +21,8 @@ const contactInfo = [
   {
     icon: <MapPin size={20} />,
     label: 'Adresse',
-    value: 'Douala-Cameroon, A village, Premier entrée Cogefar',
-    href: 'https://maps.google.com/?q=Douala,Village,Premier+entrée+Cogefar',
+    value: 'Première Entrée Cogefar, N3, Douala',
+    href: 'https://www.google.com/maps/search/?api=1&query=Premi%C3%A8re+Entr%C3%A9e+Cogefar+Douala',
   },
   {
     icon: <MessageCircle size={20} />,

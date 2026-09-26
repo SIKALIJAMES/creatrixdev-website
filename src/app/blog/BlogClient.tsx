@@ -2,31 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Clock } from 'lucide-react'
 import SectionDivider from '@/components/SectionDivider'
-
-const articles = [
-  {
-    slug: 'pourquoi-avoir-un-site-web-en-2025',
-    title: 'Pourquoi votre entreprise a absolument besoin d\'un site web en 2025', /* TODO: contenu réel à insérer */
-    excerpt: 'Dans un monde où 80% des consommateurs recherchent en ligne avant d\'acheter, ne pas avoir de site web c\'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir.', /* TODO: contenu réel à insérer */
-    category: 'Stratégie',
-    date: '2025-01-15',
-    readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format',
-  },
-  {
-    slug: 'tendances-design-ui-ux-2025',
-    title: 'Les tendances UI/UX qui domineront le web en 2025', /* TODO: contenu réel à insérer */
-    excerpt: 'Glassmorphism, dark mode, micro-interactions, design génératif... Décryptage des tendances visuelles qui façonneront l\'expérience utilisateur cette année.', /* TODO: contenu réel à insérer */
-    category: 'Design',
-    date: '2025-01-20',
-    readTime: '7 min',
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&auto=format',
-  },
-]
+import { blogPosts } from '@/data/blog'
 
 export default function BlogClient() {
+  const articles = blogPosts
+
   return (
     <>
       {/* Hero */}
@@ -76,11 +59,13 @@ export default function BlogClient() {
                   className="group rounded-xl overflow-hidden border border-accent-cyan/10 bg-bg-primary hover:border-accent-cyan/40 hover:shadow-glow-cyan transition-all duration-300"
                 >
                   {/* Image */}
-                  <div className="relative h-44 overflow-hidden bg-bg-secondary">
-                    <img
+                  <div className="relative h-48 overflow-hidden bg-bg-secondary">
+                    <Image
                       src={article.image}
                       alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent" />
                     <span className="absolute top-3 left-3 font-mono-label text-accent-cyan bg-bg-primary/80 backdrop-blur-sm border border-accent-cyan/30 px-2 py-1 rounded text-[10px]">

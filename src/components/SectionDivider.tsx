@@ -1,8 +1,8 @@
 'use client'
 
-export default function SectionDivider() {
+export default function SectionDivider({ className = '' }: { className?: string }) {
   return (
-    <div className="w-full flex items-center justify-center py-2 overflow-hidden">
+    <div className={`w-full flex items-center justify-center py-2 overflow-hidden ${className}`}>
       <svg
         viewBox="0 0 1200 24"
         fill="none"

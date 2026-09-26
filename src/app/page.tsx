@@ -2,17 +2,16 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Link from 'next/link'
 import Image from 'next/image'
 import {
   Code2, Palette, Film, TrendingUp, Server, GraduationCap,
   ArrowRight, Star, Zap, Shield, Users,
 } from 'lucide-react'
-import AnimatedCircuitLogo from '@/components/AnimatedCircuitLogo'
 import ServiceCard from '@/components/ServiceCard'
 import PortfolioCard from '@/components/PortfolioCard'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
+import { portfolioProjects } from '@/data/portfolio'
 
 /* ── Data ── */
 const services = [
@@ -74,30 +73,6 @@ const whyUs = [
     icon: <Users size={24} />,
     title: 'Équipe Passionnée',
     desc: 'Des talents jeunes, créatifs et techniques, toujours à la pointe des dernières tendances.',
-  },
-]
-
-const portfolioProjects = [
-  {
-    title: 'Projet 1', /* TODO: contenu réel à insérer */
-    category: 'Développement',
-    description: 'Description courte du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 2', /* TODO: contenu réel à insérer */
-    category: 'Design',
-    description: 'Description courte du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 3', /* TODO: contenu réel à insérer */
-    category: 'Marketing',
-    description: 'Description courte du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format',
-    liveUrl: undefined,
   },
 ]
 

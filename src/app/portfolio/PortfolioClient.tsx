@@ -5,54 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import PortfolioCard from '@/components/PortfolioCard'
 import SectionDivider from '@/components/SectionDivider'
 
-const categories = ['Tous', 'Développement', 'Design', 'Contenu', 'Marketing']
-
-const projects = [
-  {
-    title: 'Projet 1', /* TODO: contenu réel à insérer */
-    category: 'Développement',
-    description: 'Description du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 2', /* TODO: contenu réel à insérer */
-    category: 'Design',
-    description: 'Description du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 3', /* TODO: contenu réel à insérer */
-    category: 'Marketing',
-    description: 'Description du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 4', /* TODO: contenu réel à insérer */
-    category: 'Contenu',
-    description: 'Description du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 5', /* TODO: contenu réel à insérer */
-    category: 'Développement',
-    description: 'Description du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format',
-    liveUrl: undefined,
-  },
-  {
-    title: 'Projet 6', /* TODO: contenu réel à insérer */
-    category: 'Design',
-    description: 'Description du projet réalisé.', /* TODO: contenu réel à insérer */
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&auto=format',
-    liveUrl: undefined,
-  },
-]
+import { portfolioCategories, portfolioProjects } from '@/data/portfolio'
 
 export default function PortfolioClient() {
+  const categories = portfolioCategories
+  const projects = portfolioProjects
   const [activeCategory, setActiveCategory] = useState('Tous')
 
   const filtered = activeCategory === 'Tous'

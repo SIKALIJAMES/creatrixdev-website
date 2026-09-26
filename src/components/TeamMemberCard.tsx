@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Linkedin } from 'lucide-react'
+import { Linkedin, Github } from 'lucide-react'
 
 interface TeamMemberCardProps {
   name: string
@@ -10,6 +10,7 @@ interface TeamMemberCardProps {
   photo: string
   bio: string
   linkedinUrl?: string
+  githubUrl?: string
   index?: number
 }
 
@@ -19,6 +20,7 @@ export default function TeamMemberCard({
   photo,
   bio,
   linkedinUrl,
+  githubUrl,
   index = 0,
 }: TeamMemberCardProps) {
   return (
@@ -39,16 +41,27 @@ export default function TeamMemberCard({
           sizes="128px"
         />
         {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3 gap-2">
           {linkedinUrl && (
             <a
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-7 h-7 bg-accent-blue/80 rounded-full flex items-center justify-center text-white"
+              className="w-7 h-7 bg-accent-blue/80 hover:bg-accent-blue rounded-full flex items-center justify-center text-white transition-colors"
               aria-label={`LinkedIn de ${name}`}
             >
               <Linkedin size={14} />
+            </a>
+          )}
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-7 h-7 bg-bg-surface hover:bg-white/10 border border-border-card rounded-full flex items-center justify-center text-white transition-colors"
+              aria-label={`GitHub de ${name}`}
+            >
+              <Github size={14} />
             </a>
           )}
         </div>
