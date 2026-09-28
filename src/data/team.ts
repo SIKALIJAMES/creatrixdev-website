@@ -23,11 +23,11 @@ export const teamMembers: TeamMember[] = [
     linkedinUrl: 'https://linkedin.com',
   },
   {
-    name: 'Membre 3',
-    role: 'Designer UI/UX',
-    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&auto=format',
-    bio: 'Créatrice d\'identités de marque mémorables et d\'interfaces centrées sur l\'utilisateur.',
-    linkedinUrl: 'https://linkedin.com',
+    name: 'MBATA TCHOUBEUN Yvana Carelle',
+    role: 'Directrice Marketing & Communication',
+    photo: '/team/yvana-mbata.jpg',
+    bio: 'Stratège en communication, experte en infographie, community management et création de contenus percutants.',
+    linkedinUrl: 'https://www.linkedin.com/in/yvana-mbata-41260b38b',
   },
   {
     name: 'Membre 4',
