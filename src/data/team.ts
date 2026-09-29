@@ -20,7 +20,6 @@ export const teamMembers: TeamMember[] = [
     role: 'Co-fondateur & Développeur Fullstack',
     photo: '/team/nathan-sengoua.jpg',
     bio: 'Artisan de solutions complètes du front-end au back-end, spécialisé dans les architectures modernes, la conception d\'APIs robustes et les applications scalables.',
-    linkedinUrl: 'https://linkedin.com',
   },
   {
     name: 'MBATA TCHOUBEUN Yvana Carelle',
@@ -33,6 +32,6 @@ export const teamMembers: TeamMember[] = [
     name: 'ATSAMA OWONA Jules Deric',
     role: 'Ingénieur DevOps & Architecte Réseau',
     photo: '/team/atsama-owona.jpg',
-    bio: 'Expert en infrastructures cloud, automatisation CI/CD et sécurité réseau, garantissant des architectures résilientes, sécurisées et hautement disponibles.',
+    bio: 'Ingénieur passionné par l\'automatisation et l\'infrastructure. Spécialisé en pipelines CI/CD (GitHub Actions, GitLab CI, Jenkins), conteneurisation Docker & orchestration Kubernetes, IaC avec Terraform & Ansible, et conception d\'architectures réseau sécurisées (VPN, pare-feu, load balancing). Il garantit des déploiements zéro-downtime et des systèmes hautement disponibles pour chaque projet.',
   },
 ]
