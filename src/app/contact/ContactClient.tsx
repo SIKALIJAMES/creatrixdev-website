@@ -34,10 +34,10 @@ const contactInfo = [
 
 const socials = [
   { name: 'Instagram', href: 'https://www.instagram.com/creatrixdev?igsh=cXM3N2VhNTMyendo', icon: 'IG' },
-  { name: 'Facebook', href: 'https://www.fb.com/I/6Ip1kJRRR', icon: 'FB' },
+  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61582897332001', icon: 'FB' },
   { name: 'GitHub', href: 'https://github.com/creatrixdevteam-coder', icon: 'GH' },
   { name: 'TikTok', href: 'https://www.tiktok.com/@creatrixdev?_r=1&_t=ZS-97VOWI3HOQ1', icon: 'TK' },
-  { name: 'LinkedIn', href: '#', icon: 'LI' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/145245374/', icon: 'LI' },
 ]
 
 export default function ContactClient() {

@@ -25,9 +25,9 @@ const quickLinks = [
 
 const socials = [
   { icon: Instagram, href: 'https://www.instagram.com/creatrixdev?igsh=cXM3N2VhNTMyendo', label: 'Instagram' },
-  { icon: Facebook, href: 'https://www.fb.com/I/6Ip1kJRRR', label: 'Facebook' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61582897332001', label: 'Facebook' },
   { icon: Github, href: 'https://github.com/creatrixdevteam-coder', label: 'GitHub' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/company/145245374/', label: 'LinkedIn' },
   // Replacing Twitter with TikTok since user provided TikTok instead
   { icon: () => (
     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">

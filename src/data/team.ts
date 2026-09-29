@@ -11,7 +11,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'TENEFO SIKALI Yvan James',
     role: 'Fondateur & Lead Dev',
-    photo: '/team/yvan-james.jpg',
+    photo: '/team/yvan-james.png',
     bio: 'Passionné d\'architecture logicielle, d\'innovation technologique et d\'expériences web d\'excellence.',
     linkedinUrl: 'https://www.linkedin.com/in/james-sikali-744902378/',
   },
@@ -30,10 +30,9 @@ export const teamMembers: TeamMember[] = [
     linkedinUrl: 'https://www.linkedin.com/in/yvana-mbata-41260b38b',
   },
   {
-    name: 'Membre 4',
-    role: 'Expert Marketing Digital & SEO',
-    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format',
-    bio: 'Spécialiste en acquisition, référencement naturel et croissance de visibilité pour les entreprises.',
-    linkedinUrl: 'https://linkedin.com',
+    name: 'ATSAMA OWONA Jules Deric',
+    role: 'Ingénieur DevOps & Architecte Réseau',
+    photo: '/team/atsama-owona.jpg',
+    bio: 'Expert en infrastructures cloud, automatisation CI/CD et sécurité réseau, garantissant des architectures résilientes, sécurisées et hautement disponibles.',
   },
 ]
