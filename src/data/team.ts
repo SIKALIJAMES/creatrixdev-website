@@ -32,6 +32,6 @@ export const teamMembers: TeamMember[] = [
     name: 'ATSAMA OWONA Jules Deric',
     role: 'Ingénieur DevOps & Architecte Réseau',
     photo: '/team/atsama-owona.jpg',
-    bio: 'Ingénieur passionné par l\'automatisation et l\'infrastructure. Spécialisé en pipelines CI/CD (GitHub Actions, GitLab CI, Jenkins), conteneurisation Docker & orchestration Kubernetes, IaC avec Terraform & Ansible, et conception d\'architectures réseau sécurisées (VPN, pare-feu, load balancing). Il garantit des déploiements zéro-downtime et des systèmes hautement disponibles pour chaque projet.',
+    bio: 'Spécialisé en pipelines CI/CD, conteneurisation Docker & Kubernetes, IaC (Terraform, Ansible) et architectures réseau sécurisées. Il garantit des infrastructures résilientes et des déploiements zéro-downtime.',
   },
 ]
