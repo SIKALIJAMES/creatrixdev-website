@@ -21,7 +21,7 @@ export default function AnimatedCircuitLogo({ size = 200 }: { size?: number }) {
           </feMerge>
         </filter>
         <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2DD4FF" />
+          <stop offset="0%" stopColor="#0066CC" />
           <stop offset="100%" stopColor="#3B82F6" />
         </linearGradient>
       </defs>
@@ -122,7 +122,7 @@ export default function AnimatedCircuitLogo({ size = 200 }: { size?: number }) {
           cx={node.cx}
           cy={node.cy}
           r="3"
-          fill="#2DD4FF"
+          fill="#0066CC"
           filter="url(#glow)"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: [0, 1, 0.6, 1] }}

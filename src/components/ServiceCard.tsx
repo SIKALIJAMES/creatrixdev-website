@@ -23,7 +23,7 @@ export default function ServiceCard({ icon, title, description, href, index = 0 
       <Link href={href} className="group block h-full">
         <div className="h-full relative rounded-xl border border-accent-cyan/10 bg-bg-secondary p-6 transition-all duration-300 group-hover:border-accent-cyan/40 group-hover:shadow-glow-cyan overflow-hidden">
           {/* Circuit node hover indicator */}
-          <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-accent-cyan opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:shadow-[0_0_10px_#2DD4FF]" />
+          <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-accent-cyan opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:shadow-[0_0_10px_#0066CC]" />
 
           {/* Background glow on hover */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-radial from-accent-cyan/5 via-transparent to-transparent" />

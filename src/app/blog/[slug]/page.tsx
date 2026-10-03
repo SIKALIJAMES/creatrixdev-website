@@ -147,7 +147,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'radial-gradient(circle at 50% 50%, rgba(45,212,255,0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle at 50% 50%, rgba(0,102,204,0.06) 0%, transparent 70%)',
             }}
             aria-hidden="true"
           />
