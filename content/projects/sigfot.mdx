@@ -1,0 +1,72 @@
+---
+slug: sigfot
+titre: "SIGFOT — Système Intégré de Gestion de Flotte et des Opérations de Transport"
+client: "SST Sarl · Société Solution Transport"
+secteur: "Transport & Logistique"
+statut: reel
+date: "2024-01-01"
+resume: "Plateforme web collaborative centralisant la gestion de flotte, trajets, carburant, opérations financières, achats, stocks et facturation pour une société de transport à Douala."
+probleme: "La société SST Sarl gérait son parc de véhicules, ses chauffeurs, ses consommations de carburant et sa comptabilité à travers des fichiers Excel dispersés. Le recoupement manuel des données prenait plusieurs heures par semaine, des écarts de carburant passaient inaperçus et la direction ne disposait d'aucune vue consolidée en temps réel."
+solution: "Développement de SIGFOT, une application web multi-rôles permettant à chaque acteur (directeur, responsable de flotte, comptable, chauffeur) d'accéder à son espace sécurisé. Le système applique automatiquement les règles de consommation définies par le client et génère des alertes dès qu'un écart est détecté. Les exports comptables sont produits au format exact attendu par le service de comptabilité, sans ressaisie."
+resultats:
+  - label: "Modules fonctionnels"
+    valeur: "20"
+    preuve: "Spécification technique SIGFOT v1.0 — architecture logicielle livrée"
+  - label: "Rôles utilisateurs sécurisés"
+    valeur: "5"
+    preuve: "Matrice RBAC et gestion des permissions par profil"
+  - label: "Tables relationnelles SQL"
+    valeur: "21"
+    preuve: "Schéma de base de données PostgreSQL livré et versionné"
+  - label: "Migrations de base de données"
+    valeur: "38"
+    preuve: "Historique de migrations Supabase versionné et tracé"
+  - label: "Litres et FCFA économisés"
+    valeur: "TODO_A_FOURNIR"
+    preuve: "TODO_A_FOURNIR — Données à transmettre par le client SST Sarl avec justificatifs"
+  - label: "Heures gagnées par semaine"
+    valeur: "TODO_A_FOURNIR"
+    preuve: "TODO_A_FOURNIR — Estimation à valider avec le responsable de flotte"
+stack:
+  - "Next.js 16"
+  - "TypeScript"
+  - "Supabase (PostgreSQL)"
+  - "Tailwind CSS"
+  - "Recharts"
+  - "ExcelJS"
+  - "jsPDF"
+  - "Leaflet"
+images:
+  - "/projects/sigfot/dashboard.jpg"
+temoignage: "TODO_A_FOURNIR"
+---
+
+## Contexte
+
+SST Sarl (Société Solution Transport) est une société de transport basée à Douala, Cameroun. Avant SIGFOT, la gestion quotidienne de la flotte reposait sur des feuilles de calcul partagées et des relevés manuels, rendant difficile le suivi précis du carburant et des coûts par véhicule.
+
+## Problème à résoudre
+
+- Données de flotte éparpillées dans plusieurs fichiers Excel sans cohérence centralisée.
+- Impossible de détecter rapidement les anomalies de consommation carburant.
+- Processus de facturation et de comptabilité chronophage avec risques d'erreurs de ressaisie.
+- Absence de tableau de bord décisionnel pour la direction.
+
+## Solution déployée
+
+SIGFOT est un système web collaboratif en production développé par CreatrixDev. Il couvre 20 modules fonctionnels allant du suivi de flotte à la gestion financière.
+
+### Modules principaux
+
+- **Gestion de la flotte :** Fiches véhicules, état de maintenance, kilométrage.
+- **Suivi des trajets :** Affectation des chauffeurs, enregistrement des courses.
+- **Contrôle du carburant :** Règles automatiques de consommation définies avec le client, alertes en cas d'écart.
+- **Opérations financières :** Multi-comptes bancaires, saisies des encaissements et décaissements.
+- **Facturation & exports :** Génération automatique des exports Excel au format comptabilité de SST Sarl.
+- **Tableaux de bord :** Vue direction en temps réel sur l'activité et les coûts.
+
+> **Note technique :** Les alertes carburant reposent sur des règles automatiques paramétrables définies avec le client — ce ne sont pas des algorithmes d'IA.
+
+## Architecture technique
+
+Hébergé sur Railway, le projet utilise Next.js 16 avec TypeScript pour le frontend, Supabase (PostgreSQL) comme base de données relationnelle, et des bibliothèques spécialisées (ExcelJS pour les exports, Recharts pour les graphiques, Leaflet pour le suivi géographique).

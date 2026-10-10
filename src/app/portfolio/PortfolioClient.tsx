@@ -3,11 +3,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ChevronRight, Star } from 'lucide-react'
 import PortfolioCard from '@/components/PortfolioCard'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
-import { portfolioCategories, portfolioProjects } from '@/data/portfolio'
+import { portfolioCategories, publicPortfolioProjects } from '@/data/portfolio'
 
 const sigfotMetrics = [
   { label: 'Modules fonctionnels', value: '20' },
@@ -23,7 +24,7 @@ const sigfotStack = [
 
 export default function PortfolioClient() {
   const categories = portfolioCategories
-  const projects = portfolioProjects
+  const projects = publicPortfolioProjects
   const [activeCategory, setActiveCategory] = useState('Tous')
 
   const filtered = activeCategory === 'Tous'
@@ -149,12 +150,23 @@ export default function PortfolioClient() {
                 </div>
 
                 {/* Stack */}
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 mb-6">
                   {sigfotStack.map((t) => (
                     <span key={t} className="inline-flex items-center px-2.5 py-1 rounded-full border border-white/15 bg-white/5 text-text-muted-dark text-[10px] font-medium">
                       {t}
                     </span>
                   ))}
+                </div>
+
+                {/* Case Study CTA */}
+                <div className="pt-4 border-t border-white/10">
+                  <Link
+                    href="/portfolio/sigfot"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-brand hover:bg-blue-brand/90 text-white font-display text-xs font-semibold shadow-glow-cyan hover:scale-105 active:scale-95 transition-all duration-200"
+                  >
+                    <span>Consulter l&apos;étude de cas complète</span>
+                    <ChevronRight size={14} />
+                  </Link>
                 </div>
               </div>
             </div>

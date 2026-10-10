@@ -1,0 +1,78 @@
+---
+slug: isetag-chatbot
+titre: "ISETAG Chatbot V2 — Agent Conversationnel Intelligent & Gestion des Admissions"
+client: "Institut Supérieur Évangélique des Technologies Appliquées et de Gestion (ISETAG)"
+secteur: "Enseignement supérieur"
+statut: reel
+date: "2025-01-01"
+resume: "Chatbot omnicanal WhatsApp & Messenger avec IA, transcription vocale, orientation académique personnalisée et plateforme d'admissions en ligne pour l'ISETAG à Douala."
+probleme: "L'ISETAG reçoit quotidiennement des dizaines de questions identiques par WhatsApp (filières, frais, rentrée, cité universitaire, bus). Les équipes du secrétariat passaient plusieurs heures par jour à répondre aux mêmes demandes, y compris en dehors des heures de bureau, au détriment du traitement des dossiers d'admission."
+solution: "Déploiement de ISETAG Chatbot V2, un agent conversationnel intelligent disponible 24h/24 sur WhatsApp et Facebook Messenger. Le système transcrit les notes vocales en texte, détecte la langue (français/anglais), interroge une base documentaire vectorielle (RAG) pour répondre avec précision aux questions officielles, guide les indécis à travers un quiz d'orientation en 9 étapes, et permet une pré-inscription gratuite en ligne avec confirmation WhatsApp automatique."
+resultats:
+  - label: "Canaux de messagerie connectés"
+    valeur: "2"
+    preuve: "WhatsApp Business Cloud API + Facebook Messenger Platform — intégrations actives en production"
+  - label: "Taux de résolution automatique"
+    valeur: "100%"
+    preuve: "Tableau de bord admin ISETAG — capture du 10 octobre 2026"
+  - label: "Conversations traitées (au lancement)"
+    valeur: "9+"
+    preuve: "Console d'administration ISETAG en production sur Railway"
+  - label: "Pré-inscriptions reçues en ligne"
+    valeur: "1+"
+    preuve: "Module pré-inscriptions ISETAG — données admin en production"
+  - label: "Délai de transcription vocale"
+    valeur: "< 1 seconde"
+    preuve: "Groq Whisper Large v3 Turbo — latence mesurée en environnement de production Railway"
+stack:
+  - "Node.js 20 LTS"
+  - "Express 4"
+  - "React 18 + Vite"
+  - "Tailwind CSS"
+  - "PostgreSQL + pgvector (Neon)"
+  - "Upstash Redis"
+  - "Groq API (LLM + Whisper STT)"
+  - "Google Gemini Embeddings"
+  - "Docker"
+  - "Railway"
+images:
+  - "/projects/isetag/dashboard-analytics.png"
+  - "/projects/isetag/dashboard-conversations.png"
+urlProduction: "https://isetagchatbot-production.up.railway.app"
+depotGit: "https://github.com/SIKALIJAMES/ISETAG_CHATBOT"
+temoignage: "TODO_A_FOURNIR"
+---
+
+## Contexte
+
+L'Institut Supérieur Évangélique des Technologies Appliquées et de Gestion (ISETAG), situé à Yassa, Douala, accueille chaque année des centaines de candidats aux BTS, HND, Licences Professionnelles et Masters. La communication avec les prospects potentiels reposait entièrement sur WhatsApp — un canal que les équipes géraient manuellement, 7j/7.
+
+## Problème à résoudre
+
+- Réponses aux mêmes questions répétitives (frais, filières, bus, cité universitaire) mobilisant les équipes du secrétariat en dehors des heures de bureau.
+- Aucune solution permettant aux étudiants anglophones (filières HND) de dialoguer dans leur langue.
+- Perte de prospects indécis faute d'accompagnement personnalisé vers la filière adaptée à leur profil.
+- Dossiers d'admission gérés par email et WhatsApp sans traçabilité centralisée.
+
+## Solution déployée
+
+ISETAG Chatbot V2 est un agent conversationnel complet développé et mis en production par CreatrixDev. La solution couvre l'ensemble du cycle d'admission :
+
+### Fonctionnalités principales
+
+- **Omnicanalité :** Connexion officielle WhatsApp Business Cloud API et Facebook Messenger Platform avec vérification HMAC-SHA256.
+- **Compréhension vocale :** Transcription des notes vocales WhatsApp via Groq Whisper Large v3 Turbo (moins d'une seconde de latence) — le système traite l'audio comme n'importe quel message texte.
+- **IA bilingue :** Détection automatique de la langue (français / anglais) mémorisée 7 jours par prospect pour maintenir une cohérence de ton tout au long des échanges.
+- **Base documentaire RAG :** Les fiches tarifaires officielles, règlements et livrets d'accueil sont indexés en vecteurs (Google Gemini Embeddings 768 dimensions / pgvector) et interrogés à chaque question pour une réponse précise et sourcée.
+- **Quiz d'orientation en 9 étapes :** Pour les bacheliers indécis, le bot propose un bilan personnalisé (parcours scolaire, centres d'intérêt, style de travail, projet professionnel) débouchant sur une recommandation de filière argumentée.
+- **Pré-inscription en ligne :** Formulaire web responsive permettant de soumettre un dossier complet (pièces justificatives, choix de filière, contacts d'urgence) avec attribution automatique d'un code dossier unique (`ISETAG-2026-XXXX`) et confirmation WhatsApp instantanée.
+- **Relance à 24h :** Les prospects ayant initié une conversation sans soumettre de dossier sont relancés automatiquement après 24h d'inactivité avec un message personnalisé incluant leur prénom.
+- **Escalade vers conseiller :** Si l'étudiant demande un humain ou si le bot enregistre trois incompréhensions consécutives, la conversation est transférée à un conseiller depuis la console d'administration, sans rupture de canal.
+
+### Dashboard d'administration
+
+Le tableau de bord offre aux équipes ISETAG une vue complète en temps réel : conversations actives par canal (WhatsApp / Messenger), prénom et langue de chaque prospect, indicateurs clés (taux de résolution, pré-inscriptions reçues), gestion documentaire RAG par glisser-déposer, et export CSV des candidatures compatible avec Microsoft Excel.
+
+## Architecture technique
+
+Solution déployée en conteneur Docker unique sur Railway, exposant à la fois l'API Express et le frontend React/Vite. La base de données PostgreSQL (Neon) est enrichie de l'extension `pgvector` pour la recherche sémantique. Le cache de sessions conversationnelles est géré par Upstash Redis (TTL 24h par conversation). Le LLM utilisé est hébergé sur Groq Cloud pour des temps de réponse inférieurs à 1 seconde.

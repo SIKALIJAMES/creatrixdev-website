@@ -4,8 +4,11 @@ import { motion } from 'framer-motion'
 import { ExternalLink, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
+import Link from 'next/link'
+
 interface PortfolioCardProps {
   title: string
+  slug?: string
   category: string
   description: string
   image: string
@@ -19,6 +22,7 @@ interface PortfolioCardProps {
 
 export default function PortfolioCard({
   title,
+  slug,
   category,
   description,
   image,
@@ -30,6 +34,7 @@ export default function PortfolioCard({
 }: PortfolioCardProps) {
 
   if (featured) {
+    const studyUrl = slug ? `/portfolio/${slug}` : '/portfolio'
     return (
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -49,7 +54,9 @@ export default function PortfolioCard({
           </div>
           <div className="p-8 lg:p-10 flex flex-col justify-center">
             <span className="font-mono-label text-blue-brand/80 text-[10px] mb-3 block">{client ?? category}</span>
-            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3 group-hover:text-blue-electric transition-colors">{title}</h3>
+            <Link href={studyUrl}>
+              <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3 hover:text-blue-electric transition-colors">{title}</h3>
+            </Link>
             <p className="text-text-muted-dark text-sm leading-relaxed mb-5">{description}</p>
             {tags && (
               <div className="flex flex-wrap gap-2 mb-6">
@@ -58,10 +65,10 @@ export default function PortfolioCard({
                 ))}
               </div>
             )}
-            <div className="flex items-center gap-1.5 text-blue-electric text-sm font-medium group/link cursor-pointer">
+            <Link href={studyUrl} className="inline-flex items-center gap-1.5 text-blue-electric text-sm font-medium hover:text-blue-brand transition-colors group/link">
               <span>Voir l&apos;étude de cas</span>
               <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-            </div>
+            </Link>
           </div>
         </div>
       </motion.div>
@@ -102,15 +109,31 @@ export default function PortfolioCard({
           </a>
         )}
       </div>
-      <div className="p-5">
-        {client && <p className="font-mono-label text-blue-brand/70 text-[9px] mb-1">{client}</p>}
-        <h3 className="font-display font-semibold text-white mb-2 group-hover:text-blue-electric transition-colors">{title}</h3>
-        <p className="text-text-muted-dark text-sm leading-relaxed mb-3">{description}</p>
-        {tags && (
-          <div className="flex flex-wrap gap-1.5">
-            {tags.map((t) => (
-              <span key={t} className="inline-flex items-center px-2 py-0.5 rounded-full border border-white/10 bg-white/5 text-text-muted-dark text-[9px] font-medium">{t}</span>
-            ))}
+      <div className="p-5 flex flex-col justify-between flex-1">
+        <div>
+          {client && <p className="font-mono-label text-blue-brand/70 text-[9px] mb-1">{client}</p>}
+          {slug ? (
+            <Link href={`/portfolio/${slug}`}>
+              <h3 className="font-display font-semibold text-white mb-2 hover:text-blue-electric transition-colors">{title}</h3>
+            </Link>
+          ) : (
+            <h3 className="font-display font-semibold text-white mb-2">{title}</h3>
+          )}
+          <p className="text-text-muted-dark text-sm leading-relaxed mb-3">{description}</p>
+          {tags && (
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {tags.map((t) => (
+                <span key={t} className="inline-flex items-center px-2 py-0.5 rounded-full border border-white/10 bg-white/5 text-text-muted-dark text-[9px] font-medium">{t}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        {slug && (
+          <div className="pt-2 border-t border-white/5">
+            <Link href={`/portfolio/${slug}`} className="inline-flex items-center gap-1.5 text-blue-electric text-xs font-medium hover:text-blue-brand transition-colors">
+              <span>Étude de cas détaillée</span>
+              <ChevronRight size={12} />
+            </Link>
           </div>
         )}
       </div>
