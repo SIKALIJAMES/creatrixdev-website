@@ -6,21 +6,25 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-
-const navLinks = [
-  { href: '/', label: 'Accueil' },
-  { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/a-propos', label: 'À propos' },
-  { href: '/equipe', label: 'Équipe' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-]
+import { useTranslation } from '@/context/LanguageContext'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
+  const { t } = useTranslation()
+
+  const navLinks = [
+    { href: '/', label: t.header.home },
+    { href: '/services', label: t.header.services },
+    { href: '/ia-automatisation', label: t.header.aiAutomation },
+    { href: '/portfolio', label: t.header.portfolio },
+    { href: '/a-propos', label: t.header.about },
+    { href: '/equipe', label: t.header.team },
+    { href: '/blog', label: t.header.blog },
+    { href: '/contact', label: t.header.contact },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30)
@@ -73,24 +77,28 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* CTA desktop */}
-        <div className="hidden lg:block">
+        {/* CTA & Language switcher desktop */}
+        <div className="hidden lg:flex items-center gap-4">
+          <LanguageSwitcher />
           <Link
             href="/contact"
             className="px-5 py-2.5 bg-gradient-to-r from-accent-cyan to-accent-blue text-bg-primary font-display font-semibold text-sm rounded-lg hover:shadow-glow-cyan hover:scale-105 transition-all duration-300"
           >
-            Démarrer un projet
+            {t.header.startProject}
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="lg:hidden text-text-primary p-2 rounded-lg hover:bg-accent-cyan/10 transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile controls */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher />
+          <button
+            className="text-text-primary p-2 rounded-lg hover:bg-accent-cyan/10 transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -132,7 +140,7 @@ export default function Header() {
                   href="/contact"
                   className="block text-center px-5 py-3 bg-gradient-to-r from-accent-cyan to-accent-blue text-bg-primary font-display font-semibold text-sm rounded-lg mt-2"
                 >
-                  Démarrer un projet
+                  {t.header.startProject}
                 </Link>
               </motion.div>
             </nav>

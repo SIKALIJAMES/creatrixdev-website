@@ -7,11 +7,14 @@ import Link from 'next/link'
 import {
   Code2, Palette, TrendingUp, ArrowRight, Star, Zap, Shield, Users,
   ExternalLink, Search, PenTool, Rocket, BarChart2,
-  Monitor, Truck, ChevronRight,
+  Monitor, Truck, ChevronRight, MapPin, CheckCircle2, Clock, PhoneCall,
 } from 'lucide-react'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
-import { portfolioProjects } from '@/data/portfolio'
+import { publicPortfolioProjects } from '@/data/portfolio'
+import { homeStats } from '@/../content/stats'
+import { getWhatsAppUrl } from '@/../content/site'
+import { useTranslation } from '@/context/LanguageContext'
 
 const pillars = [
   {
@@ -57,12 +60,8 @@ const technologies = [
   { cat: 'Mobile', items: ['React Native', 'Expo', 'Android', 'PWA'] },
 ]
 
-const stats = [
-  { value: '10+', label: 'Projets réalisés' },
-  { value: '6', label: 'Services couverts' },
-  { value: '5', label: "Membres d'équipe" },
-  { value: '100%', label: 'Clients satisfaits' },
-]
+// Les statistiques proviennent de content/stats.ts — chacune a une source vérifiable.
+// Aucune valeur sans preuve n'est affichée ici.
 
 const whyUs = [
   { icon: <Zap size={22} />, title: 'Approche 360°', desc: 'Du code à la communication, nous couvrons tous les aspects de votre présence digitale.' },
@@ -130,6 +129,7 @@ function ParticleBg() {
 }
 
 export default function HomePage() {
+  const { t } = useTranslation()
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef })
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -80])
@@ -148,25 +148,25 @@ export default function HomePage() {
           <div className="flex-1 text-center lg:text-left max-w-2xl">
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="font-mono-label text-blue-brand mb-5 inline-flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-blue-brand animate-pulse" />
-              Studio digital · Douala, Cameroun
+              {t.home.heroTag}
             </motion.span>
 
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="font-display font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-text-primary leading-[1.05] mb-6">
-              Construisons<br /><span className="text-gradient-cyan">votre avenir</span><br />digital.
+              {t.home.heroTitlePart1}<br /><span className="text-gradient-cyan">{t.home.heroTitleHighlight}</span><br />{t.home.heroTitlePart2}
             </motion.h1>
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="text-text-muted text-lg md:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10">
-              Nous créons des produits digitaux qui transforment les idées ambitieuses en vrais business — sites, applications, design et stratégie, sous un même toit.
+              {t.home.heroSubtitle}
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <CTAButton href="/contact" variant="primary">Démarrer un projet <ArrowRight size={16} /></CTAButton>
-              <CTAButton href="/portfolio" variant="outline">Voir nos réalisations</CTAButton>
+              <CTAButton href="/contact" variant="primary">{t.home.heroCtaPrimary} <ArrowRight size={16} /></CTAButton>
+              <CTAButton href="/portfolio" variant="outline">{t.home.heroCtaSecondary}</CTAButton>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }} className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-blue-border/60">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center lg:text-left">
+              {homeStats.map((s) => (
+                <div key={s.id} className="text-center lg:text-left">
                   <div className="font-display font-bold text-2xl text-gradient-cyan"><AnimatedCounter value={s.value} /></div>
                   <div className="text-text-muted text-xs font-mono-label mt-1">{s.label}</div>
                 </div>
@@ -212,6 +212,7 @@ export default function HomePage() {
                   alt="SIGFOT – Système Intégré de Gestion de Flotte – Application développée par CreatrixDev"
                   width={800}
                   height={500}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 720px"
                   className="w-full object-cover"
                   priority
                 />
@@ -259,6 +260,54 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* ═══ BARRE DE CONFIANCE & PREUVE SOCIALE ═══ */}
+      <section className="bg-navy-dark border-y border-white/10 py-6 relative z-20" aria-label="Garanties et confiance">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 w-full lg:w-auto">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-brand/20 border border-blue-brand/40 flex items-center justify-center text-blue-electric shrink-0">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <p className="text-white font-display font-semibold text-sm">{t.home.trustBasedIn}</p>
+                  <p className="text-text-muted-dark text-xs">{t.home.trustBasedSub}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                  <CheckCircle2 size={18} />
+                </div>
+                <div>
+                  <p className="text-white font-display font-semibold text-sm">{t.home.trustProduction}</p>
+                  <p className="text-text-muted-dark text-xs">{t.home.trustProductionSub}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shrink-0">
+                  <Clock size={18} />
+                </div>
+                <div>
+                  <p className="text-white font-display font-semibold text-sm">{t.home.trustSupport}</p>
+                  <p className="text-text-muted-dark text-xs">{t.home.trustSupportSub}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-start lg:justify-end">
+              <CTAButton href="/contact?sujet=appel-20min" variant="primary" className="text-xs py-2.5 px-4">
+                <PhoneCall size={14} /> {t.common.bookCall20Min}
+              </CTAButton>
+              <CTAButton href={getWhatsAppUrl("Bonjour CreatrixDev, je souhaite échanger à propos de mon projet.")} variant="secondary" external className="text-xs py-2.5 px-4">
+                {t.common.whatsAppDirect}
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ WHAT WE BUILD ═══ */}
       <SectionDivider />
       <section className="py-14 bg-bg-primary" aria-label="Types de projets">
@@ -267,7 +316,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             className="text-center font-mono-label text-text-muted mb-8"
           >
-            Ce que nous savons construire
+            {t.home.whatWeBuildTitle}
           </motion.p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
@@ -296,9 +345,9 @@ export default function HomePage() {
       <section className="section-alt py-24" aria-labelledby="services-heading">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">Ce que nous faisons</motion.span>
+            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">{t.home.pillarsTag}</motion.span>
             <motion.h2 id="services-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="font-display font-bold text-3xl md:text-5xl text-text-primary">
-              Trois piliers,<br /><span className="text-gradient-cyan">une vision complète</span>
+              {t.home.pillarsTitle}<br /><span className="text-gradient-cyan">{t.home.pillarsTitleHighlight}</span>
             </motion.h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -356,9 +405,10 @@ export default function HomePage() {
               {/* Image side */}
               <div className="relative h-72 lg:h-auto overflow-hidden">
                 <Image
-                  src={portfolioProjects[0].image}
-                  alt={portfolioProjects[0].title}
+                  src={publicPortfolioProjects[0].image}
+                  alt={publicPortfolioProjects[0].title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-navy-card/80 hidden lg:block" />
@@ -369,11 +419,13 @@ export default function HomePage() {
               </div>
               {/* Content side */}
               <div className="p-8 lg:p-10 flex flex-col justify-center">
-                <span className="font-mono-label text-blue-brand/80 text-[10px] mb-3 block">{portfolioProjects[0].client}</span>
-                <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3 group-hover:text-blue-electric transition-colors">
-                  {portfolioProjects[0].title}
-                </h3>
-                <p className="text-text-muted-dark text-sm leading-relaxed mb-6">{portfolioProjects[0].description}</p>
+                <span className="font-mono-label text-blue-brand/80 text-[10px] mb-3 block">{publicPortfolioProjects[0].client}</span>
+                <Link href="/portfolio/sigfot">
+                  <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3 hover:text-blue-electric transition-colors">
+                    {publicPortfolioProjects[0].title}
+                  </h3>
+                </Link>
+                <p className="text-text-muted-dark text-sm leading-relaxed mb-6">{publicPortfolioProjects[0].description}</p>
                 {/* Highlights */}
                 <div className="grid grid-cols-4 gap-3 mb-6">
                   {sigfotHighlights.map((h) => (
@@ -385,40 +437,55 @@ export default function HomePage() {
                 </div>
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {portfolioProjects[0].tags?.map((t) => (
+                  {publicPortfolioProjects[0].tags?.map((t) => (
                     <span key={t} className="tag-pill bg-white/5 border-white/15 text-text-muted-dark text-[10px]">{t}</span>
                   ))}
                 </div>
-                <div className="flex items-center gap-2 text-blue-electric text-sm font-medium group/link">
-                  <span>Voir l&apos;étude de cas</span>
+                <Link href="/portfolio/sigfot" className="inline-flex items-center gap-2 text-blue-electric text-sm font-medium hover:text-blue-brand transition-colors group/link">
+                  <span>Voir l&apos;étude de cas complète</span>
                   <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                </div>
+                </Link>
               </div>
             </div>
           </motion.div>
 
-          {/* Other projects grid */}
+          {/* Other projects grid — only real projects */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioProjects.slice(1, 4).map((project, i) => (
-              <motion.div key={project.title} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5, delay: i * 0.12 }} className="group relative rounded-2xl overflow-hidden border border-white/10 bg-navy-card hover:border-blue-brand/50 transition-all duration-300 hover:shadow-glow-navy">
-                <div className="relative h-52 overflow-hidden">
-                  <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
-                  <span className="absolute top-3 left-3 tag-pill bg-blue-brand/20 border-blue-brand/40 text-blue-electric text-[10px]">{project.category}</span>
+            {publicPortfolioProjects.slice(1).map((project, i) => (
+              <motion.div key={project.title} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5, delay: i * 0.12 }} className="group relative rounded-2xl overflow-hidden border border-white/10 bg-navy-card hover:border-blue-brand/50 transition-all duration-300 hover:shadow-glow-navy flex flex-col justify-between">
+                <div>
+                  <div className="relative h-52 overflow-hidden bg-navy-deep">
+                    <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
+                    <span className="absolute top-3 left-3 tag-pill bg-blue-brand/20 border-blue-brand/40 text-blue-electric text-[10px]">{project.category}</span>
+                  </div>
+                  <div className="p-5">
+                    {project.slug ? (
+                      <Link href={`/portfolio/${project.slug}`}>
+                        <h3 className="font-display font-semibold text-white text-base mb-2 hover:text-blue-electric transition-colors">{project.title}</h3>
+                      </Link>
+                    ) : (
+                      <h3 className="font-display font-semibold text-white text-base mb-2">{project.title}</h3>
+                    )}
+                    <p className="text-text-muted-dark text-sm leading-relaxed mb-3">{project.description}</p>
+                    {project.tags && (
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {project.tags.map((t) => (
+                          <span key={t} className="tag-pill bg-white/5 border-white/10 text-text-muted-dark text-[9px]">{t}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-display font-semibold text-white text-base mb-2 group-hover:text-blue-electric transition-colors">{project.title}</h3>
-                  <p className="text-text-muted-dark text-sm leading-relaxed mb-3">{project.description}</p>
-                  {project.tags && (
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {project.tags.map((t) => (
-                        <span key={t} className="tag-pill bg-white/5 border-white/10 text-text-muted-dark text-[9px]">{t}</span>
-                      ))}
-                    </div>
+                <div className="p-5 pt-0 flex items-center justify-between gap-3 border-t border-white/5 mt-auto">
+                  {project.slug && (
+                    <Link href={`/portfolio/${project.slug}`} className="inline-flex items-center gap-1 text-blue-electric text-xs font-medium hover:text-blue-brand transition-colors">
+                      Étude de cas <ChevronRight size={12} />
+                    </Link>
                   )}
                   {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-blue-electric text-xs font-medium hover:gap-2 transition-all">
-                      Voir le projet <ExternalLink size={11} />
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-text-muted-dark hover:text-blue-electric text-xs font-medium transition-colors ml-auto">
+                      Voir en ligne <ExternalLink size={11} />
                     </a>
                   )}
                 </div>
@@ -462,17 +529,15 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <span className="font-mono-label text-blue-brand mb-3 block">Notre différence</span>
+              <span className="font-mono-label text-blue-brand mb-3 block">{t.home.whyUsTag}</span>
               <h2 id="why-heading" className="font-display font-bold text-3xl md:text-4xl text-text-primary mb-6">
-                Créativité africaine.<br /><span className="text-gradient-cyan">Technologie mondiale.</span>
+                {t.home.whyUsTitlePart1}<br /><span className="text-gradient-cyan">{t.home.whyUsTitleHighlight}</span>
               </h2>
               <p className="text-text-muted leading-relaxed mb-6">
-                CreatrixDev est un studio tech basé à Douala, Cameroun. Nous aidons les entrepreneurs,
-                startups et organisations à transformer leurs idées en produits digitaux utiles, beaux et performants.
+                {t.home.whyUsDesc1}
               </p>
               <p className="text-text-muted leading-relaxed mb-8">
-                Nous ne faisons pas que livrer du code — nous construisons des partenariats durables
-                avec nos clients pour les accompagner sur le long terme.
+                {t.home.whyUsDesc2}
               </p>
               <CTAButton href="/a-propos" variant="outline">Notre histoire <ArrowRight size={16} /></CTAButton>
             </motion.div>
@@ -495,9 +560,9 @@ export default function HomePage() {
         <div className="absolute inset-0 grid-bg-dark opacity-50" aria-hidden="true" />
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-14">
-            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">Notre stack</motion.span>
+            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">{t.home.stackTag}</motion.span>
             <motion.h2 id="tech-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="font-display font-bold text-3xl md:text-4xl text-white">
-              Construit avec les <span className="text-gradient-light">meilleures technologies</span>
+              {t.home.stackTitle} <span className="text-gradient-light">{t.home.stackHighlight}</span>
             </motion.h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -523,15 +588,15 @@ export default function HomePage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,102,204,0.06) 0%, transparent 70%)' }} aria-hidden="true" />
         <div className="container mx-auto px-4 md:px-8 text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <span className="font-mono-label text-blue-brand mb-4 block">Prêt à démarrer ?</span>
+            <span className="font-mono-label text-blue-brand mb-4 block">{t.home.finalCtaTag}</span>
             <h2 className="font-display font-bold text-4xl md:text-6xl text-text-primary mb-6 leading-tight">
-              Vous avez une idée ?<br /><span className="text-gradient-cyan">Construisons-la.</span>
+              {t.home.finalCtaTitle}<br /><span className="text-gradient-cyan">{t.home.finalCtaHighlight}</span>
             </h2>
             <p className="text-text-muted text-lg max-w-xl mx-auto mb-10">
-              Décrivez votre projet. Notre équipe vous répond dans les 24h avec une analyse et une proposition sur mesure.
+              {t.home.finalCtaDesc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="/contact" variant="primary">Démarrer un projet <ArrowRight size={16} /></CTAButton>
+              <CTAButton href="/contact" variant="primary">{t.home.heroCtaPrimary} <ArrowRight size={16} /></CTAButton>
               <CTAButton href="https://wa.me/237692280248" variant="secondary" external>
                 <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" /></svg>
                 WhatsApp direct

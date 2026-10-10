@@ -1,0 +1,123 @@
+export type Locale = 'fr' | 'en'
+
+export interface TranslationDictionary {
+  common: {
+    backToHome: string
+    contactUs: string
+    bookCall20Min: string
+    whatsAppDirect: string
+    freeDiagnostic: string
+    viewCaseStudy: string
+    allRightsReserved: string
+    inProduction: string
+    responseUnder24h: string
+    doualaCameroon: string
+  }
+  header: {
+    home: string
+    services: string
+    portfolio: string
+    aiAutomation: string
+    about: string
+    team: string
+    blog: string
+    contact: string
+    startProject: string
+  }
+  home: {
+    heroTag: string
+    heroTitlePart1: string
+    heroTitleHighlight: string
+    heroTitlePart2: string
+    heroSubtitle: string
+    heroCtaPrimary: string
+    heroCtaSecondary: string
+    trustBasedIn: string
+    trustBasedSub: string
+    trustProduction: string
+    trustProductionSub: string
+    trustSupport: string
+    trustSupportSub: string
+    whatWeBuildTitle: string
+    pillarsTag: string
+    pillarsTitle: string
+    pillarsTitleHighlight: string
+    featuredCaseStudyTag: string
+    featuredCaseStudyTitle: string
+    otherProjectsTag: string
+    whyUsTag: string
+    whyUsTitlePart1: string
+    whyUsTitleHighlight: string
+    whyUsDesc1: string
+    whyUsDesc2: string
+    stackTag: string
+    stackTitle: string
+    stackHighlight: string
+    finalCtaTag: string
+    finalCtaTitle: string
+    finalCtaHighlight: string
+    finalCtaDesc: string
+  }
+  services: {
+    heroTag: string
+    heroTitle: string
+    heroHighlight: string
+    heroSubtitle: string
+    includedServices: string
+    requestQuote: string
+    pricingTag: string
+    pricingTitle: string
+    pricingSubtitle: string
+  }
+  portfolio: {
+    heroTag: string
+    heroTitle: string
+    heroHighlight: string
+    heroSubtitle: string
+    allCategories: string
+    featuredProject: string
+    viewFullStudy: string
+    noProjectsFound: string
+  }
+  aiAutomation: {
+    heroTag: string
+    heroTitlePart1: string
+    heroTitleHighlight: string
+    heroSubtitle: string
+    requestDiagnostic: string
+    viewConcreteExample: string
+    capabilitiesTag: string
+    capabilitiesTitle: string
+    targetAudienceTag: string
+    methodologyTag: string
+    methodologyTitle: string
+    proofTag: string
+    proofTitle: string
+    proofTechnicalNote: string
+    proofReadStudy: string
+    scenarioTag: string
+    scenarioTitle: string
+    dataPrivacyTitle: string
+    dataPrivacyDesc: string
+    faqTitle: string
+    finalCtaTitle: string
+    finalCtaSubtitle: string
+  }
+  transport: {
+    heroTag: string
+    heroTitlePart1: string
+    heroTitleHighlight: string
+    heroSubtitle: string
+    challengesTag: string
+    challengesTitle: string
+    solutionTag: string
+    solutionTitle: string
+    proofTag: string
+    proofTitle: string
+    methodologyTag: string
+    methodologyTitle: string
+    faqTitle: string
+    finalCtaTitle: string
+    finalCtaSubtitle: string
+  }
+}

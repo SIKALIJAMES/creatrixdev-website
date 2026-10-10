@@ -4,6 +4,10 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppFloatingButton from '@/components/WhatsAppFloatingButton'
+import { siteConfig } from '@/../content/site'
+import Script from 'next/script'
+import { GA_TRACKING_ID } from '@/lib/analytics'
+import { LanguageProvider } from '@/context/LanguageContext'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -24,34 +28,98 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://creatrixdev.com'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'CreatrixDev — L\'art de coder l\'avenir',
-    template: '%s | CreatrixDev',
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
   },
   description:
-    'CreatrixDev : agence digitale premium spécialisée en développement web/mobile, design UI/UX, contenu digital, marketing digital, support IT et formation. Transformez votre présence digitale.',
+    "Systemes metier sur mesure et agents IA pour les entreprises et institutions d'Afrique centrale. Base a Douala, Cameroun. Diagnostic gratuit.",
   keywords: [
-    'développement web',
-    'design UI/UX',
-    'marketing digital',
-    'agence digitale',
-    'création site web',
-    'application mobile',
-    'branding',
-    'SEO',
+    'developpement logiciel Douala',
+    'systeme de gestion sur mesure',
+    'chatbot WhatsApp Cameroun',
+    'gestion de flotte Cameroun',
+    'IA automatisation Afrique',
+    'agence digitale Douala',
     'CreatrixDev',
   ],
   openGraph: {
-    title: 'CreatrixDev — L\'art de coder l\'avenir',
-    description: 'Startup digitale premium : développement, design, contenu, marketing et formation.',
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description:
+      "Systemes metier sur mesure et agents IA pour les entreprises d'Afrique centrale. Diagnostic gratuit a Douala.",
     type: 'website',
     locale: 'fr_FR',
+    siteName: siteConfig.name,
+    url: siteConfig.url,
   },
   robots: {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+}
+
+// JSON-LD : Organization + ProfessionalService
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      legalName: siteConfig.legalName,
+      url: siteConfig.url,
+      email: siteConfig.email,
+      telephone: siteConfig.phone.raw,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Premiere Entree Cogefar, N3',
+        addressLocality: 'Douala',
+        addressCountry: 'CM',
+      },
+      sameAs: [
+        siteConfig.socials.linkedin,
+        siteConfig.socials.github,
+        siteConfig.socials.facebook,
+        siteConfig.socials.instagram,
+      ],
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteConfig.url}/#service`,
+      name: `${siteConfig.name} — Systemes Metier & IA`,
+      url: siteConfig.url,
+      description:
+        "Conception et developpement de systemes de gestion sur mesure, chatbots WhatsApp et agents IA pour les entreprises et institutions d'Afrique centrale.",
+      telephone: siteConfig.phone.raw,
+      email: siteConfig.email,
+      areaServed: {
+        '@type': 'GeoCircle',
+        geoMidpoint: {
+          '@type': 'GeoCoordinates',
+          latitude: 4.0511,
+          longitude: 9.7679,
+        },
+        geoRadius: '800000',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Premiere Entree Cogefar, N3',
+        addressLocality: 'Douala',
+        addressCountry: 'CM',
+      },
+      serviceType: [
+        'Systeme de gestion de flotte',
+        'Chatbot WhatsApp et Messenger',
+        'Agent IA et automatisation',
+        'Developpement web sur mesure',
+      ],
+      parentOrganization: { '@id': `${siteConfig.url}/#organization` },
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -64,11 +132,41 @@ export default function RootLayout({
       lang="fr"
       className={`scroll-smooth ${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {GA_TRACKING_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_TRACKING_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
+      </head>
       <body className="bg-bg-primary text-text-primary font-body antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFloatingButton />
+        <LanguageProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppFloatingButton />
+        </LanguageProvider>
       </body>
     </html>
   )
