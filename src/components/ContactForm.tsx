@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, CheckCircle, XCircle, Loader2 } from 'lucide-react'
+import { trackFormSubmission } from '@/lib/analytics'
 
 interface FormData {
   name: string
@@ -41,6 +42,7 @@ export default function ContactForm() {
       }
 
       setStatus('success')
+      trackFormSubmission(data.subject || 'contact_general')
       reset()
     } catch (err: unknown) {
       if (err instanceof Error) {

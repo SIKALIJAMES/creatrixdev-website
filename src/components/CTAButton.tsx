@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { trackWhatsAppClick, trackCallBookingClick } from '@/lib/analytics'
 
 interface CTAButtonProps {
   href: string
@@ -20,6 +21,15 @@ export default function CTAButton({
   className = '',
   onClick,
 }: CTAButtonProps) {
+  const handleClick = () => {
+    if (href.includes('wa.me')) {
+      trackWhatsAppClick('cta_button', href)
+    } else if (href.includes('appel-20min') || href.includes('sujet=appel')) {
+      trackCallBookingClick('cta_button')
+    }
+    if (onClick) onClick()
+  }
+
   const baseClasses =
     'inline-flex items-center gap-2 px-6 py-3 rounded-lg font-display font-semibold text-sm transition-all duration-300 relative overflow-hidden group'
 
@@ -37,7 +47,7 @@ export default function CTAButton({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.97 }}
       className={`${baseClasses} ${variants[variant]} ${className}`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {/* Shimmer effect */}
       {variant === 'primary' && (

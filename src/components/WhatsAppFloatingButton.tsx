@@ -1,12 +1,16 @@
 'use client'
 
+import { getWhatsAppUrl } from '@/../content/site'
+import { trackWhatsAppClick } from '@/lib/analytics'
+
 export default function WhatsAppFloatingButton() {
   return (
     <a
-      href="https://wa.me/237692280248"
+      href={getWhatsAppUrl()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contacter CreatrixDev sur WhatsApp"
+      onClick={() => trackWhatsAppClick('floating_button')}
       className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-lg hover:shadow-green-500/40 hover:scale-110 active:scale-95 transition-all duration-300 group"
       style={{ boxShadow: '0 4px 20px rgba(34, 197, 94, 0.4)' }}
     >
