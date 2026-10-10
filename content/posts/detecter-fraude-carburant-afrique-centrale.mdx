@@ -1,0 +1,55 @@
+---
+titre: "Comment détecter la fraude carburant en Afrique centrale : retour d'expérience SIGFOT"
+description: "Analyse des mécanismes de fraude de carburant dans les flottes de transport au Cameroun et méthode de détection automatique par seuils et écarts réels."
+date: "2026-10-10"
+tags:
+  - "Transport"
+  - "Flotte"
+  - "SIGFOT"
+  - "Carburant"
+  - "Automatisation"
+auteur: "CreatrixDev"
+cover: "/projects/sigfot/dashboard.jpg"
+statut: brouillon
+---
+
+# Comment détecter la fraude carburant en Afrique centrale : retour d'expérience SIGFOT
+
+Dans les entreprises de transport et de logistique opérant en Afrique centrale (Cameroun, Tchad, Centrafrique, Gabon), le poste carburant représente souvent entre 30% et 50% des coûts opérationnels totaux. Pourtant, la majorité des parcs continuent d'être suivis à l'aide de carnets de bord papier et de classeurs Excel partagés.
+
+Ce mode de gestion manuel crée des zones d'ombre où des anomalies substantielles passent inaperçues pendant des semaines, voire des mois.
+
+## 1. Les typologies d'anomalies les plus courantes sur le terrain
+
+Sur les corridors logistiques comme Douala-N'Djamena ou Douala-Bangui, les dérives constatées prennent généralement trois formes :
+
+1. **Surconsommation non justifiée sur un tronçon connu** : Un véhicule consomme significativement plus de litres au 100 km que la moyenne constatée sur le même trajet avec un chargement identique.
+2. **Décalage entre pleins déclarés et volume réservoir** : Déclaration de ravitaillements en station sans concordance kilométrique ni justificatif horodaté.
+3. **Plein intermédiaire sans mission planifiée** : Bons de carburant émis en dehors d'une feuille de route validée par le logisticien.
+
+## 2. Pourquoi les tableaux Excel échouent à endiguer le phénomène
+
+Excel est un formidable outil de calcul, mais il n'applique aucune règle de sécurité active en temps réel :
+
+- **Pas d'alerte immédiate** : Une anomalie saisie le lundi n'est souvent remarquée que le vendredi, ou lors de la clôture mensuelle.
+- **Risque d'écrasement de formules** : N'importe quel utilisateur disposant d'un droit de modification peut altérer les calculs sans traçabilité.
+- **Ressaisie manuelle** : Le temps passé à recopier les tickets empêche les gestionnaires d'analyser les causes racines.
+
+## 3. L'approche appliquée sur le projet SIGFOT
+
+Lors de la conception de la plateforme [SIGFOT](/portfolio/sigfot) pour la société de transport SST Sarl à Douala, nous avons mis en place une logique de contrôle automatique basée sur des règles métiers strictes :
+
+- **Référentiel par type de camion** : Chaque tracteur ou benne possède une consommation cible paramétrée selon sa motorisation et sa charge utile.
+- **Calcul automatique des écarts** : À chaque enregistrement de plein et de retour de trajet, le système calcule instantanément la consommation effective.
+- **Seuils d'alerte configurables** : Un écart supérieur à 10% déclenche un signalement orange ; au-delà de 20%, une alerte rouge exige une validation explicite de la direction avant clôture du voyage.
+
+> **Données chiffrées en production :**  
+> Litres et montants FCFA économisés : `TODO_A_FOURNIR` (données SST Sarl en attente de publication).
+
+## 4. Comment franchir le pas dans votre organisation
+
+Mettre fin aux dérives ne nécessite pas d'équiper immédiatement chaque camion de capteurs invasifs coûteux. Une rigueur logicielle centralisant chauffeurs, trajets et pleins dans une [application métier sur mesure](/solutions/transport-logistique) suffit souvent à diviser les écarts dès les premiers mois.
+
+---
+
+*Vous gérez une flotte de véhicules au Cameroun ou en Afrique centrale ? [Contactez nos ingénieurs](/contact) ou demandez un diagnostic gratuit sur WhatsApp.*
