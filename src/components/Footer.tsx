@@ -4,36 +4,40 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Github } from 'lucide-react'
 import SectionDivider from './SectionDivider'
+import { siteConfig, getWhatsAppUrl } from '@/../content/site'
 
 const services = [
-  { label: 'Développement Web & Mobile', href: '/services#developpement' },
-  { label: 'Design UI/UX & Branding', href: '/services#design' },
-  { label: 'Contenu Digital', href: '/services#contenu-digital' },
-  { label: 'Marketing Digital', href: '/services#marketing' },
-  { label: 'Support IT', href: '/services#support-it' },
-  { label: 'Formation & Coaching', href: '/services#formation' },
+  { label: 'Systèmes Métier sur Mesure', href: '/services#developpement' },
+  { label: 'IA & Agents WhatsApp', href: '/ia-automatisation' },
+  { label: 'Design UI/UX', href: '/services#design' },
+  { label: 'Gestion de Flotte', href: '/solutions/transport-logistique' },
+  { label: 'Infrastructure Cloud', href: '/services#support-it' },
 ]
 
 const quickLinks = [
   { label: 'Accueil', href: '/' },
   { label: 'À propos', href: '/a-propos' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Équipe', href: '/equipe' },
+  { label: 'IA & Automatisation', href: '/ia-automatisation' },
+  { label: 'Transport & Flotte', href: '/solutions/transport-logistique' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
 
 const socials = [
-  { icon: Instagram, href: 'https://www.instagram.com/creatrixdev?igsh=cXM3N2VhNTMyendo', label: 'Instagram' },
-  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61582897332001', label: 'Facebook' },
-  { icon: Github, href: 'https://github.com/creatrixdevteam-coder', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/145245374/', label: 'LinkedIn' },
-  // Replacing Twitter with TikTok since user provided TikTok instead
-  { icon: () => (
-    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
-      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.04.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.63-.52 3.23-1.46 4.54-1.57 2.15-4.25 3.3-6.9 3.12-2.73-.18-5.26-1.55-6.84-3.72-1.56-2.13-2.11-4.9-1.44-7.48.66-2.52 2.45-4.63 4.81-5.74 2.37-1.12 5.14-1.25 7.64-.32v4.21c-1.13-.53-2.45-.71-3.69-.43-1.26.29-2.38 1.09-3.03 2.18-.65 1.1-.79 2.46-.38 3.65.4 1.18 1.34 2.12 2.49 2.58 1.15.45 2.48.42 3.58-.09 1.11-.51 1.94-1.48 2.27-2.67.23-.84.22-1.74.22-2.61V.02z" />
-    </svg>
-  ), href: 'https://www.tiktok.com/@creatrixdev?_r=1&_t=ZS-97VOWI3HOQ1', label: 'TikTok' },
+  { icon: Instagram, href: siteConfig.socials.instagram, label: 'Instagram' },
+  { icon: Facebook, href: siteConfig.socials.facebook, label: 'Facebook' },
+  { icon: Github, href: siteConfig.socials.github, label: 'GitHub' },
+  { icon: Linkedin, href: siteConfig.socials.linkedin, label: 'LinkedIn' },
+  {
+    icon: () => (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.04.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.63-.52 3.23-1.46 4.54-1.57 2.15-4.25 3.3-6.9 3.12-2.73-.18-5.26-1.55-6.84-3.72-1.56-2.13-2.11-4.9-1.44-7.48.66-2.52 2.45-4.63 4.81-5.74 2.37-1.12 5.14-1.25 7.64-.32v4.21c-1.13-.53-2.45-.71-3.69-.43-1.26.29-2.38 1.09-3.03 2.18-.65 1.1-.79 2.46-.38 3.65.4 1.18 1.34 2.12 2.49 2.58 1.15.45 2.48.42 3.58-.09 1.11-.51 1.94-1.48 2.27-2.67.23-.84.22-1.74.22-2.61V.02z" />
+      </svg>
+    ),
+    href: siteConfig.socials.tiktok,
+    label: 'TikTok',
+  },
 ]
 
 export default function Footer() {
@@ -46,12 +50,12 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4">
               <div className="w-9 h-9 relative">
-                <Image src="/logo.png" alt="CreatrixDev Logo" fill className="object-contain" />
+                <Image src="/logo.png" alt="CreatrixDev Logo" fill className="object-contain" sizes="36px" />
               </div>
               <span className="font-display font-bold text-xl text-gradient-cyan">CreatrixDev</span>
             </Link>
             <p className="text-text-muted text-sm leading-relaxed mb-6">
-              L&apos;art de coder l&apos;avenir. Nous transformons vos idées en solutions digitales premium.
+              Systèmes métier et agents IA sur mesure pour les entreprises d&apos;Afrique centrale.
             </p>
             <div className="flex gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
@@ -72,7 +76,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="font-display font-semibold text-text-primary mb-4 text-sm uppercase tracking-wider">
-              Services
+              Nos Solutions
             </h3>
             <ul className="space-y-2">
               {services.map((s) => (
@@ -117,29 +121,32 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-text-muted text-sm">
                 <Phone size={15} className="text-accent-cyan mt-0.5 shrink-0" />
-                <span>+237 692 280 248<br />+237 676 418 976</span>
+                <span>
+                  {siteConfig.phone.primary}<br />
+                  {siteConfig.phone.secondary}
+                </span>
               </li>
               <li className="flex items-start gap-3 text-text-muted text-sm">
                 <Mail size={15} className="text-accent-cyan mt-0.5 shrink-0" />
-                <a href="mailto:creatrixdevteam@gmail.com" className="hover:text-accent-cyan transition-colors">
-                  creatrixdevteam@gmail.com
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-accent-cyan transition-colors">
+                  {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-text-muted text-sm">
                 <MapPin size={15} className="text-accent-cyan mt-0.5 shrink-0" />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Premi%C3%A8re+Entr%C3%A9e+Cogefar+Douala"
+                  href={siteConfig.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-cyan transition-colors"
                 >
-                  Première Entrée Cogefar, N3, Douala
+                  {siteConfig.address}
                 </a>
               </li>
             </ul>
 
             <a
-              href="https://wa.me/237692280248"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-6 px-4 py-2 bg-green-600/20 border border-green-500/30 text-green-400 rounded-lg text-sm font-medium hover:bg-green-600/30 hover:border-green-500/60 transition-all duration-200"
@@ -155,10 +162,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-accent-cyan/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-xs font-mono-label">
-            © {new Date().getFullYear()} CreatrixDev — L&apos;art de coder l&apos;avenir
+            © {new Date().getFullYear()} {siteConfig.name} — {siteConfig.tagline}
           </p>
           <p className="text-text-muted text-xs">
-            Tous droits réservés — Fait avec ❤️ et du code
+            Tous droits réservés — Fait avec ❤️ à Douala, Cameroun
           </p>
         </div>
       </div>
