@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
+import PricingSection from '@/components/PricingSection'
 import { ArrowRight } from 'lucide-react'
 
 const sections = [
@@ -217,6 +218,10 @@ export default function ServicesClient() {
           </section>
         </div>
       ))}
+
+      {/* Formules et Tarifs */}
+      <SectionDivider />
+      <PricingSection />
 
       {/* CTA */}
       <SectionDivider />
