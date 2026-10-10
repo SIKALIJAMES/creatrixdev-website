@@ -16,12 +16,12 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'pourquoi-avoir-un-site-web-en-2025',
-    title: "Pourquoi votre entreprise a absolument besoin d'un site web en 2025",
+    slug: 'pourquoi-avoir-un-site-web-en-2026-2027',
+    title: "Pourquoi votre entreprise a absolument besoin d'un site web en 2026 - 2027",
     excerpt:
-      "Dans un monde où 80% des consommateurs recherchent en ligne avant d'acheter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir.",
+      "Dans un monde où 80% des consommateurs recherchent en ligne avant d'acheter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir à l'orée de 2027.",
     category: 'Stratégie',
-    date: '2025-01-15',
+    date: '2026-10-01',
     readTime: '5 min',
     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&auto=format',
     author: {
@@ -35,16 +35,16 @@ export const blogPosts: BlogPost[] = [
       "2. Une vitrine accessible 24h/24 et 7j/7 : Votre site web travaille même lorsque vos bureaux sont fermés. Il informe vos prospects, met en valeur vos réalisations et recueille des demandes de devis à toute heure.",
       "3. L'optimisation pour le référencement local (SEO) : Avec un site bien structuré, vous captez les recherches géolocalisées (« agence web Douala », « menuiserie moderne Yaoundé », etc.), générant des prospects qualifiés sans frais publicitaires permanents.",
       "4. Maîtrise totale de votre écosystème : Vous contrôlez l'expérience client, vos données analytiques, vos formulaires de conversion et vos intégrations WhatsApp ou CRM.",
-      "Conclusion : Investir dans un site web performant, rapide et optimisé pour mobile en 2025 n'est plus une dépense, c'est l'actif le plus rentable pour faire décoller votre chiffre d'affaires.",
+      "Conclusion : Investir dans un site web performant, rapide et optimisé pour mobile en 2026 et à l'approche de 2027 n'est plus une dépense, c'est l'actif le plus rentable pour faire décoller votre chiffre d'affaires.",
     ],
   },
   {
-    slug: 'tendances-design-ui-ux-2025',
-    title: 'Les tendances UI/UX qui domineront le web en 2025',
+    slug: 'tendances-design-ui-ux-2026-2027',
+    title: 'Les tendances UI/UX qui domineront le web en 2026 et 2027',
     excerpt:
-      "Glassmorphism, dark mode immersif, micro-interactions, typographie expressive... Décryptage des tendances visuelles qui façonneront l'expérience utilisateur cette année.",
+      "Glassmorphism, dark mode immersif, micro-interactions, typographie expressive... Décryptage des tendances visuelles qui façonneront l'expérience utilisateur cette année et pour 2027.",
     category: 'Design',
-    date: '2025-01-20',
+    date: '2026-10-05',
     readTime: '7 min',
     image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&auto=format',
     author: {
@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format',
     },
     content: [
-      "Le web design en 2025 marque une rupture avec les interfaces plates et austères des années précédentes. Les utilisateurs recherchent désormais des expériences vivantes, sensorielles et mémorables.",
+      "Le web design en 2026 et à l'orée de 2027 marque une rupture avec les interfaces plates et austères des années précédentes. Les utilisateurs recherchent désormais des expériences vivantes, sensorielles et mémorables.",
       "1. Le Dark Mode immersif & les néons de contraste : Les thèmes sombres profonds couplés à des accents cyan et bleus électriques réduisent la fatigue oculaire tout en conférant un cachet haut de gamme et technologique.",
       "2. Le retour du Glassmorphism maîtrisé : Les arrières-plans translucides avec flou gaussien (backdrop-filter) créent une hiérarchie spatiale naturelle sans encombrer la page.",
       "3. Les micro-animations réactives : Un bouton qui réagit au survol, des transitions de cartes fluides et des indicateurs de progression subtils transforment une consultation statique en une interaction gratifiante.",
