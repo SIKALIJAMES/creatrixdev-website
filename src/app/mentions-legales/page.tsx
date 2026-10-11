@@ -1,13 +1,31 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/../content/site'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://creatrixdev.com'
+const SITE_URL = siteConfig.url
 
 export const metadata: Metadata = {
-  title: 'Mentions légales & Politique de confidentialité | CreatrixDev',
+  title: 'Mentions légales & Confidentialité',
   description:
     'Mentions légales, politique de confidentialité et conditions d\'utilisation du site CreatrixDev, entreprise de développement logiciel basée à Douala, Cameroun.',
   alternates: {
     canonical: `${SITE_URL}/mentions-legales`,
+  },
+  openGraph: {
+    title: 'Mentions légales & Confidentialité',
+    description:
+      'Mentions légales et politique de confidentialité du site CreatrixDev.',
+    url: `${SITE_URL}/mentions-legales`,
+    siteName: siteConfig.name,
+    locale: 'fr_FR',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'CreatrixDev — Mentions légales & Confidentialité',
+      },
+    ],
   },
   robots: {
     index: true,
@@ -41,13 +59,15 @@ export default function MentionsLegalesPage() {
             </h2>
             <p>
               Le présent site est édité par <strong className="text-text-primary">CreatrixDev</strong>, entreprise de développement
-              logiciel enregistrée au Cameroun.
+              logiciel basée à Douala, Cameroun.
             </p>
             <ul className="mt-3 space-y-1 text-sm">
               <li><strong className="text-text-primary">Siège social :</strong> Douala, Cameroun</li>
               <li><strong className="text-text-primary">Téléphone :</strong> +237 692 280 248</li>
               <li><strong className="text-text-primary">Email :</strong> creatrixdevteam@gmail.com</li>
               <li><strong className="text-text-primary">Directeur de la publication :</strong> TENEFO SIKALI Yvan James</li>
+              <li><strong className="text-text-primary">RCCM :</strong> TODO_A_FOURNIR</li>
+              <li><strong className="text-text-primary">NIU :</strong> TODO_A_FOURNIR</li>
             </ul>
           </section>
 
@@ -80,13 +100,12 @@ export default function MentionsLegalesPage() {
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-bg-secondary border border-border-light">
-                <p className="font-semibold text-text-primary text-sm mb-1">Google Analytics (si activé)</p>
+                <p className="font-semibold text-text-primary text-sm mb-1">Google Analytics 4</p>
                 <p className="text-sm">
-                  Si la variable <code className="text-blue-brand bg-blue-brand/10 px-1 rounded text-xs">NEXT_PUBLIC_GA_ID</code> est
-                  configurée, le site envoie des données d&apos;audience anonymisées à Google Analytics 4 (pages vues,
-                  clics sur les boutons WhatsApp et de contact, durée de session). Aucune donnée personnelle
-                  identifiable n&apos;est transmise. Vous pouvez refuser ce suivi via les paramètres de votre navigateur
-                  ou l&apos;extension Google Analytics Opt-out.
+                  Nous utilisons Google Analytics 4 pour mesurer l&apos;audience du site (pages vues,
+                  clics sur les boutons WhatsApp et de contact, durée de session). Les données d&apos;audience sont
+                  agrégées et l&apos;adresse IP est anonymisée par Google Analytics 4. Vous pouvez refuser ce suivi
+                  via les paramètres de votre navigateur ou l&apos;extension Google Analytics Opt-out.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-bg-secondary border border-border-light">

@@ -13,7 +13,7 @@ import {
   MessageCircle,
 } from 'lucide-react'
 import { getAllProjects, getProjectBySlug } from '@/lib/projects'
-import { getWhatsAppUrl } from '@/../content/site'
+import { siteConfig, getWhatsAppUrl } from '@/../content/site'
 import TestimonialBlock from '@/components/TestimonialBlock'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
@@ -34,30 +34,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!project) {
     return {
-      title: 'Étude de cas introuvable | CreatrixDev',
+      title: 'Étude de cas introuvable',
     }
   }
 
   // AGENTS.md: title <= 60 chars, description <= 155 chars
-  const rawTitle = `${project.titre.split('—')[0].trim()} · Étude de cas | CreatrixDev`
-  const title = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '...' : rawTitle
+  // Note: layout.tsx template ajoute déjà " | CreatrixDev", on évite donc le doublon
+  const rawTitle = `${project.titre.split('—')[0].trim()} · Étude de cas`
+  const title = rawTitle.length > 45 ? rawTitle.slice(0, 42) + '...' : rawTitle
 
   const rawDesc = project.resume
   const description = rawDesc.length > 155 ? rawDesc.slice(0, 152) + '...' : rawDesc
 
-  const ogImage = project.images[0] || '/logo.png'
+  const ogImage = project.images[0]
+    ? `${siteConfig.url}${project.images[0]}`
+    : `${siteConfig.url}/logo.png`
+
+  const isReel = project.statut === 'reel'
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://creatrixdev.com/portfolio/${project.slug}`,
+      canonical: `${siteConfig.url}/portfolio/${project.slug}`,
+    },
+    robots: {
+      index: isReel,
+      follow: isReel,
     },
     openGraph: {
       title,
       description,
-      url: `https://creatrixdev.com/portfolio/${project.slug}`,
-      siteName: 'CreatrixDev',
+      url: `${siteConfig.url}/portfolio/${project.slug}`,
+      siteName: siteConfig.name,
       locale: 'fr_FR',
       type: 'article',
       images: [
@@ -68,6 +77,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: project.titre,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
     },
   }
 }
@@ -150,16 +165,6 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                 className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-blue-electric transition-colors underline underline-offset-4"
               >
                 Voir en production <ExternalLink size={12} />
-              </a>
-            )}
-            {project.urlProduction && project.statut === 'concept' && (
-              <a
-                href={project.urlProduction}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-blue-electric transition-colors underline underline-offset-4"
-              >
-                Voir la démo <ExternalLink size={12} />
               </a>
             )}
           </div>
@@ -272,7 +277,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                         <div className="flex-1 mx-3 bg-white/10 rounded px-2.5 py-0.5 text-white/50 text-[11px] font-mono truncate">
                           {project.slug === 'sigfot'
                             ? 'sigfot.sstcameroun.com · Production'
-                            : 'Prototype · Démo'}
+                            : 'Tableau de bord · Prototype'}
                         </div>
                       </div>
 

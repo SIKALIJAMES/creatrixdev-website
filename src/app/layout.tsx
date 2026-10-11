@@ -52,6 +52,21 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     siteName: siteConfig.name,
     url: siteConfig.url,
+    images: [
+      {
+        url: `${siteConfig.url}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description:
+      "Systemes metier sur mesure et agents IA pour les entreprises d'Afrique centrale. Diagnostic gratuit a Douala.",
+    images: [`${siteConfig.url}/logo.png`],
   },
   robots: {
     index: true,

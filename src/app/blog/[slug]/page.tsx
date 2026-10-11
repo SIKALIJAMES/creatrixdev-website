@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Clock, Calendar } from 'lucide-react'
 import { blogPosts } from '@/data/blog'
+import { siteConfig } from '@/../content/site'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
 
@@ -30,9 +31,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `${siteConfig.url}/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      siteName: siteConfig.name,
       type: 'article',
       publishedTime: post.date,
       images: [
@@ -43,6 +49,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: post.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
     },
   }
 }

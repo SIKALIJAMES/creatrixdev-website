@@ -30,14 +30,20 @@ export interface SiteConfig {
   }
 }
 
+const defaultSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.RAILWAY_PUBLIC_DOMAIN
+    ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+    : 'https://creatrixdev-website-production.up.railway.app')
+
 export const siteConfig: SiteConfig = {
   name: 'CreatrixDev',
   legalName: 'CreatrixDev SARL',
   tagline: "L'art de coder l'avenir",
   description:
     "Systèmes métier sur mesure et solutions d'IA et d'automatisation pour les entreprises et institutions d'Afrique centrale. Basé à Douala, Cameroun.",
-  domain: 'creatrixdev.com',
-  url: 'https://creatrixdev.com',
+  domain: 'creatrixdev-website-production.up.railway.app',
+  url: defaultSiteUrl,
   city: 'Douala',
   country: 'Cameroun',
   address: 'Première Entrée Cogefar, N3, Douala, Cameroun',

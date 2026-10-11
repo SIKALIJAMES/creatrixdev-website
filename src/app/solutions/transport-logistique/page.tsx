@@ -17,30 +17,38 @@ import CTAButton from '@/components/CTAButton'
 import TestimonialBlock from '@/components/TestimonialBlock'
 import PricingSection from '@/components/PricingSection'
 import FaqAccordion from '@/app/ia-automatisation/FaqAccordion'
+import { siteConfig } from '@/../content/site'
 
 export const metadata: Metadata = {
-  title: 'Gestion de flotte et carburant sur mesure | CreatrixDev',
+  title: 'Gestion de flotte et carburant sur mesure',
   description:
     'Suivez vos camions, trajets, carburant et comptes dans un seul outil sur mesure. Découvrez SIGFOT. Diagnostic gratuit à Douala.',
   alternates: {
-    canonical: 'https://creatrixdev.com/solutions/transport-logistique',
+    canonical: `${siteConfig.url}/solutions/transport-logistique`,
   },
   openGraph: {
-    title: 'Gestion de flotte et carburant sur mesure | CreatrixDev',
+    title: 'Gestion de flotte et carburant sur mesure',
     description:
       'Suivez vos camions, trajets, carburant et comptes dans un seul outil sur mesure. Découvrez SIGFOT. Diagnostic gratuit à Douala.',
-    url: 'https://creatrixdev.com/solutions/transport-logistique',
-    siteName: 'CreatrixDev',
+    url: `${siteConfig.url}/solutions/transport-logistique`,
+    siteName: siteConfig.name,
     locale: 'fr_FR',
     type: 'website',
     images: [
       {
-        url: '/projects/sigfot/dashboard.jpg',
+        url: `${siteConfig.url}/projects/sigfot/dashboard.jpg`,
         width: 1200,
         height: 630,
         alt: 'Tableau de bord de gestion de flotte SIGFOT',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gestion de flotte et carburant sur mesure',
+    description:
+      'Suivez vos camions, trajets, carburant et comptes dans un seul outil sur mesure. Découvrez SIGFOT. Diagnostic gratuit à Douala.',
+    images: [`${siteConfig.url}/projects/sigfot/dashboard.jpg`],
   },
 }
 

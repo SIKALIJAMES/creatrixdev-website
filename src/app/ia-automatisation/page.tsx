@@ -17,21 +17,38 @@ import CTAButton from '@/components/CTAButton'
 import PricingSection from '@/components/PricingSection'
 import FaqAccordion from './FaqAccordion'
 
+import { siteConfig } from '@/../content/site'
+
 export const metadata: Metadata = {
-  title: 'IA & automatisation sur mesure à Douala | CreatrixDev',
+  title: 'IA & automatisation sur mesure à Douala',
   description:
     "Chatbots WhatsApp, assistants et automatisations conçus pour les entreprises et institutions d'Afrique centrale. Diagnostic gratuit.",
   alternates: {
-    canonical: 'https://creatrixdev.com/ia-automatisation',
+    canonical: `${siteConfig.url}/ia-automatisation`,
   },
   openGraph: {
-    title: 'IA & automatisation sur mesure à Douala | CreatrixDev',
+    title: 'IA & automatisation sur mesure à Douala',
     description:
       "Chatbots WhatsApp, assistants et automatisations conçus pour les entreprises et institutions d'Afrique centrale. Diagnostic gratuit.",
-    url: 'https://creatrixdev.com/ia-automatisation',
-    siteName: 'CreatrixDev',
+    url: `${siteConfig.url}/ia-automatisation`,
+    siteName: siteConfig.name,
     locale: 'fr_FR',
     type: 'website',
+    images: [
+      {
+        url: `${siteConfig.url}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: 'IA & automatisation — CreatrixDev',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IA & automatisation sur mesure à Douala',
+    description:
+      "Chatbots WhatsApp, assistants et automatisations conçus pour les entreprises et institutions d'Afrique centrale. Diagnostic gratuit.",
+    images: [`${siteConfig.url}/logo.png`],
   },
 }
 

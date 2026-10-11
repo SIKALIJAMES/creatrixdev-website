@@ -86,3 +86,12 @@ Fichier : [content/projects/isetag-chatbot.mdx](../content/projects/isetag-chatb
    CONTACT_EMAIL=creatrixdevteam@gmail.com
    ```
    *(Créer une clé API gratuite sur [resend.com](https://resend.com) pour acheminer les emails du formulaire directement dans votre boîte Gmail)*
+
+---
+
+### F. Informations d'immatriculation — CreatrixDev
+Fichier : [src/app/mentions-legales/page.tsx](../src/app/mentions-legales/page.tsx)
+
+- ⏳ **RCCM** : Numéro au Registre du Commerce et du Crédit Mobilier.
+- ⏳ **NIU** : Numéro d'Identifiant Unique (contribuable).
+*(À intégrer dès finalisation de l'immatriculation juridique).*
