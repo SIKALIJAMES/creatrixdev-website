@@ -4,33 +4,7 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react'
 import ContactForm from '@/components/ContactForm'
 import SectionDivider from '@/components/SectionDivider'
-
-const contactInfo = [
-  {
-    icon: <Phone size={20} />,
-    label: 'Téléphone',
-    value: '+237 692 280 248',
-    href: 'tel:+237692280248',
-  },
-  {
-    icon: <Mail size={20} />,
-    label: 'Email',
-    value: 'creatrixdevteam@gmail.com',
-    href: 'mailto:creatrixdevteam@gmail.com',
-  },
-  {
-    icon: <MapPin size={20} />,
-    label: 'Adresse',
-    value: 'Première Entrée Cogefar, N3, Douala',
-    href: 'https://www.google.com/maps/search/?api=1&query=Premi%C3%A8re+Entr%C3%A9e+Cogefar+Douala',
-  },
-  {
-    icon: <MessageCircle size={20} />,
-    label: 'WhatsApp',
-    value: '+237 692 280 248',
-    href: 'https://wa.me/237692280248',
-  },
-]
+import { useTranslation } from '@/context/LanguageContext'
 
 const socials = [
   { name: 'Instagram', href: 'https://www.instagram.com/creatrixdev?igsh=cXM3N2VhNTMyendo', icon: 'IG' },
@@ -41,6 +15,35 @@ const socials = [
 ]
 
 export default function ContactClient() {
+  const { t } = useTranslation()
+
+  const contactInfo = [
+    {
+      icon: <Phone size={20} />,
+      label: t.contact.labels.phone,
+      value: '+237 692 280 248',
+      href: 'tel:+237692280248',
+    },
+    {
+      icon: <Mail size={20} />,
+      label: t.contact.labels.email,
+      value: 'creatrixdevteam@gmail.com',
+      href: 'mailto:creatrixdevteam@gmail.com',
+    },
+    {
+      icon: <MapPin size={20} />,
+      label: t.contact.labels.address,
+      value: t.contact.addressValue,
+      href: 'https://www.google.com/maps/search/?api=1&query=Premi%C3%A8re+Entr%C3%A9e+Cogefar+Douala',
+    },
+    {
+      icon: <MessageCircle size={20} />,
+      label: t.contact.labels.whatsapp,
+      value: '+237 692 280 248',
+      href: 'https://wa.me/237692280248',
+    },
+  ]
+
   return (
     <>
       {/* Hero */}
@@ -51,7 +54,7 @@ export default function ContactClient() {
             animate={{ opacity: 1 }}
             className="font-mono-label text-accent-cyan mb-4 block"
           >
-            ✦ On vous répond en moins de 24h
+            ✦ {t.contact.heroTag}
           </motion.span>
           <motion.h1
             id="contact-heading"
@@ -60,7 +63,7 @@ export default function ContactClient() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-text-primary mb-6"
           >
-            Parlons de votre <span className="text-gradient-cyan">projet</span>
+            {t.contact.heroTitle} <span className="text-gradient-cyan">{t.contact.heroHighlight}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +71,7 @@ export default function ContactClient() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-text-muted text-lg max-w-xl mx-auto"
           >
-            Un projet en tête ? Une question ? Remplissez le formulaire ou contactez-nous directement — on adore les nouvelles idées.
+            {t.contact.heroSubtitle}
           </motion.p>
         </div>
       </section>
@@ -88,7 +91,7 @@ export default function ContactClient() {
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="font-display font-bold text-2xl md:text-3xl text-text-primary mb-8">
-                  Nos <span className="text-gradient-cyan">coordonnées</span>
+                  {t.contact.coordTitle}
                 </h2>
 
                 <div className="space-y-5 mb-10">
@@ -115,7 +118,7 @@ export default function ContactClient() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-5 bg-green-600/10 border border-green-500/30 rounded-xl hover:bg-green-600/20 hover:border-green-500/60 transition-all duration-300 group mb-10"
-                  aria-label="Contacter via WhatsApp"
+                  aria-label="WhatsApp"
                 >
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
                     <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white" aria-hidden="true">
@@ -123,14 +126,14 @@ export default function ContactClient() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-display font-semibold text-green-400">Réponse rapide sur WhatsApp</p>
-                    <p className="text-text-muted text-sm">Disponible 7j/7 pour vos questions urgentes</p>
+                    <p className="font-display font-semibold text-green-400">{t.contact.whatsappTitle ?? 'WhatsApp'}</p>
+                    <p className="text-text-muted text-sm">{t.contact.whatsappSub ?? t.common.responseUnder24h}</p>
                   </div>
                 </a>
 
                 {/* Socials */}
                 <div>
-                  <p className="font-mono-label text-text-muted mb-4">Réseaux sociaux</p>
+                  <p className="font-mono-label text-text-muted mb-4">{t.contact.socialsTitle ?? 'Réseaux sociaux'}</p>
                   <div className="flex gap-3">
                     {socials.map((s) => (
                       <a
@@ -157,7 +160,7 @@ export default function ContactClient() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h2 className="font-display font-bold text-2xl md:text-3xl text-text-primary mb-8">
-                Envoyer un <span className="text-gradient-cyan">message</span>
+                {t.contact.formTitle} <span className="text-gradient-cyan">{t.contact.formHighlight ?? ''}</span>
               </h2>
               <ContactForm />
             </motion.div>
@@ -165,9 +168,9 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* Map placeholder */}
+      {/* Map */}
       <SectionDivider />
-      <section className="bg-bg-primary py-12" aria-label="Carte Google Maps">
+      <section className="bg-bg-primary py-12" aria-label="Google Maps">
         <div className="container mx-auto px-4 md:px-8">
           <div className="rounded-2xl overflow-hidden border border-accent-cyan/10 h-96 bg-bg-secondary flex items-center justify-center">
             <iframe
@@ -178,7 +181,7 @@ export default function ContactClient() {
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localisation CreatrixDev"
+              title="CreatrixDev — Douala, Cameroun"
             ></iframe>
           </div>
         </div>

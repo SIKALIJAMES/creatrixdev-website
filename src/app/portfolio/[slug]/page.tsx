@@ -17,6 +17,7 @@ import { siteConfig, getWhatsAppUrl } from '@/../content/site'
 import TestimonialBlock from '@/components/TestimonialBlock'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
+import FrenchOnlyNotice from '@/components/FrenchOnlyNotice'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -113,6 +114,9 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         >
           <ArrowLeft size={16} /> Retour au portfolio
         </Link>
+        <div className="mt-4">
+          <FrenchOnlyNotice />
+        </div>
       </div>
 
       {/* ═══ HERO SECTION ═══ */}

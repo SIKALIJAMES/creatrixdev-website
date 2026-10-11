@@ -4,15 +4,25 @@ import { motion } from 'framer-motion'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
 import { ArrowRight, Target, Lightbulb, Heart, Award } from 'lucide-react'
+import { useTranslation } from '@/context/LanguageContext'
 
-const values = [
-  { icon: <Target size={22} />, title: 'Excellence', desc: 'Nous ne faisons pas les choses à moitié. Chaque livrable doit dépasser les attentes du client.' },
-  { icon: <Lightbulb size={22} />, title: 'Innovation', desc: 'Veille technologique permanente. Nous intégrons les meilleures pratiques et outils du moment.' },
-  { icon: <Heart size={22} />, title: 'Passion', desc: 'Nous aimons ce que nous faisons — et ça se voit dans chaque pixel, chaque ligne de code.' },
-  { icon: <Award size={22} />, title: 'Intégrité', desc: 'Transparence totale sur les délais, les prix et les processus. Zéro mauvaise surprise.' },
+const valueIcons = [
+  <Target key="target" size={22} />,
+  <Lightbulb key="lightbulb" size={22} />,
+  <Heart key="heart" size={22} />,
+  <Award key="award" size={22} />,
 ]
 
 export default function AProposClient() {
+  const { t } = useTranslation()
+
+  const values = [
+    { icon: valueIcons[0], title: t.about.values.v1.title, desc: t.about.values.v1.desc },
+    { icon: valueIcons[1], title: t.about.values.v2.title, desc: t.about.values.v2.desc },
+    { icon: valueIcons[2], title: t.about.values.v3.title, desc: t.about.values.v3.desc },
+    { icon: valueIcons[3], title: t.about.values.v4.title, desc: t.about.values.v4.desc },
+  ]
+
   return (
     <>
       {/* Hero */}
@@ -24,7 +34,7 @@ export default function AProposClient() {
             transition={{ duration: 0.6 }}
             className="font-mono-label text-accent-cyan mb-4 block"
           >
-            ✦ Notre histoire
+            ✦ {t.about.heroTag}
           </motion.span>
           <motion.h1
             id="apropos-heading"
@@ -33,7 +43,7 @@ export default function AProposClient() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-text-primary mb-6"
           >
-            À propos de <span className="text-gradient-cyan">CreatrixDev</span>
+            {t.about.heroTitle} <span className="text-gradient-cyan">{t.about.heroHighlight}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -41,8 +51,7 @@ export default function AProposClient() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-text-muted text-lg max-w-2xl mx-auto"
           >
-            {/* TODO: contenu réel à insérer */}
-            Née de la conviction que chaque entreprise mérite une présence digitale à la hauteur de ses ambitions, CreatrixDev est une startup qui transforme l&apos;excellence technique en croissance tangible.
+            {t.about.heroSubtitle}
           </motion.p>
         </div>
       </section>
@@ -58,13 +67,12 @@ export default function AProposClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="font-mono-label text-accent-cyan mb-3 block">Vision</span>
+              <span className="font-mono-label text-accent-cyan mb-3 block">{t.about.visionTag}</span>
               <h2 id="vision-heading" className="font-display font-bold text-3xl text-text-primary mb-6">
-                Ce que nous <span className="text-gradient-cyan">visons</span>
+                {t.about.visionTitle} <span className="text-gradient-cyan">{t.about.visionHighlight}</span>
               </h2>
               <p className="text-text-muted leading-relaxed text-lg">
-                {/* TODO: contenu réel à insérer */}
-                Devenir la référence digitale de la région, reconnue pour la qualité irréprochable de ses créations et la profondeur de l&apos;impact qu&apos;elle génère pour ses clients. CreatrixDev, c&apos;est l&apos;ambition de rendre accessible à toute entreprise ce que les grandes marques mondiales ont : une présence digitale qui inspire confiance et génère de la croissance.
+                {t.about.visionDesc}
               </p>
             </motion.div>
             <motion.div
@@ -75,13 +83,12 @@ export default function AProposClient() {
               className="relative rounded-2xl overflow-hidden border border-accent-cyan/20 p-8 glass"
             >
               <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-accent-cyan animate-pulse" aria-hidden="true" />
-              <span className="font-mono-label text-accent-cyan mb-3 block">Mission</span>
+              <span className="font-mono-label text-accent-cyan mb-3 block">{t.about.missionTag}</span>
               <h3 className="font-display font-semibold text-xl text-text-primary mb-4">
-                Ce que nous <span className="text-gradient-cyan">faisons</span>
+                {t.about.missionTitle} <span className="text-gradient-cyan">{t.about.missionHighlight}</span>
               </h3>
               <p className="text-text-muted leading-relaxed">
-                {/* TODO: contenu réel à insérer */}
-                Accompagner entrepreneurs, PME, startups et créateurs dans leur transformation digitale — en alliant créativité et technologie pour produire des solutions qui durent, qui performent et qui impressionnent.
+                {t.about.missionDesc}
               </p>
             </motion.div>
           </div>
@@ -93,9 +100,9 @@ export default function AProposClient() {
       <section className="py-20 bg-bg-primary grid-bg" aria-labelledby="valeurs-heading">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <span className="font-mono-label text-accent-cyan mb-3 block">✦ Ce qui nous guide</span>
+            <span className="font-mono-label text-accent-cyan mb-3 block">✦ {t.about.valuesTag}</span>
             <h2 id="valeurs-heading" className="font-display font-bold text-3xl md:text-4xl text-text-primary">
-              Nos <span className="text-gradient-cyan">Valeurs</span>
+              {t.about.valuesTitle} <span className="text-gradient-cyan">{t.about.valuesHighlight}</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -119,25 +126,18 @@ export default function AProposClient() {
         </div>
       </section>
 
-      {/* Différenciation */}
+      {/* CTA final */}
       <SectionDivider />
       <section className="section-alt py-20" aria-labelledby="diff-heading">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
-          <span className="font-mono-label text-accent-cyan mb-3 block">✦ Notre positionnement</span>
-          <h2 id="diff-heading" className="font-display font-bold text-3xl md:text-4xl text-text-primary mb-8">
-            Ce qui nous <span className="text-gradient-cyan">distingue</span>
+          <h2 id="diff-heading" className="font-display font-bold text-3xl md:text-4xl text-text-primary mb-6">
+            {t.about.ctaTitle}
           </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-text-muted text-lg leading-relaxed mb-12"
-          >
-            {/* TODO: contenu réel à insérer */}
-            Contrairement aux freelances isolés ou aux grandes agences impersonnelles, CreatrixDev offre l&apos;agilité d&apos;une startup, la profondeur d&apos;une équipe pluridisciplinaire et l&apos;engagement d&apos;un partenaire de confiance. Chaque client est unique — et notre approche l&apos;est aussi.
-          </motion.p>
+          <p className="text-text-muted text-lg leading-relaxed mb-10">
+            {t.about.ctaDesc}
+          </p>
           <CTAButton href="/contact" variant="primary">
-            Démarrer notre collaboration <ArrowRight size={16} />
+            {t.common.contactUs} <ArrowRight size={16} />
           </CTAButton>
         </div>
       </section>

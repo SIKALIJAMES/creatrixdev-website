@@ -251,10 +251,44 @@ if (existsSync(testimonialsPath)) {
     info('testimonials.ts — validé ✓')
   }
 }
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. Vérification des dictionnaires i18n (content/i18n/fr.ts vs en.ts)
+// ─────────────────────────────────────────────────────────────────────────────
+console.log('\n🌐 Vérification des dictionnaires i18n\n')
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 5. Rapport final
-// ─────────────────────────────────────────────────────────────────────────────
+const frPath = join(ROOT, 'content', 'i18n', 'fr.ts')
+const enPath = join(ROOT, 'content', 'i18n', 'en.ts')
+
+if (existsSync(frPath) && existsSync(enPath)) {
+  const frText = readFileSync(frPath, 'utf-8')
+  const enText = readFileSync(enPath, 'utf-8')
+
+  const extractKeys = (src) => {
+    const keys = []
+    src.split('\n').forEach((l) => {
+      const m = l.match(/^\s*([a-zA-Z0-9_]+)\s*:/)
+      if (m) keys.push(m[1])
+    })
+    return keys
+  }
+
+  const frKeys = extractKeys(frText)
+  const enKeys = extractKeys(enText)
+
+  const missingInEn = frKeys.filter((k) => !enKeys.includes(k))
+  const missingInFr = enKeys.filter((k) => !frKeys.includes(k))
+
+  if (missingInEn.length > 0) {
+    error(`Clé(s) i18n manquante(s) dans en.ts : ${missingInEn.join(', ')}`)
+  } else if (missingInFr.length > 0) {
+    error(`Clé(s) i18n manquante(s) dans fr.ts : ${missingInFr.join(', ')}`)
+  } else {
+    info(`i18n — parité stricte FR/EN validée (${frKeys.length} clés synchronisées) ✓`)
+  }
+} else {
+  error('Fichiers content/i18n/fr.ts ou content/i18n/en.ts introuvables')
+}
+
 console.log('\n' + '─'.repeat(60))
 console.log('📋 RAPPORT FINAL check:content')
 console.log('─'.repeat(60))

@@ -5,24 +5,7 @@ import Image from 'next/image'
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Github } from 'lucide-react'
 import SectionDivider from './SectionDivider'
 import { siteConfig, getWhatsAppUrl } from '@/../content/site'
-
-const services = [
-  { label: 'Systèmes Métier sur Mesure', href: '/services#developpement' },
-  { label: 'IA & Agents WhatsApp', href: '/ia-automatisation' },
-  { label: 'Design UI/UX', href: '/services#design' },
-  { label: 'Gestion de Flotte', href: '/solutions/transport-logistique' },
-  { label: 'Infrastructure Cloud', href: '/services#support-it' },
-]
-
-const quickLinks = [
-  { label: 'Accueil', href: '/' },
-  { label: 'À propos', href: '/a-propos' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'IA & Automatisation', href: '/ia-automatisation' },
-  { label: 'Transport & Flotte', href: '/solutions/transport-logistique' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-]
+import { useTranslation } from '@/context/LanguageContext'
 
 const socials = [
   { icon: Instagram, href: siteConfig.socials.instagram, label: 'Instagram' },
@@ -41,6 +24,26 @@ const socials = [
 ]
 
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const services = [
+    { label: t.footer.systemsCustom, href: '/services#developpement' },
+    { label: t.footer.aiChatbots, href: '/ia-automatisation' },
+    { label: t.footer.uiuxDesign, href: '/services#design' },
+    { label: t.footer.fleetManagement, href: '/solutions/transport-logistique' },
+    { label: t.footer.cloudInfra, href: '/services#support-it' },
+  ]
+
+  const quickLinks = [
+    { label: t.header.home, href: '/' },
+    { label: t.header.about, href: '/a-propos' },
+    { label: t.header.portfolio, href: '/portfolio' },
+    { label: t.header.aiAutomation, href: '/ia-automatisation' },
+    { label: t.footer.fleetManagement, href: '/solutions/transport-logistique' },
+    { label: t.header.blog, href: '/blog' },
+    { label: t.header.contact, href: '/contact' },
+  ]
+
   return (
     <footer className="bg-bg-primary border-t border-accent-cyan/10">
       <SectionDivider />
@@ -55,7 +58,7 @@ export default function Footer() {
               <span className="font-display font-bold text-xl text-gradient-cyan">CreatrixDev</span>
             </Link>
             <p className="text-text-muted text-sm leading-relaxed mb-6">
-              Systèmes métier et agents IA sur mesure pour les entreprises d&apos;Afrique centrale.
+              {t.footer.tagline}
             </p>
             <div className="flex gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
@@ -76,7 +79,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="font-display font-semibold text-text-primary mb-4 text-sm uppercase tracking-wider">
-              Nos Solutions
+              {t.footer.solutionsTitle}
             </h3>
             <ul className="space-y-2">
               {services.map((s) => (
@@ -96,7 +99,7 @@ export default function Footer() {
           {/* Quick links */}
           <div>
             <h3 className="font-display font-semibold text-text-primary mb-4 text-sm uppercase tracking-wider">
-              Navigation
+              {t.footer.navigationTitle}
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((l) => (
@@ -116,7 +119,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-display font-semibold text-text-primary mb-4 text-sm uppercase tracking-wider">
-              Contact
+              {t.footer.contactTitle}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-text-muted text-sm">
@@ -169,11 +172,11 @@ export default function Footer() {
               href="/mentions-legales"
               className="text-text-muted text-xs hover:text-accent-cyan transition-colors"
             >
-              Mentions légales & Confidentialité
+              {t.common.legalAndPrivacy}
             </Link>
             <span className="text-text-muted text-xs opacity-40">·</span>
             <p className="text-text-muted text-xs">
-              Fait avec ❤️ à Douala, Cameroun
+              {t.common.madeWithHeart}
             </p>
           </div>
         </div>

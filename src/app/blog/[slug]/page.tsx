@@ -7,6 +7,7 @@ import { blogPosts } from '@/data/blog'
 import { siteConfig } from '@/../content/site'
 import SectionDivider from '@/components/SectionDivider'
 import CTAButton from '@/components/CTAButton'
+import FrenchOnlyNotice from '@/components/FrenchOnlyNotice'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -79,11 +80,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Back navigation */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-text-muted hover:text-accent-cyan transition-colors text-sm mb-8 font-mono-label"
+          className="inline-flex items-center gap-2 text-text-muted hover:text-accent-cyan transition-colors text-sm mb-4 font-mono-label"
         >
           <ArrowLeft size={16} />
           Retour au blog
         </Link>
+
+        <FrenchOnlyNotice />
 
         {/* Category & meta */}
         <div className="flex flex-wrap items-center gap-3 mb-4">

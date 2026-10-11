@@ -16,67 +16,8 @@ import { homeStats } from '@/../content/stats'
 import { getWhatsAppUrl } from '@/../content/site'
 import { useTranslation } from '@/context/LanguageContext'
 
-const pillars = [
-  {
-    num: '01', label: 'BUILD', title: 'Développement',
-    borderColor: 'border-blue-brand/20 hover:border-blue-brand/60',
-    description: 'Sites vitrines, applications web et mobiles, e-commerce, APIs et systèmes métier sur mesure.',
-    services: ['Sites et applications web', 'Apps mobiles', 'E-commerce', 'APIs et intégrations'],
-    href: '/services#developpement',
-    icon: <Code2 size={28} />,
-  },
-  {
-    num: '02', label: 'DESIGN', title: 'Design & Marque',
-    borderColor: 'border-blue-brand/20 hover:border-blue-brand/60',
-    description: 'Identités visuelles, interfaces utilisateur, prototypes Figma et expériences mémorables.',
-    services: ['UI/UX Design', 'Branding et identité', 'Maquettes Figma', 'Vidéo et motion design'],
-    href: '/services#design',
-    icon: <Palette size={28} />,
-  },
-  {
-    num: '03', label: 'GROW', title: 'Croissance Digitale',
-    borderColor: 'border-blue-brand/20 hover:border-blue-brand/60',
-    description: 'SEO, marketing digital, community management, publicité ciblée et formation aux outils.',
-    services: ['SEO et référencement', 'Community management', 'Publicité digitale', 'Formation et coaching'],
-    href: '/services#marketing',
-    icon: <TrendingUp size={28} />,
-  },
-]
+// Données dynamiques pilotées par LanguageContext dans HomePage
 
-const steps = [
-  { num: '01', icon: <Search size={22} />, title: 'Découverte', desc: 'Nous comprenons votre idée, votre marché et vos utilisateurs cibles.' },
-  { num: '02', icon: <PenTool size={22} />, title: 'Design', desc: 'Nous transformons votre idée en une expérience digitale claire et attrayante.' },
-  { num: '03', icon: <Code2 size={22} />, title: 'Développement', desc: 'Nous développons, testons et affinons la solution avec rigueur.' },
-  { num: '04', icon: <Rocket size={22} />, title: 'Lancement', desc: 'Nous déployons et accompagnons la mise en mains de vos utilisateurs.' },
-  { num: '05', icon: <BarChart2 size={22} />, title: 'Croissance', desc: "Nous continuons à améliorer et faire évoluer votre produit digital." },
-]
-
-const technologies = [
-  { cat: 'Frontend', items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
-  { cat: 'Backend', items: ['Node.js', 'FastAPI', 'Python', 'REST APIs'] },
-  { cat: 'Base de données', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Prisma'] },
-  { cat: 'Infrastructure', items: ['Docker', 'Railway', 'AWS', 'Vercel'] },
-  { cat: 'Design', items: ['Figma', 'Photoshop', 'Illustrator', 'After Effects'] },
-  { cat: 'Mobile', items: ['React Native', 'Expo', 'Android', 'PWA'] },
-]
-
-// Les statistiques proviennent de content/stats.ts — chacune a une source vérifiable.
-// Aucune valeur sans preuve n'est affichée ici.
-
-const whyUs = [
-  { icon: <Zap size={22} />, title: 'Approche 360°', desc: 'Du code à la communication, nous couvrons tous les aspects de votre présence digitale.' },
-  { icon: <Star size={22} />, title: 'Qualité Premium', desc: 'Chaque projet est traité avec une exigence haut de gamme, sans compromis sur les détails.' },
-  { icon: <Shield size={22} />, title: 'Fiabilité & Suivi', desc: 'Délais respectés, transparence totale et accompagnement continu à chaque étape.' },
-  { icon: <Users size={22} />, title: 'Équipe Passionnée', desc: 'Des talents jeunes, créatifs et techniques, toujours à la pointe des tendances.' },
-]
-
-// Featured SIGFOT case study data
-const sigfotHighlights = [
-  { label: 'Modules', value: '20' },
-  { label: 'Rôles utilisateurs', value: '5' },
-  { label: 'Migrations DB', value: '38' },
-  { label: 'Tables SQL', value: '21' },
-]
 
 function AnimatedCounter({ value }: { value: string }) {
   const [display, setDisplay] = useState('0')
@@ -134,6 +75,80 @@ export default function HomePage() {
   const { scrollYProgress } = useScroll({ target: heroRef })
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -80])
   const mockupY = useTransform(scrollYProgress, [0, 1], [0, -40])
+
+  // ── Données dynamiques pilotées par la locale ──
+  const pillars = [
+    {
+      num: '01',
+      label: 'Build',
+      title: t.home.pillars.build.title,
+      description: t.home.pillars.build.desc,
+      services: t.home.pillars.build.services,
+      href: '/services',
+      borderColor: 'border-blue-border hover:border-blue-brand/40',
+      icon: <Code2 size={22} />,
+    },
+    {
+      num: '02',
+      label: 'Design',
+      title: t.home.pillars.design.title,
+      description: t.home.pillars.design.desc,
+      services: t.home.pillars.design.services,
+      href: '/services#design',
+      borderColor: 'border-border-light hover:border-blue-brand/30',
+      icon: <Palette size={22} />,
+    },
+    {
+      num: '03',
+      label: 'Grow',
+      title: t.home.pillars.grow.title,
+      description: t.home.pillars.grow.desc,
+      services: t.home.pillars.grow.services,
+      href: '/services#marketing',
+      borderColor: 'border-border-light hover:border-blue-brand/30',
+      icon: <TrendingUp size={22} />,
+    },
+  ]
+
+  const steps = [
+    { num: 1, icon: <Search size={26} />, title: t.home.steps.s1.title, desc: t.home.steps.s1.desc },
+    { num: 2, icon: <PenTool size={26} />, title: t.home.steps.s2.title, desc: t.home.steps.s2.desc },
+    { num: 3, icon: <Code2 size={26} />, title: t.home.steps.s3.title, desc: t.home.steps.s3.desc },
+    { num: 4, icon: <Rocket size={26} />, title: t.home.steps.s4.title, desc: t.home.steps.s4.desc },
+    { num: 5, icon: <BarChart2 size={26} />, title: t.home.steps.s5.title, desc: t.home.steps.s5.desc },
+  ]
+
+  const technologies = [
+    { cat: t.home.techCategories.frontend, items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
+    { cat: t.home.techCategories.backend, items: ['Node.js', 'FastAPI', 'Python', 'REST / GraphQL'] },
+    { cat: t.home.techCategories.database, items: ['PostgreSQL', 'Supabase', 'MySQL', 'Redis'] },
+    { cat: t.home.techCategories.infra, items: ['Railway', 'Vercel', 'Docker', 'GitHub Actions'] },
+    { cat: t.home.techCategories.design, items: ['Figma', 'Adobe XD', 'Illustrator', 'Photoshop'] },
+    { cat: t.home.techCategories.mobile, items: ['React Native', 'Expo', 'Android', 'iOS'] },
+  ]
+
+  const whyUs = [
+    { icon: <Zap size={20} />, title: t.home.whyItems?.speed?.title ?? 'Livraison rapide', desc: t.home.whyItems?.speed?.desc ?? 'Prototypes livrables sous 2 semaines.' },
+    { icon: <Shield size={20} />, title: t.home.whyItems?.trust?.title ?? 'Transparence totale', desc: t.home.whyItems?.trust?.desc ?? 'Prix clairs, délais tenus, zéro frais caché.' },
+    { icon: <Star size={20} />, title: t.home.whyItems?.quality?.title ?? 'Qualité sans compromis', desc: t.home.whyItems?.quality?.desc ?? 'Chaque livrable est testé et documenté.' },
+    { icon: <Users size={20} />, title: t.home.whyItems?.support?.title ?? 'Accompagnement durable', desc: t.home.whyItems?.support?.desc ?? 'Nous restons à vos côtés bien après le lancement.' },
+  ]
+
+  const sigfotHighlights = [
+    { value: '20', label: t.home.sigfotHighlights?.modules ?? 'Modules' },
+    { value: '38', label: t.home.sigfotHighlights?.migrations ?? 'Migrations DB' },
+    { value: '24h', label: t.home.sigfotHighlights?.support ?? 'Support' },
+    { value: '1', label: t.home.sigfotHighlights?.production ?? 'Prod' },
+  ]
+
+  const projectTypes = [
+    { emoji: '🖥️', label: t.home.projectTypes?.web ?? 'Applications Web & SaaS' },
+    { emoji: '📱', label: t.home.projectTypes?.mobile ?? 'Apps Mobiles' },
+    { emoji: '🎨', label: t.home.projectTypes?.design ?? 'Design & Branding' },
+    { emoji: '⚙️', label: t.home.projectTypes?.systems ?? 'Systèmes métier sur mesure' },
+    { emoji: '📣', label: t.home.projectTypes?.marketing ?? 'Marketing Digital' },
+    { emoji: '🗄️', label: t.home.projectTypes?.apis ?? 'APIs & Intégrations' },
+  ]
 
   return (
     <>
@@ -201,7 +216,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex-1 mx-3 bg-white/10 rounded-md px-3 py-1 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0" />
-                  <span className="text-white/50 text-[11px] font-mono truncate">sigfot.sstcameroun.com · Tableau de bord</span>
+                  <span className="text-white/50 text-[11px] font-mono truncate">{t.home.sigfotBar}</span>
                 </div>
               </div>
 
@@ -232,8 +247,8 @@ export default function HomePage() {
                 <Truck size={17} className="text-white" />
               </div>
               <div>
-                <p className="text-text-primary font-display font-semibold text-xs leading-tight">SIGFOT · SST Sarl</p>
-                <p className="text-text-muted text-[10px]">20 modules · SaaS transport</p>
+                <p className="text-text-primary font-display font-semibold text-xs leading-tight">{t.home.sigfotBadge.title}</p>
+                <p className="text-text-muted text-[10px]">{t.home.sigfotBadge.desc}</p>
               </div>
             </motion.div>
 
@@ -248,14 +263,14 @@ export default function HomePage() {
                 <Monitor size={12} className="text-blue-brand" />
                 <p className="text-blue-brand font-display font-bold text-xs">Next.js + Supabase</p>
               </div>
-              <p className="text-text-muted text-[10px]">En production ✓</p>
+              <p className="text-text-muted text-[10px]">{t.common.inProduction} ✓</p>
             </motion.div>
           </motion.div>
         </motion.div>
 
         {/* Scroll indicator */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" aria-hidden="true">
-          <span className="font-mono-label text-text-muted text-[10px]">Défiler</span>
+          <span className="font-mono-label text-text-muted text-[10px]">{t.home.scrollHint ?? 'Défiler'}</span>
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-px h-8 bg-gradient-to-b from-blue-brand/50 to-transparent" />
         </motion.div>
       </section>
@@ -319,14 +334,7 @@ export default function HomePage() {
             {t.home.whatWeBuildTitle}
           </motion.p>
           <div className="flex flex-wrap justify-center gap-3">
-            {[
-              { emoji: '🖥️', label: 'Applications Web & SaaS' },
-              { emoji: '📱', label: 'Apps Mobiles' },
-              { emoji: '🎨', label: 'Design & Branding' },
-              { emoji: '⚙️', label: 'Systèmes métier sur mesure' },
-              { emoji: '📣', label: 'Marketing Digital' },
-              { emoji: '🗄️', label: 'APIs & Intégrations' },
-            ].map((pt, i) => (
+            {projectTypes.map((pt, i) => (
               <motion.span
                 key={pt.label}
                 initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
@@ -369,7 +377,7 @@ export default function HomePage() {
                         </li>
                       ))}
                     </ul>
-                    <span className="inline-flex items-center gap-1.5 text-blue-brand text-sm font-semibold group-hover:gap-3 transition-all duration-300">Explorer <ArrowRight size={14} /></span>
+                    <span className="inline-flex items-center gap-1.5 text-blue-brand text-sm font-semibold group-hover:gap-3 transition-all duration-300">{t.home.pillarsExplore ?? 'Explorer'} <ArrowRight size={14} /></span>
                   </div>
                 </Link>
               </motion.div>
@@ -386,13 +394,13 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
-              <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">Travaux sélectionnés</motion.span>
+              <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">{t.home.portfolioTag ?? 'Travaux sélectionnés'}</motion.span>
               <motion.h2 id="portfolio-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="font-display font-bold text-3xl md:text-5xl text-white">
-                Ce que nous<br /><span className="text-gradient-light">avons construit</span>
+                {t.home.portfolioTitlePart1 ?? 'Ce que nous'}<br /><span className="text-gradient-light">{t.home.portfolioTitleHighlight ?? 'avons construit'}</span>
               </motion.h2>
             </div>
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-              <CTAButton href="/portfolio" variant="secondary">Tout voir <ArrowRight size={16} /></CTAButton>
+              <CTAButton href="/portfolio" variant="secondary">{t.home.portfolioViewAll ?? 'Tout voir'} <ArrowRight size={16} /></CTAButton>
             </motion.div>
           </div>
 
@@ -414,7 +422,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-navy-card/80 hidden lg:block" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-card/90 via-transparent to-transparent lg:hidden" />
                 <span className="absolute top-4 left-4 tag-pill bg-blue-brand/30 border-blue-brand/50 text-blue-electric text-[10px] font-semibold">
-                  ★ Projet phare
+                  ★ {t.home.portfolioFeatured ?? 'Projet phare'}
                 </span>
               </div>
               {/* Content side */}
@@ -442,7 +450,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <Link href="/portfolio/sigfot" className="inline-flex items-center gap-2 text-blue-electric text-sm font-medium hover:text-blue-brand transition-colors group/link">
-                  <span>Voir l&apos;étude de cas complète</span>
+                  <span>{t.common.viewCaseStudy}</span>
                   <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -480,12 +488,12 @@ export default function HomePage() {
                 <div className="p-5 pt-0 flex items-center justify-between gap-3 border-t border-white/5 mt-auto">
                   {project.slug && (
                     <Link href={`/portfolio/${project.slug}`} className="inline-flex items-center gap-1 text-blue-electric text-xs font-medium hover:text-blue-brand transition-colors">
-                      Étude de cas <ChevronRight size={12} />
+                      {t.common.viewCaseStudy} <ChevronRight size={12} />
                     </Link>
                   )}
                   {project.liveUrl && (
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-text-muted-dark hover:text-blue-electric text-xs font-medium transition-colors ml-auto">
-                      Voir en ligne <ExternalLink size={11} />
+                      {t.home.viewOnline ?? 'Voir en ligne'} <ExternalLink size={11} />
                     </a>
                   )}
                 </div>
@@ -500,9 +508,9 @@ export default function HomePage() {
       <section className="py-24 bg-bg-primary" aria-labelledby="process-heading">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">Notre méthode</motion.span>
+            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-mono-label text-blue-brand mb-3 block">{t.home.stepsTag}</motion.span>
             <motion.h2 id="process-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="font-display font-bold text-3xl md:text-5xl text-text-primary">
-              De l&apos;idée <span className="text-gradient-cyan">à l&apos;impact</span>
+              {t.home.stepsTitle}
             </motion.h2>
           </div>
           <div className="relative">
@@ -539,7 +547,7 @@ export default function HomePage() {
               <p className="text-text-muted leading-relaxed mb-8">
                 {t.home.whyUsDesc2}
               </p>
-              <CTAButton href="/a-propos" variant="outline">Notre histoire <ArrowRight size={16} /></CTAButton>
+              <CTAButton href="/a-propos" variant="outline">{t.about.ourStory} <ArrowRight size={16} /></CTAButton>
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {whyUs.map((item, i) => (

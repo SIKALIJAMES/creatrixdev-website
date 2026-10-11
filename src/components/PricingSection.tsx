@@ -1,8 +1,11 @@
+'use client'
+
 import React from 'react'
 import { Check, Clock, Tag, AlertCircle, MessageCircle } from 'lucide-react'
 import { pricingPlans, hasPricingTodos, PricingPlan } from '@/../content/pricing'
 import { getWhatsAppUrl } from '@/../content/site'
 import CTAButton from '@/components/CTAButton'
+import { useTranslation } from '@/context/LanguageContext'
 
 interface PricingSectionProps {
   summaryOnly?: boolean
@@ -14,6 +17,7 @@ export default function PricingSection({
   specificPlanId,
   className = '',
 }: PricingSectionProps) {
+  const { t, locale } = useTranslation()
   const isDev = process.env.NODE_ENV !== 'production'
   const hasTodos = hasPricingTodos()
 
@@ -46,25 +50,32 @@ export default function PricingSection({
 
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="font-mono-label text-blue-brand text-xs uppercase tracking-wider block mb-2">
-            Investissement & Formules
+            {t.pricing.tag}
           </span>
           <h2 id="pricing-heading" className="font-display font-bold text-3xl md:text-4xl text-text-primary">
-            Des formules claires adaptées à votre étape
+            {t.pricing.title}
           </h2>
           <p className="text-text-muted text-base mt-3">
-            Chaque projet fait l&apos;objet d&apos;un cadrage technique transparent sans frais cachés.
+            {t.pricing.subtitle}
           </p>
         </div>
 
         <div className={`grid gap-8 max-w-6xl mx-auto ${plans.length === 1 ? 'max-w-xl' : 'grid-cols-1 md:grid-cols-3'}`}>
           {plans.map((plan: PricingPlan) => {
+            const planKey =
+              plan.id === 'site-vitrine' ? 'web' : plan.id === 'systeme-metier' ? 'system' : 'chatbot'
+            const planData = t.pricing.plans[planKey]
+            const isWeb = plan.id === 'site-vitrine'
+
             const isTodoPrice =
               (plan.priceDisplay && plan.priceDisplay.includes('TODO_A_FOURNIR')) ||
               (plan.priceFromFcfa && plan.priceFromFcfa.includes('TODO_A_FOURNIR'))
             const isTodoDuration =
               plan.estimatedDuration && plan.estimatedDuration.includes('TODO_A_FOURNIR')
             const whatsappPlanUrl = getWhatsAppUrl(
-              `Bonjour CreatrixDev, je souhaite échanger à propos de la formule "${plan.name}".`
+              locale === 'en'
+                ? `Hello CreatrixDev, I would like to inquire about the "${planData.name}" package.`
+                : `Bonjour CreatrixDev, je souhaite échanger à propos de la formule "${planData.name}".`
             )
 
             return (
@@ -78,7 +89,7 @@ export default function PricingSection({
               >
                 {(plan.badge || plan.recommended) && (
                   <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-brand text-white font-mono text-[10px] font-bold tracking-wider uppercase shadow-sm">
-                    {plan.badge || 'Notre spécialité'}
+                    {t.pricing.specialtyBadge}
                   </span>
                 )}
 
@@ -88,14 +99,14 @@ export default function PricingSection({
                       plan.recommended ? 'text-white' : 'text-text-primary'
                     }`}
                   >
-                    {plan.name}
+                    {planData.name}
                   </h3>
                   <p
                     className={`text-xs font-mono-label mb-6 ${
                       plan.recommended ? 'text-blue-electric' : 'text-blue-brand'
                     }`}
                   >
-                    Pour : {plan.target}
+                    {locale === 'en' ? 'For:' : 'Pour :'} {planData.target}
                   </p>
 
                   <p
@@ -103,7 +114,7 @@ export default function PricingSection({
                       plan.recommended ? 'text-text-muted-dark' : 'text-text-muted'
                     }`}
                   >
-                    {plan.description}
+                    {planData.desc}
                   </p>
 
                   {/* Prix & Délai */}
@@ -114,7 +125,7 @@ export default function PricingSection({
                   >
                     <div className="flex items-baseline justify-between mb-1.5 gap-2">
                       <span className="text-xs text-text-muted-dark font-mono flex items-center gap-1 shrink-0">
-                        <Tag size={12} /> Tarif
+                        <Tag size={12} /> {t.pricing.priceLabel}
                       </span>
                       <span
                         className={`font-display font-bold text-sm md:text-base text-right ${
@@ -122,18 +133,20 @@ export default function PricingSection({
                         }`}
                       >
                         {isTodoPrice ? (
-                          <span className="text-xs font-normal text-amber-500">Sur devis après diagnostic</span>
+                          <span className="text-xs font-normal text-amber-500">{t.pricing.customQuote}</span>
+                        ) : isWeb ? (
+                          t.pricing.startingFrom200k
                         ) : (
-                          plan.priceDisplay || plan.priceFromFcfa
+                          t.pricing.customQuote
                         )}
                       </span>
                     </div>
 
-                    {plan.priceNote && (
+                    {isWeb && (
                       <p className={`text-[11px] text-right mb-2 italic ${
                         plan.recommended ? 'text-text-muted-dark' : 'text-text-muted'
                       }`}>
-                        {plan.priceNote}
+                        {t.pricing.webPriceNote}
                       </p>
                     )}
 
@@ -141,13 +154,13 @@ export default function PricingSection({
                       plan.recommended ? 'border-white/10' : 'border-border-light'
                     }`}>
                       <span className="flex items-center gap-1 shrink-0">
-                        <Clock size={12} /> Délai moyen
+                        <Clock size={12} /> {t.pricing.durationLabel}
                       </span>
                       <span className="text-right">
                         {isTodoDuration ? (
                           <span className="text-amber-500 font-normal">Selon périmètre</span>
                         ) : (
-                          plan.estimatedDuration
+                          t.pricing.inQuote
                         )}
                       </span>
                     </div>
@@ -155,7 +168,7 @@ export default function PricingSection({
 
                   {/* Features */}
                   <ul className="space-y-2.5 mb-8 text-sm">
-                    {plan.features.map((feat) => (
+                    {planData.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-2.5">
                         <Check
                           size={15}
@@ -180,7 +193,7 @@ export default function PricingSection({
                     external
                     className="w-full justify-center"
                   >
-                    <MessageCircle size={14} /> Demander un devis
+                    <MessageCircle size={14} /> {t.pricing.ctaQuote}
                   </CTAButton>
                 </div>
               </div>
