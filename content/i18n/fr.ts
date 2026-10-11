@@ -286,8 +286,8 @@ export const fr: TranslationDictionary = {
         target: "Établissements d'enseignement, entreprises de services et institutions recevant un fort volume de sollicitations",
         desc: "Assistant omnicanal 24h/24 capable de traiter les notes vocales, d'interroger vos fiches officielles et de qualifier les prospects (prototype ISETAG).",
         features: [
-          "Compréhension des notes vocales en français et en anglais (Whisper STT)",
-          "Recherche documentaire intelligente RAG sur vos programmes et tarifs",
+          "Transcription des notes vocales en français et en anglais",
+          "Réponses tirées de vos documents officiels (programmes, tarifs)",
           "Pré-inscription / prise de coordonnées en ligne",
           "Relance automatique des prospects inactifs à 24h",
           "Console d'administration et reprise en main humaine instantanée",

@@ -150,13 +150,13 @@ export default function PricingSection({
                       </p>
                     )}
 
-                    <div className={`flex items-baseline justify-between text-xs text-text-muted-dark font-mono pt-2 border-t ${
+                    <div className={`pt-2 border-t ${
                       plan.recommended ? 'border-white/10' : 'border-border-light'
                     }`}>
-                      <span className="flex items-center gap-1 shrink-0">
+                      <span className="flex items-center gap-1 text-xs text-text-muted-dark font-mono mb-0.5">
                         <Clock size={12} /> {t.pricing.durationLabel}
                       </span>
-                      <span className="text-right">
+                      <span className="block text-xs text-text-muted-dark font-mono font-semibold">
                         {isTodoDuration ? (
                           <span className="text-amber-500 font-normal">Selon périmètre</span>
                         ) : (

@@ -250,7 +250,7 @@ export const en: TranslationDictionary = {
     subtitle: "Every project undergoes transparent technical scoping with zero hidden fees.",
     priceLabel: "Pricing",
     durationLabel: "Estimated Timeframe",
-    customQuote: "Custom quote upon free diagnostic",
+    customQuote: "Custom quote after a free diagnostic",
     inQuote: "Detailed in the quote",
     startingFrom200k: "Starting from 200,000 FCFA",
     webPriceNote: "Price varies based on website scope and requirements",
@@ -272,7 +272,7 @@ export const en: TranslationDictionary = {
       system: {
         name: "Custom Business Management System",
         target: "Transport operators, SMEs, and companies struggling with scattered Excel files",
-        desc: "Collaborative web platform centralizing fleet logistics, stock, inventory, field operations, and billing (SIGFOT architecture).",
+        desc: "Collaborative web platform centralizing fleet logistics, stock management, field operations, and billing (SIGFOT architecture).",
         features: [
           "In-depth technical audit of your existing business rules",
           "Real-time operational dashboards with automated anomaly alerts",
@@ -286,8 +286,8 @@ export const en: TranslationDictionary = {
         target: "Higher education institutes, customer service desks, and organizations handling high inquiry volumes",
         desc: "24/7 omnichannel assistant capable of transcribing voice notes, answering official queries via knowledge bases, and qualifying leads (ISETAG prototype model).",
         features: [
-          "Voice note transcription in English and French (Whisper STT)",
-          "Document search using RAG on official curricula and tariffs",
+          "Voice note transcription in English and French",
+          "Answers drawn from your official documents (curricula, tariffs)",
           "Online pre-registration and lead intake workflow",
           "Automated follow-up reminders for inactive prospects at 24h",
           "Admin management dashboard with instant human handoff",
