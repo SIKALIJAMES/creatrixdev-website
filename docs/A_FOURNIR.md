@@ -71,14 +71,13 @@ Fichier source : [content/pricing.ts](file:///c:/Users/intern.Jtenefo/Desktop/Cr
 ---
 
 ### D. Membres de l'Équipe (Page `/equipe`)
-Fichier source : `src/data/team.ts` (ou futur `content/team.ts`)
+Fichier source : [src/data/team.ts](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/src/data/team.ts)
 
-Pour les fondateurs et collaborateurs à afficher sur le site :
-1. **Nom & Prénom**
-2. **Rôle précis** (ex: Fondateur & Lead Développeur Fullstack, Spécialiste IA / DevOps...)
-3. **Courte bio** (1 à 2 phrases)
-4. **Photo réelle** (format carré ou portrait haute résolution)
-5. **Lien LinkedIn / GitHub** (optionnel)
+Les 4 membres sont intégrés avec photos, rôles et bios réelles sur `/equipe` :
+- ✅ **TENEFO SIKALI Yvan James** (Fondateur & Lead Dev) — LinkedIn actif
+- ✅ **LEMBOIGNY SENGOUA Nathan** (Co-fondateur & Dév Fullstack) — LinkedIn actif : `https://www.linkedin.com/in/nathan-sengoua-b000262a2`
+- ✅ **MBATA TCHOUBEUN Yvana Carelle** (Directrice Marketing & Com) — LinkedIn actif
+- ⏳ **ATSAMA OWONA Jules Deric** (Ingénieur DevOps & Réseau) — En attente de son lien de profil LinkedIn (à transmettre dès réception)
 
 ---
 

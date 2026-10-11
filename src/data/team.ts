@@ -20,6 +20,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Co-fondateur & Développeur Fullstack',
     photo: '/team/nathan-sengoua.jpg',
     bio: 'Artisan de solutions complètes du front-end au back-end, spécialisé dans les architectures modernes, la conception d\'APIs robustes et les applications scalables.',
+    linkedinUrl: 'https://www.linkedin.com/in/nathan-sengoua-b000262a2',
   },
   {
     name: 'MBATA TCHOUBEUN Yvana Carelle',
