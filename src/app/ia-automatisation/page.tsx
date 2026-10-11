@@ -325,11 +325,31 @@ export default function IaAutomatisationPage() {
                 >
                   Lire l&apos;étude de cas SIGFOT <ArrowRight size={16} />
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ PROTOTYPE EN COURS : ISETAG ═══ */}
+        <section className="py-14 bg-bg-primary" aria-label="Prototype en cours">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-3xl mx-auto p-6 md:p-8 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-600 flex items-center justify-center shrink-0 mt-1">
+                <Sparkles size={20} />
+              </div>
+              <div>
+                <p className="font-mono-label text-amber-700 text-xs uppercase tracking-wider mb-1">Prototype en cours</p>
+                <h3 className="font-display font-semibold text-lg text-text-primary mb-2">
+                  Chatbot WhatsApp pour un établissement d&apos;enseignement
+                </h3>
+                <p className="text-text-muted text-sm leading-relaxed mb-3">
+                  CreatrixDev développe un chatbot IA bilingue pour l&apos;ISETAG (Douala) : réponses 24h/24, transcription vocale, quiz d&apos;orientation et plateforme de pré-inscription. Ce système est actuellement au stade prototype et n&apos;est pas encore en déploiement de production client.
+                </p>
                 <Link
                   href="/portfolio/isetag-chatbot"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/15 hover:border-white/30 text-white font-display text-sm font-semibold transition-all"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors"
                 >
-                  Découvrir ISETAG Chatbot (IA WhatsApp) <ChevronRight size={16} />
+                  Voir la démo <ChevronRight size={14} />
                 </Link>
               </div>
             </div>
@@ -368,7 +388,7 @@ export default function IaAutomatisationPage() {
                   Vos données restent les vôtres
                 </h3>
                 <p className="text-text-muted text-sm leading-relaxed">
-                  Toutes vos données métier et vos documents sont isolés sur des bases relationnelles sécurisées (PostgreSQL avec chiffrement et sauvegardes régulières). Aucune donnée interne n&apos;est réutilisée pour entraîner des modèles publics tiers.
+                  Les solutions que nous construisons reposent sur des bases de données relationnelles isolées. Les modalités de sécurité, de sauvegarde et d&apos;hébergement sont précisées et validées avec chaque client lors du diagnostic. Vos données métier ne servent pas à entraîner des modèles publics.
                 </p>
               </div>
             </div>

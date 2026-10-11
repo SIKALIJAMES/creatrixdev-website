@@ -1,7 +1,7 @@
 # 📋 Éléments Restants à Fournir — CreatrixDev
 
-> **Dernière mise à jour :** 10 Octobre 2026  
-> **Statut du projet :** ✅ Build de production Next.js validé, 0 erreur de typage, 0 avertissement sur les images.
+> **Dernière mise à jour :** 11 Octobre 2026  
+> **Statut du projet :** ✅ Lint 0 erreurs, TypeCheck 0 erreurs, build validé.
 
 ---
 
@@ -9,95 +9,66 @@
 
 | Élément | Statut | Emplacement / Preuve |
 | :--- | :---: | :--- |
-| **Projet 1 : SIGFOT** | ✅ Validé | [sigfot.mdx](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/projects/sigfot.mdx) — Client réel SST Sarl |
-| **Capture d'écran SIGFOT** | ✅ Validé | `public/projects/sigfot/dashboard.jpg` (Tableau de bord de flotte & rentabilité) |
-| **Projet 2 : ISETAG Chatbot V2** | ✅ Validé | [isetag-chatbot.mdx](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/projects/isetag-chatbot.mdx) — Client réel Institut ISETAG |
-| **Captures Chatbot ISETAG** | ✅ Validé | `public/projects/isetag/dashboard-analytics.png` (Analytics) & `public/projects/isetag/dashboard-conversations.png` (Live chat WhatsApp) |
-| **Coordonnées de l'entreprise** | ✅ Validé | [site.ts](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/site.ts) — Douala, WhatsApp `+237 692 280 248`, emails et réseaux sociaux |
-| **Page IA & Automatisation** | ✅ Validé | `/ia-automatisation` (modèle complet, FAQ accordéon, JSON-LD FAQPage, CTA WhatsApp) |
-| **Landing Transport & Logistique** | ✅ Validé | `/solutions/transport-logistique` (Mobile First, preuve SIGFOT, FAQ JSON-LD) |
-| **Section Formules & Tarifs** | ✅ Validé | `src/components/PricingSection.tsx` (affiché sur Services & pages sectorielles, masqué en prod si TODO) |
-| **Module Analytics & Traçage** | ✅ Validé | `src/lib/analytics.ts` (clic WhatsApp, clic appel 20 min, soumission formulaire, GA4) |
-| **Internationalisation FR / EN** | ✅ Validé | [content/i18n/](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/i18n/) & `src/components/LanguageSwitcher.tsx` (sélecteur dans le Header desktop et mobile) |
-| **3 Brouillons Blog Métier** | ✅ Validé | `content/posts/` : Fraude carburant, Chatbot audio WhatsApp, Excel vs App métier |
-| **Validation automatisée** | ✅ 100% OK | `npm run check:content`, `npm run lint`, `npm run typecheck`, `npm run build` (20/20 pages SSG) |
+| **Projet 1 : SIGFOT** | ✅ Validé | [sigfot.mdx](../content/projects/sigfot.mdx) — Client réel SST Sarl |
+| **Capture d'écran SIGFOT** | ✅ Validé | `public/projects/sigfot/dashboard.jpg` |
+| **Projet 2 : ISETAG Chatbot V2** | ✅ Reclassé Prototype | [isetag-chatbot.mdx](../content/projects/isetag-chatbot.mdx) — `statut: concept`, badge "Prototype", exclu des listes publiques |
+| **Captures Chatbot ISETAG** | ✅ Validé | `public/projects/isetag/` (dashboard-analytics.png & dashboard-conversations.png) |
+| **Page /portfolio/isetag-chatbot** | ✅ Corrigé | Badge "Prototype" ambre, bouton "Voir la démo", "La solution conçue", "Production active" supprimé |
+| **Page /ia-automatisation** | ✅ Corrigé | ISETAG retiré du bloc "Preuve sur le terrain", bloc "Prototype en cours" ajouté, affirmations sécurité non confirmées reformulées |
+| **Tarifs (pricing.ts)** | ✅ Rempli | "À partir de 200 000 FCFA" / "Sur devis après diagnostic gratuit" — check:content passe ✅ |
+| **Coordonnées entreprise** | ✅ Validé | [site.ts](../content/site.ts) — Douala, WhatsApp +237 692 280 248 |
+| **Landing Transport & Logistique** | ✅ Validé | `/solutions/transport-logistique` |
+| **Section Formules & Tarifs** | ✅ Validé | `src/components/PricingSection.tsx` |
+| **Module Analytics & Traçage** | ✅ Validé | `src/lib/analytics.ts` |
+| **Internationalisation FR / EN** | ✅ Validé | `content/i18n/` & `src/components/LanguageSwitcher.tsx` |
+| **3 Brouillons Blog** | ✅ Validé | `content/posts/` : Fraude carburant, Chatbot audio, Excel vs App |
+| **Dates blog 2025 → 2026** | ✅ Corrigé | `src/data/blog.ts` + redirections 301 dans `next.config.ts` |
+| **LinkedIn Nathan Sengoua** | ✅ Ajouté | `src/data/team.ts` — `https://www.linkedin.com/in/nathan-sengoua-b000262a2` |
 
 ---
 
-## 🟡 2. Ce qu'il Reste à Fournir (TODO_A_FOURNIR)
+## 🟡 2. Ce qu'il Reste à Fournir
 
-Conformément à la **Règle n°1 d'AGENTS.md** (*"Ne jamais rien inventer"*), les éléments suivants sont actuellement balisés `TODO_A_FOURNIR` dans le code.
+Conformément à la **Règle n°1 d'AGENTS.md** (*"Ne jamais rien inventer"*), les éléments suivants restent à compléter avant publication finale.
 
-### A. Données chiffrées & Témoignage client — SIGFOT (SST Sarl)
-Fichier source : [content/projects/sigfot.mdx](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/projects/sigfot.mdx)
+### A. Données chiffrées & Témoignage — SIGFOT (SST Sarl)
+Fichier : [content/projects/sigfot.mdx](../content/projects/sigfot.mdx)
 
-1. **Volume ou montant économisé :**
-   - Donnée attendue : Litres de carburant ou montant FCFA économisé par mois/trimestre.
-   - Justificatif attendu : Source / période de mesure chez SST Sarl.
-2. **Gain de temps opérationnel :**
-   - Donnée attendue : Nombre d'heures économisées par semaine (ex: reporting, saisie).
-3. **Témoignage client validé :**
-   - Citation directe (2 à 3 phrases).
-   - Nom complet, titre et fonction de la personne chez SST Sarl (ex: Directeur d'Exploitation ou Gérant).
-   - Accord formel pour affichage public.
+1. **Volume ou montant économisé** — litres carburant ou FCFA/mois chez SST Sarl (avec source).
+2. **Gain de temps opérationnel** — heures économisées/semaine sur le reporting ou la saisie.
+3. **Témoignage client** — citation directe, nom, titre, accord écrit formel.
 
 ---
 
-### B. Témoignage client — ISETAG Chatbot V2
-Fichier source : [content/projects/isetag-chatbot.mdx](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/projects/isetag-chatbot.mdx)
+### B. LinkedIn — ATSAMA OWONA Jules Deric
+Fichier : [src/data/team.ts](../src/data/team.ts)
 
-1. **Témoignage de l'administration ISETAG :**
-   - Citation directe (ex: impact sur la gestion des admissions ou la réactivité 24h/24).
-   - Nom complet et fonction du signataire (ex: Secrétaire Général, Directeur des Admissions ou Responsable Communication).
-   - Accord formel pour affichage public.
+- ⏳ Lien de profil LinkedIn à transmettre dès réception.
 
 ---
 
-### C. Tarifs et Délais indicatifs (Optionnel pour l'affichage public)
-Fichier source : [content/pricing.ts](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/pricing.ts)
+### C. Validation des 3 Brouillons de Blog
+Dossier : [content/posts/](../content/posts/)
 
-> *Note : Tant que ces tarifs contiennent `TODO_A_FOURNIR`, le validateur de build protège le site pour éviter d'afficher des données incomplètes ou fausses.*
-
-1. **Offre 1 : Site Web & Présence Digitale**
-   - Prix de départ (ex: `X00 000 FCFA`)
-   - Délai indicatif moyen (ex: `2 à 3 semaines`)
-2. **Offre 2 : Système Métier sur Mesure (Type SIGFOT)**
-   - Prix de départ (ex: `X 000 000 FCFA` ou `Sur devis après cadrage`)
-   - Délai indicatif moyen (ex: `6 à 10 semaines`)
-3. **Offre 3 : Chatbot WhatsApp & Agent IA (Type ISETAG)**
-   - Prix de départ (ex: `X00 000 FCFA` ou `Sur devis`)
-   - Délai indicatif moyen (ex: `3 à 5 semaines`)
+1. **Fraude carburant** (`detecter-fraude-carburant-afrique-centrale.mdx`) :
+   - ⏳ Valider/chiffrer les économies avant passage en `statut: publie`.
+2. **Chatbot WhatsApp bilingue** (`chatbot-whatsapp-bilingue-audio-douala.mdx`) :
+   - ⚠️ Vérifier que le contenu est formulé comme "prototype en cours" et non comme "client en production".
+3. **Excel vs App métier** (`fichiers-excel-vs-application-metier-bascule.mdx`) :
+   - ⏳ Valider l'estimation des heures gagnées par semaine.
 
 ---
 
-### D. Membres de l'Équipe (Page `/equipe`)
-Fichier source : [src/data/team.ts](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/src/data/team.ts)
+### D. Témoignage ISETAG (conditionnel)
+Fichier : [content/projects/isetag-chatbot.mdx](../content/projects/isetag-chatbot.mdx)
 
-Les 4 membres sont intégrés avec photos, rôles et bios réelles sur `/equipe` :
-- ✅ **TENEFO SIKALI Yvan James** (Fondateur & Lead Dev) — LinkedIn actif
-- ✅ **LEMBOIGNY SENGOUA Nathan** (Co-fondateur & Dév Fullstack) — LinkedIn actif : `https://www.linkedin.com/in/nathan-sengoua-b000262a2`
-- ✅ **MBATA TCHOUBEUN Yvana Carelle** (Directrice Marketing & Com) — LinkedIn actif
-- ⏳ **ATSAMA OWONA Jules Deric** (Ingénieur DevOps & Réseau) — En attente de son lien de profil LinkedIn (à transmettre dès réception)
+> ⚠️ ISETAG est en `statut: concept`. Le témoignage ne sera affiché que si le projet passe officiellement en `statut: reel` avec accord écrit de l'ISETAG et données de production confirmées.
 
 ---
 
-### E. Validation des 3 Brouillons d'Articles de Blog
-Dossier source : [content/posts/](file:///c:/Users/intern.Jtenefo/Desktop/Creatrixdev-Website/content/posts/)
-
-Les 3 articles métier ont été rédigés en `statut: brouillon` conformément au workflow :
-1. **Fraude carburant en Afrique centrale (cas réel SIGFOT) :**
-   - Fichier : `content/posts/detecter-fraude-carburant-afrique-centrale.mdx`
-   - Élément à valider : Estimation des litres/montants FCFA moyens économisés avant passage en `statut: publie`.
-2. **Chatbot WhatsApp bilingue & note vocale à Douala (cas réel ISETAG) :**
-   - Fichier : `content/posts/chatbot-whatsapp-bilingue-audio-douala.mdx`
-   - Statut : Rédigé et prêt pour relecture finale.
-3. **Fichiers Excel vs application métier sur mesure :**
-   - Fichier : `content/posts/fichiers-excel-vs-application-metier-bascule.mdx`
-   - Élément à valider : Estimation du nombre d'heures gagnées par semaine sur la saisie comptable.
-
----
-
-### F. Configuration de la Clé Google Analytics (Optionnel)
+### E. Configuration Google Analytics (Optionnel)
 Variable d'environnement : `.env.local`
-- Clé à renseigner : `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX`
-- Si la variable n'est pas renseignée, le site fonctionne normalement sans charger de script externe, et les événements s'affichent en console de développement pour vérification.
+```
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+Si absente, le site fonctionne sans erreur ; les événements s'affichent en console de développement.

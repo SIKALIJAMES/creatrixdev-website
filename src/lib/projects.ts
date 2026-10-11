@@ -136,7 +136,20 @@ export function getAllRealProjects(): Project[] {
   return projects
 }
 
+export function getAllProjects(): Project[] {
+  if (!fs.existsSync(PROJECTS_DIR)) return []
+  const files = fs.readdirSync(PROJECTS_DIR).filter((f) => f.endsWith('.mdx') && !f.startsWith('.'))
+  const projects: Project[] = []
+
+  for (const f of files) {
+    const p = parseProjectFile(f)
+    if (p) projects.push(p)
+  }
+
+  return projects
+}
+
 export function getProjectBySlug(slug: string): Project | null {
-  const projects = getAllRealProjects()
+  const projects = getAllProjects()
   return projects.find((p) => p.slug === slug) || null
 }

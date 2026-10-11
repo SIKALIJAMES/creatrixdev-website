@@ -12,7 +12,7 @@ import {
   Calendar,
   MessageCircle,
 } from 'lucide-react'
-import { getAllRealProjects, getProjectBySlug } from '@/lib/projects'
+import { getAllProjects, getProjectBySlug } from '@/lib/projects'
 import { getWhatsAppUrl } from '@/../content/site'
 import TestimonialBlock from '@/components/TestimonialBlock'
 import SectionDivider from '@/components/SectionDivider'
@@ -23,8 +23,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const projects = getAllRealProjects()
-  return projects.map((p) => ({
+  return getAllProjects().map((p) => ({
     slug: p.slug,
   }))
 }
@@ -105,10 +104,17 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
       <section className="container mx-auto px-4 md:px-8 mb-16">
         <div className="max-w-4xl">
           <div className="flex flex-wrap items-center gap-2.5 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Projet réel en production
-            </span>
+            {project.statut === 'reel' ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Projet réel
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-500">
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+                Prototype
+              </span>
+            )}
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-brand/10 border border-blue-brand/30 text-blue-electric">
               <Building2 size={12} /> {project.secteur}
             </span>
@@ -122,7 +128,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           </h1>
 
           <p className="font-mono-label text-blue-brand text-sm md:text-base mb-6">
-            Client officiel : <span className="font-bold text-text-primary">{project.client}</span>
+            {project.secteur} &mdash; <span className="font-bold text-text-primary">{project.client}</span>
           </p>
 
           <p className="text-text-muted text-lg md:text-xl leading-relaxed mb-8">
@@ -136,7 +142,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <CTAButton href={getWhatsAppUrl(whatsappMessage)} variant="outline" external>
               <MessageCircle size={16} /> Discuter de ce cas sur WhatsApp
             </CTAButton>
-            {project.urlProduction && (
+            {project.urlProduction && project.statut === 'reel' && (
               <a
                 href={project.urlProduction}
                 target="_blank"
@@ -144,6 +150,16 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                 className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-blue-electric transition-colors underline underline-offset-4"
               >
                 Voir en production <ExternalLink size={12} />
+              </a>
+            )}
+            {project.urlProduction && project.statut === 'concept' && (
+              <a
+                href={project.urlProduction}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-blue-electric transition-colors underline underline-offset-4"
+              >
+                Voir la démo <ExternalLink size={12} />
               </a>
             )}
           </div>
@@ -222,7 +238,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                   02 · La Réponse CreatrixDev
                 </span>
                 <h2 className="font-display font-bold text-2xl md:text-3xl text-text-primary mb-4">
-                  La solution déployée
+                  {project.statut === 'reel' ? 'La solution déployée' : 'La solution conçue'}
                 </h2>
                 <p className="text-text-muted text-base md:text-lg leading-relaxed">
                   {project.solution}
@@ -256,7 +272,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                         <div className="flex-1 mx-3 bg-white/10 rounded px-2.5 py-0.5 text-white/50 text-[11px] font-mono truncate">
                           {project.slug === 'sigfot'
                             ? 'sigfot.sstcameroun.com · Production'
-                            : 'isetagchatbot-production.up.railway.app · Supervision'}
+                            : 'Prototype · Démo'}
                         </div>
                       </div>
 
@@ -299,9 +315,15 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                 </div>
                 <div>
                   <span className="text-text-muted text-xs block mb-0.5">Déploiement</span>
-                  <span className="inline-flex items-center gap-1.5 text-emerald-500 font-semibold">
-                    <CheckCircle2 size={14} /> Production active
-                  </span>
+                  {project.statut === 'reel' ? (
+                    <span className="inline-flex items-center gap-1.5 text-emerald-500 font-semibold">
+                      <CheckCircle2 size={14} /> Projet réel
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 text-amber-500 font-semibold">
+                      <CheckCircle2 size={14} /> Prototype
+                    </span>
+                  )}
                 </div>
               </div>
 
