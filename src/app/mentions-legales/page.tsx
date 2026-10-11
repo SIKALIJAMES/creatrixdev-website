@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { siteConfig } from '@/../content/site'
+import FrenchOnlyNotice from '@/components/FrenchOnlyNotice'
 
 const SITE_URL = siteConfig.url
 
@@ -49,6 +50,8 @@ export default function MentionsLegalesPage() {
             Dernière mise à jour : octobre 2026
           </p>
         </div>
+
+        <FrenchOnlyNotice />
 
         <div className="prose prose-neutral max-w-none space-y-10 text-text-muted leading-relaxed">
 

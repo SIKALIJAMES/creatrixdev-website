@@ -13,7 +13,7 @@ export const fr: TranslationDictionary = {
     responseUnder24h: "Réponse garantie sous 24h",
     doualaCameroon: "Douala, Cameroun",
     madeWithHeart: "Fait avec ❤️ à Douala, Cameroun",
-    frenchOnlyNotice: "Note : Cette étude de cas / cet article est actuellement disponible uniquement en français.",
+    frenchOnlyNotice: "Cette page est disponible uniquement en français.",
     legalAndPrivacy: "Mentions légales & Confidentialité",
   },
   header: {
