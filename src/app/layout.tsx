@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     images: [
       {
-        url: `${siteConfig.url}/logo.png`,
+        url: `${siteConfig.url}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} — ${siteConfig.tagline}`,
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description:
       "Systemes metier sur mesure et agents IA pour les entreprises d'Afrique centrale. Diagnostic gratuit a Douala.",
-    images: [`${siteConfig.url}/logo.png`],
+    images: [`${siteConfig.url}/og-image.jpg`],
   },
   robots: {
     index: true,

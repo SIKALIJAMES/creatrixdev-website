@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'CreatrixDev — Mentions légales & Confidentialité',
@@ -66,8 +66,7 @@ export default function MentionsLegalesPage() {
               <li><strong className="text-text-primary">Téléphone :</strong> +237 692 280 248</li>
               <li><strong className="text-text-primary">Email :</strong> creatrixdevteam@gmail.com</li>
               <li><strong className="text-text-primary">Directeur de la publication :</strong> TENEFO SIKALI Yvan James</li>
-              <li><strong className="text-text-primary">RCCM :</strong> TODO_A_FOURNIR</li>
-              <li><strong className="text-text-primary">NIU :</strong> TODO_A_FOURNIR</li>
+              {/* RCCM et NIU seront affichés dès immatriculation finale (TODO_A_FOURNIR documenté dans docs/A_FOURNIR.md) */}
             </ul>
           </section>
 

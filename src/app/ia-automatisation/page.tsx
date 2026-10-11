@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${siteConfig.url}/logo.png`,
+        url: `${siteConfig.url}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'IA & automatisation — CreatrixDev',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: 'IA & automatisation sur mesure à Douala',
     description:
       "Chatbots WhatsApp, assistants et automatisations conçus pour les entreprises et institutions d'Afrique centrale. Diagnostic gratuit.",
-    images: [`${siteConfig.url}/logo.png`],
+    images: [`${siteConfig.url}/og-image.jpg`],
   },
 }
 

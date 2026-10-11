@@ -13,7 +13,7 @@
 | **Capture d'écran SIGFOT** | ✅ Validé | `public/projects/sigfot/dashboard.jpg` |
 | **Projet 2 : ISETAG Chatbot V2** | ✅ Reclassé Prototype | [isetag-chatbot.mdx](../content/projects/isetag-chatbot.mdx) — `statut: concept`, badge "Prototype", exclu des listes publiques |
 | **Captures Chatbot ISETAG** | ✅ Validé | `public/projects/isetag/` (dashboard-analytics.png & dashboard-conversations.png) |
-| **Page /portfolio/isetag-chatbot** | ✅ Corrigé | Badge "Prototype" ambre, bouton "Voir la démo", "La solution conçue", "Production active" supprimé |
+| **Page /portfolio/isetag-chatbot** | ✅ Corrigé | Badge "Prototype" ambre, boutons démo/production retirés, URL masquée du cadre, balise robots noindex/nofollow |
 | **Page /ia-automatisation** | ✅ Corrigé | ISETAG retiré du bloc "Preuve sur le terrain", bloc "Prototype en cours" ajouté, affirmations sécurité non confirmées reformulées |
 | **Tarifs (pricing.ts)** | ✅ Rempli | "À partir de 200 000 FCFA" / "Sur devis après diagnostic gratuit" — check:content passe ✅ |
 | **Coordonnées entreprise** | ✅ Validé | [site.ts](../content/site.ts) — Douala, WhatsApp +237 692 280 248 |
