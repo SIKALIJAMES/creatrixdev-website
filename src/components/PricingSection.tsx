@@ -58,8 +58,11 @@ export default function PricingSection({
 
         <div className={`grid gap-8 max-w-6xl mx-auto ${plans.length === 1 ? 'max-w-xl' : 'grid-cols-1 md:grid-cols-3'}`}>
           {plans.map((plan: PricingPlan) => {
-            const isTodoPrice = plan.priceFromFcfa === 'TODO_A_FOURNIR'
-            const isTodoDuration = plan.estimatedDuration === 'TODO_A_FOURNIR'
+            const isTodoPrice =
+              (plan.priceDisplay && plan.priceDisplay.includes('TODO_A_FOURNIR')) ||
+              (plan.priceFromFcfa && plan.priceFromFcfa.includes('TODO_A_FOURNIR'))
+            const isTodoDuration =
+              plan.estimatedDuration && plan.estimatedDuration.includes('TODO_A_FOURNIR')
             const whatsappPlanUrl = getWhatsAppUrl(
               `Bonjour CreatrixDev, je souhaite échanger à propos de la formule "${plan.name}".`
             )
@@ -73,9 +76,9 @@ export default function PricingSection({
                     : 'bg-white border border-border-light hover:border-blue-brand/40 shadow-sm'
                 }`}
               >
-                {plan.recommended && (
+                {(plan.badge || plan.recommended) && (
                   <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-brand text-white font-mono text-[10px] font-bold tracking-wider uppercase shadow-sm">
-                    Formule la plus demandée
+                    {plan.badge || 'Notre spécialité'}
                   </span>
                 )}
 
@@ -109,28 +112,38 @@ export default function PricingSection({
                       plan.recommended ? 'bg-navy-card border border-white/10' : 'bg-bg-secondary border border-border-light'
                     }`}
                   >
-                    <div className="flex items-baseline justify-between mb-2">
-                      <span className="text-xs text-text-muted-dark font-mono flex items-center gap-1">
-                        <Tag size={12} /> À partir de
+                    <div className="flex items-baseline justify-between mb-1.5 gap-2">
+                      <span className="text-xs text-text-muted-dark font-mono flex items-center gap-1 shrink-0">
+                        <Tag size={12} /> Tarif
                       </span>
                       <span
-                        className={`font-display font-bold text-lg md:text-xl ${
+                        className={`font-display font-bold text-sm md:text-base text-right ${
                           plan.recommended ? 'text-blue-electric' : 'text-text-primary'
                         }`}
                       >
                         {isTodoPrice ? (
                           <span className="text-xs font-normal text-amber-500">Sur devis après diagnostic</span>
                         ) : (
-                          `${plan.priceFromFcfa} FCFA`
+                          plan.priceDisplay || plan.priceFromFcfa
                         )}
                       </span>
                     </div>
 
-                    <div className="flex items-baseline justify-between text-xs text-text-muted-dark font-mono">
-                      <span className="flex items-center gap-1">
+                    {plan.priceNote && (
+                      <p className={`text-[11px] text-right mb-2 italic ${
+                        plan.recommended ? 'text-text-muted-dark' : 'text-text-muted'
+                      }`}>
+                        {plan.priceNote}
+                      </p>
+                    )}
+
+                    <div className={`flex items-baseline justify-between text-xs text-text-muted-dark font-mono pt-2 border-t ${
+                      plan.recommended ? 'border-white/10' : 'border-border-light'
+                    }`}>
+                      <span className="flex items-center gap-1 shrink-0">
                         <Clock size={12} /> Délai moyen
                       </span>
-                      <span>
+                      <span className="text-right">
                         {isTodoDuration ? (
                           <span className="text-amber-500 font-normal">Selon périmètre</span>
                         ) : (

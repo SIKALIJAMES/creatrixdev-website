@@ -41,7 +41,6 @@ export const portfolioProjects: PortfolioProject[] = [
     result: '2 canaux · STT vocal · RAG vectoriel · Relance 24h · 100% automatise',
     image: '/projects/isetag/dashboard-analytics.png',
     tags: ['Node.js', 'Express', 'React', 'PostgreSQL + pgvector', 'Groq API', 'Redis', 'Docker', 'Railway'],
-    liveUrl: 'https://isetagchatbot-production.up.railway.app',
     featured: false,
   },
 

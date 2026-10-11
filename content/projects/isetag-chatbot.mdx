@@ -7,7 +7,7 @@ statut: concept
 date: "2026-09-01"
 resume: "Chatbot omnicanal WhatsApp & Messenger avec IA, transcription vocale, orientation académique personnalisée et plateforme d'admissions en ligne pour l'ISETAG à Douala."
 probleme: "L'ISETAG reçoit quotidiennement des dizaines de questions identiques par WhatsApp (filières, frais, rentrée, cité universitaire, bus). Les équipes du secrétariat passaient plusieurs heures par jour à répondre aux mêmes demandes, y compris en dehors des heures de bureau, au détriment du traitement des dossiers d'admission."
-solution: "Déploiement de ISETAG Chatbot V2, un agent conversationnel intelligent disponible 24h/24 sur WhatsApp et Facebook Messenger. Le système transcrit les notes vocales en texte, détecte la langue (français/anglais), interroge une base documentaire vectorielle (RAG) pour répondre avec précision aux questions officielles, guide les indécis à travers un quiz d'orientation en 9 étapes, et permet une pré-inscription gratuite en ligne avec confirmation WhatsApp automatique."
+solution: "Conception de ISETAG Chatbot V2, un prototype d'agent conversationnel intelligent disponible sur WhatsApp et Facebook Messenger. Le système transcrit les notes vocales en texte, détecte la langue (français/anglais), interroge une base documentaire vectorielle (RAG) pour répondre avec précision aux questions officielles, guide les indécis à travers un quiz d'orientation en 9 étapes, et permet une pré-inscription gratuite en ligne avec confirmation WhatsApp automatique."
 resultats:
   - label: "Canaux de messagerie connectés"
     valeur: "2"
@@ -50,7 +50,7 @@ ISETAG Chatbot V2 est un prototype d'agent conversationnel conçu par CreatrixDe
 
 ### Fonctionnalités principales
 
-- **Omnicanalité :** Connexion officielle WhatsApp Business Cloud API et Facebook Messenger Platform avec vérification HMAC-SHA256.
+- **Omnicanalité :** Intégration WhatsApp et Facebook Messenger avec vérification HMAC-SHA256.
 - **Compréhension vocale :** Transcription des notes vocales WhatsApp via Groq Whisper Large v3 Turbo (moins d'une seconde de latence) — le système traite l'audio comme n'importe quel message texte.
 - **IA bilingue :** Détection automatique de la langue (français / anglais) mémorisée 7 jours par prospect pour maintenir une cohérence de ton tout au long des échanges.
 - **Base documentaire RAG :** Les fiches tarifaires officielles, règlements et livrets d'accueil sont indexés en vecteurs (Google Gemini Embeddings 768 dimensions / pgvector) et interrogés à chaque question pour une réponse précise et sourcée.

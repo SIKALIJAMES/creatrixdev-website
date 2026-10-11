@@ -3,10 +3,13 @@ export interface PricingPlan {
   name: string
   target: string
   description: string
+  priceDisplay: string
+  priceNote?: string
   priceFromFcfa: string
   estimatedDuration: string
   features: string[]
   recommended?: boolean
+  badge?: string
 }
 
 export const pricingPlans: PricingPlan[] = [
@@ -16,8 +19,10 @@ export const pricingPlans: PricingPlan[] = [
     target: 'Entreprises souhaitant valoriser leur savoir-faire et capter des prospects qualifiés',
     description:
       'Conception d’un site web rapide, responsive et optimisé pour le référencement local et Google Maps.',
+    priceDisplay: 'À partir de 200 000 FCFA',
+    priceNote: 'Le prix varie selon le type de site et vos besoins',
     priceFromFcfa: 'À partir de 200 000 FCFA',
-    estimatedDuration: 'Sur devis après diagnostic gratuit',
+    estimatedDuration: 'Précisé dans le devis',
     features: [
       'Design sur mesure adapté à votre charte',
       'Optimisation mobile prioritaire (Mobile First)',
@@ -32,15 +37,16 @@ export const pricingPlans: PricingPlan[] = [
     target: 'Sociétés de transport, PME et structures gérant leurs opérations sur des fichiers Excel dispersés',
     description:
       'Application web collaborative pour centraliser la gestion de flotte, stocks, opérations et facturation (modèle SIGFOT).',
-    priceFromFcfa: 'À partir de 200 000 FCFA',
-    estimatedDuration: 'Sur devis après diagnostic gratuit',
+    priceDisplay: 'Sur devis après diagnostic gratuit',
+    priceFromFcfa: 'Sur devis après diagnostic gratuit',
+    estimatedDuration: 'Précisé dans le devis',
     recommended: true,
+    badge: 'Notre spécialité',
     features: [
       'Diagnostic approfondi de vos règles métier actuelles',
       'Tableaux de bord opérationnels et alertes automatiques',
       'Exports comptables au format Excel exact de vos équipes',
       'Gestion fine des droits d’accès et rôles utilisateurs',
-      'Sauvegardes automatiques et base de données relationnelle sécurisée',
       'Formation des équipes et accompagnement au déploiement',
     ],
   },
@@ -50,10 +56,10 @@ export const pricingPlans: PricingPlan[] = [
     target: 'Établissements d’enseignement, entreprises de services et institutions recevant un fort volume de sollicitations',
     description:
       'Assistant omnicanal 24h/24 capable de traiter les notes vocales, d’interroger vos fiches officielles et de qualifier les prospects (modèle ISETAG).',
-    priceFromFcfa: 'À partir de 200 000 FCFA',
-    estimatedDuration: 'Sur devis après diagnostic gratuit',
+    priceDisplay: 'Sur devis après diagnostic gratuit',
+    priceFromFcfa: 'Sur devis après diagnostic gratuit',
+    estimatedDuration: 'Précisé dans le devis',
     features: [
-      'Connexion officielle WhatsApp Business Cloud API & Messenger',
       'Compréhension des notes vocales en français et en anglais (Whisper STT)',
       'Recherche documentaire intelligente RAG sur vos programmes et tarifs',
       'Pré-inscription / prise de coordonnées en ligne',
@@ -71,6 +77,9 @@ export function hasPricingTodos(): boolean {
   // la détecte comme un vrai TODO dans ce fichier.
   const sentinel = ['TODO', 'A', 'FOURNIR'].join('_')
   return pricingPlans.some(
-    (p) => p.priceFromFcfa === sentinel || p.estimatedDuration === sentinel
+    (p) =>
+      p.priceDisplay.includes(sentinel) ||
+      p.priceFromFcfa.includes(sentinel) ||
+      p.estimatedDuration.includes(sentinel)
   )
 }
