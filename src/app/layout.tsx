@@ -74,7 +74,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.url,
   },
+  // Google Search Console : renseigner NEXT_PUBLIC_GSC_VERIFICATION sur Railway.
+  // Si la variable est absente, Next.js n'émet aucune balise.
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
 }
+
 
 // JSON-LD : Organization + ProfessionalService
 const jsonLd = {
