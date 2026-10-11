@@ -11,7 +11,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'TENEFO SIKALI Yvan James',
     role: 'Fondateur & Lead Dev',
-    photo: '/team/yvan-james.png',
+    photo: '/team/yvan-james.jpg',
     bio: 'Passionné d\'architecture logicielle, d\'innovation technologique et d\'expériences web d\'excellence.',
     linkedinUrl: 'https://www.linkedin.com/in/james-sikali-744902378/',
   },

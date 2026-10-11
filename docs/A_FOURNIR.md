@@ -24,6 +24,11 @@
 | **3 Brouillons Blog** | ✅ Validé | `content/posts/` : Fraude carburant, Chatbot audio, Excel vs App |
 | **Dates blog 2025 → 2026** | ✅ Corrigé | `src/data/blog.ts` + redirections 301 dans `next.config.ts` |
 | **LinkedIn Nathan Sengoua** | ✅ Ajouté | `src/data/team.ts` — `https://www.linkedin.com/in/nathan-sengoua-b000262a2` |
+| **Mentions Légales & Confidentialité** | ✅ Créé | `/mentions-legales` + lien dans le `Footer.tsx` |
+| **Newsletter fictive** | ✅ Retirée | Remplacée par CTA d'action direct (WhatsApp & Contact) sur le blog |
+| **Données personnelles ISETAG** | ✅ Floutées | `public/projects/isetag/dashboard-conversations.jpg` floutée et optimisée |
+| **Poids des images web** | ✅ Optimisé | 100% des images sous la barre des 200 Ko (photo 2 Mo → 180 Ko) |
+| **Compteurs & statut portfolio** | ✅ Vérifié | SIGFOT seul projet en production affiché publiquement (statut: reel) |
 
 ---
 
@@ -66,9 +71,18 @@ Fichier : [content/projects/isetag-chatbot.mdx](../content/projects/isetag-chatb
 
 ---
 
-### E. Configuration Google Analytics (Optionnel)
-Variable d'environnement : `.env.local`
-```
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-```
-Si absente, le site fonctionne sans erreur ; les événements s'affichent en console de développement.
+### E. Variables d'Environnement Railway (Optionnel / Production)
+À configurer dans le tableau de bord **Railway** → Projet → Variables :
+
+1. **Google Analytics :**
+   ```env
+   NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+   ```
+   *(Créer un flux web GA4 pour `creatrixdev-website-production.up.railway.app` et coller l'ID de mesure)*
+
+2. **Formulaire de contact (Envoi réel d'emails) :**
+   ```env
+   RESEND_API_KEY=re_xxxxxxxxxxxx
+   CONTACT_EMAIL=creatrixdevteam@gmail.com
+   ```
+   *(Créer une clé API gratuite sur [resend.com](https://resend.com) pour acheminer les emails du formulaire directement dans votre boîte Gmail)*

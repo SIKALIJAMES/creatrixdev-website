@@ -11,11 +11,11 @@ export interface StatItem {
 export const homeStats: StatItem[] = [
   {
     id: 'projets-reels',
-    value: '2',
-    numericValue: 2,
-    label: 'Systèmes & IA en production',
-    description: 'SIGFOT (Transport) et ISETAG Chatbot (Enseignement supérieur)',
-    source: 'Réalisations déployées en production par CreatrixDev pour SST Sarl et Institut ISETAG',
+    value: '1',
+    numericValue: 1,
+    label: 'Système métier en production',
+    description: 'SIGFOT — Gestion de flotte & carburant pour SST Sarl',
+    source: 'Réalisation déployée en production par CreatrixDev pour SST Sarl',
   },
   {
     id: 'sigfot-modules',

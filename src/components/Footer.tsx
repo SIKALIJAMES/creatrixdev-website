@@ -164,9 +164,18 @@ export default function Footer() {
           <p className="text-text-muted text-xs font-mono-label">
             © {new Date().getFullYear()} {siteConfig.name} — {siteConfig.tagline}
           </p>
-          <p className="text-text-muted text-xs">
-            Tous droits réservés — Fait avec ❤️ à Douala, Cameroun
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/mentions-legales"
+              className="text-text-muted text-xs hover:text-accent-cyan transition-colors"
+            >
+              Mentions légales & Confidentialité
+            </Link>
+            <span className="text-text-muted text-xs opacity-40">·</span>
+            <p className="text-text-muted text-xs">
+              Fait avec ❤️ à Douala, Cameroun
+            </p>
+          </div>
         </div>
       </div>
     </footer>

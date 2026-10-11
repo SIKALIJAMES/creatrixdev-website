@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { ArrowRight, Clock } from 'lucide-react'
 import SectionDivider from '@/components/SectionDivider'
 import { blogPosts } from '@/data/blog'
+import { getWhatsAppUrl } from '@/../content/site'
+import CTAButton from '@/components/CTAButton'
 
 export default function BlogClient() {
   const articles = blogPosts
@@ -111,32 +113,32 @@ export default function BlogClient() {
         </div>
       </section>
 
-      {/* Newsletter CTA placeholder */}
+      {/* CTA Final */}
       <SectionDivider />
-      <section className="py-20 bg-bg-primary grid-bg" aria-labelledby="newsletter-heading">
+      <section className="py-20 bg-bg-primary grid-bg" aria-labelledby="cta-blog-heading">
         <div className="container mx-auto px-4 md:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 id="newsletter-heading" className="font-display font-bold text-3xl text-text-primary mb-4">
-              Restez informé·e
+            <h2 id="cta-blog-heading" className="font-display font-bold text-3xl text-text-primary mb-4">
+              Un projet ou un défi opérationnel ?
             </h2>
             <p className="text-text-muted max-w-lg mx-auto mb-8">
-              {/* TODO: contenu réel à insérer — formulaire newsletter */}
-              Abonnez-vous à notre newsletter pour recevoir nos articles, conseils et actualités directement dans votre boîte mail.
+              Échangeons directement avec l&apos;équipe technique pour identifier les solutions adaptées à vos enjeux.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="votre@email.com"
-                aria-label="Adresse email pour la newsletter"
-                className="flex-1 bg-bg-secondary border border-accent-cyan/20 rounded-lg px-4 py-3 text-text-primary text-sm placeholder:text-text-muted focus:outline-none focus:border-accent-cyan/60 focus:ring-1 focus:ring-accent-cyan/30 transition-all"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-accent-cyan to-accent-blue text-bg-primary font-display font-semibold text-sm rounded-lg hover:shadow-glow-cyan transition-all duration-300 whitespace-nowrap">
-                S&apos;abonner
-              </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <CTAButton
+                href={getWhatsAppUrl("Bonjour, j'ai lu un article sur votre blog et j'aimerais échanger avec vous.")}
+                external
+                variant="primary"
+              >
+                Discuter sur WhatsApp
+              </CTAButton>
+              <CTAButton href="/contact" variant="secondary">
+                Formulaire de contact
+              </CTAButton>
             </div>
           </motion.div>
         </div>

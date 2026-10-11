@@ -34,7 +34,7 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'isetag-chatbot',
     title: 'ISETAG Chatbot V2 — Agent Conversationnel Intelligent & Admissions en Ligne',
     category: 'IA et Automatisation',
-    statut: 'reel',
+    statut: 'concept',
     client: 'Institut Superieur Evangelique des Technologies Appliquees et de Gestion (ISETAG)',
     description:
       "Agent omnicanal WhatsApp & Messenger avec transcription vocale (Groq Whisper), recherche documentaire RAG (pgvector), quiz d'orientation en 9 etapes et plateforme de pre-inscription en ligne avec confirmation automatique.",
