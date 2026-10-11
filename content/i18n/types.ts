@@ -230,6 +230,71 @@ export interface TranslationDictionary {
     featuredProject: string
     viewFullStudy: string
     noProjectsFound: string
+    featuredTag: string
+    caseStudyTitle: string
+    caseStudyHighlight: string
+    inProductionBadge: string
+    flagshipBadge: string
+    saasDevBadge: string
+    sigfotSubtitle: string
+    challengeLabel: string
+    challengeDesc: string
+    solutionLabel: string
+    solutionDesc: string
+    metricModules: string
+    metricRoles: string
+    metricMigrations: string
+    metricTables: string
+    pillar1Title: string
+    pillar1Desc: string
+    pillar2Title: string
+    pillar2Desc: string
+    pillar3Title: string
+    pillar3Desc: string
+    otherTag: string
+    otherTitle: string
+    otherHighlight: string
+    catAll: string
+    catDev: string
+    catAi: string
+    catDesign: string
+    catContent: string
+    catMarketing: string
+    ctaTag: string
+    ctaTitle: string
+    ctaHighlight: string
+    ctaSubtitle: string
+    ctaStart: string
+    ctaWhatsapp: string
+    cardFlagship: string
+    cardViewStudy: string
+    cardDetailedStudy: string
+  }
+  blog: {
+    heroTag: string
+    heroTitle: string
+    heroHighlight: string
+    heroSubtitle: string
+    readArticle: string
+    emptyTitle: string
+    emptySubtitle: string
+    backToBlog: string
+    ctaTitle: string
+    ctaSubtitle: string
+    ctaWhatsapp: string
+    ctaContact: string
+    posts: {
+      post1: {
+        title: string
+        excerpt: string
+        category: string
+      }
+      post2: {
+        title: string
+        excerpt: string
+        category: string
+      }
+    }
   }
   aiAutomation: {
     heroTag: string

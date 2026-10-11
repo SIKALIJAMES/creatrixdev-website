@@ -5,6 +5,7 @@ import { ExternalLink, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
 import Link from 'next/link'
+import { useTranslation } from '@/context/LanguageContext'
 
 interface PortfolioCardProps {
   title: string
@@ -32,6 +33,7 @@ export default function PortfolioCard({
   featured,
   index = 0,
 }: PortfolioCardProps) {
+  const { t } = useTranslation()
 
   if (featured) {
     const studyUrl = slug ? `/portfolio/${slug}` : '/portfolio'
@@ -49,7 +51,7 @@ export default function PortfolioCard({
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-navy-card/80 hidden lg:block" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-card/90 via-transparent to-transparent lg:hidden" />
             <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-blue-brand/30 border border-blue-brand/50 text-blue-electric text-[10px] font-semibold px-3 py-1.5 rounded-full">
-              ★ Projet phare
+              ★ {t.portfolio.cardFlagship}
             </span>
           </div>
           <div className="p-8 lg:p-10 flex flex-col justify-center">
@@ -60,13 +62,13 @@ export default function PortfolioCard({
             <p className="text-text-muted-dark text-sm leading-relaxed mb-5">{description}</p>
             {tags && (
               <div className="flex flex-wrap gap-2 mb-6">
-                {tags.map((t) => (
-                  <span key={t} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-white/15 bg-white/5 text-text-muted-dark text-[10px] font-medium">{t}</span>
+                {tags.map((item) => (
+                  <span key={item} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-white/15 bg-white/5 text-text-muted-dark text-[10px] font-medium">{item}</span>
                 ))}
               </div>
             )}
             <Link href={studyUrl} className="inline-flex items-center gap-1.5 text-blue-electric text-sm font-medium hover:text-blue-brand transition-colors group/link">
-              <span>Voir l&apos;étude de cas</span>
+              <span>{t.portfolio.cardViewStudy}</span>
               <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -131,7 +133,7 @@ export default function PortfolioCard({
         {slug && (
           <div className="pt-2 border-t border-white/5">
             <Link href={`/portfolio/${slug}`} className="inline-flex items-center gap-1.5 text-blue-electric text-xs font-medium hover:text-blue-brand transition-colors">
-              <span>Étude de cas détaillée</span>
+              <span>{t.portfolio.cardDetailedStudy}</span>
               <ChevronRight size={12} />
             </Link>
           </div>

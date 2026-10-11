@@ -297,6 +297,81 @@ export const fr: TranslationDictionary = {
     featuredProject: "Projet phare",
     viewFullStudy: "Consulter l'étude de cas complète",
     noProjectsFound: "Aucun projet dans cette catégorie pour l'instant.",
+    featuredTag: "Projet phare",
+    caseStudyTitle: "Une étude de cas",
+    caseStudyHighlight: "complète",
+    inProductionBadge: "En production",
+    flagshipBadge: "Projet phare",
+    saasDevBadge: "Développement SaaS",
+    sigfotSubtitle: "SST Sarl · Société Solution Transport · Cameroun",
+    challengeLabel: "DÉFI",
+    challengeDesc:
+      "SST Sarl gérait toute sa flotte de transport sur des fichiers Excel manuels. Aucune visibilité en temps réel, aucun suivi des marges, et des risques de fraude carburant non détectés.",
+    solutionLabel: "SOLUTION",
+    solutionDesc:
+      "CreatrixDev a développé SIGFOT : une plateforme web collaborative centralisant la gestion de la flotte, des chantiers, des trajets, du carburant, des opérations financières, des achats, des stocks, de la facturation et du suivi GPS des véhicules.",
+    metricModules: "Modules fonctionnels",
+    metricRoles: "Rôles utilisateurs",
+    metricMigrations: "Migrations DB",
+    metricTables: "Tables SQL",
+    pillar1Title: "Multi-rôles temps réel",
+    pillar1Desc:
+      "5 rôles distincts (Admin, Manager, Comptable, Caissière, Logisticien) avec dashboards adaptés et permissions Row Level Security côté base de données.",
+    pillar2Title: "Détection fraude carburant",
+    pillar2Desc:
+      "Trigger PostgreSQL comparant la consommation réelle vs le référentiel par camion. Alertes automatiques à +10% et +20% d'écart pour protéger la flotte.",
+    pillar3Title: "Exports fidèles au modèle SST",
+    pillar3Desc:
+      "Bilan multi-feuilles et État Différentiel Annuel en 12 onglets générés via API Next.js + ExcelJS, reproduisant exactement le modèle Excel de la direction.",
+    otherTag: "Autres réalisations",
+    otherTitle: "Ce que nous",
+    otherHighlight: "savons faire",
+    catAll: "Tous",
+    catDev: "Développement",
+    catAi: "IA et Automatisation",
+    catDesign: "Design",
+    catContent: "Contenu",
+    catMarketing: "Marketing",
+    ctaTag: "Votre projet",
+    ctaTitle: "Prêt à construire",
+    ctaHighlight: "quelque chose de réel ?",
+    ctaSubtitle:
+      "Décrivez votre idée. Notre équipe vous revient dans les 24h avec une proposition concrète.",
+    ctaStart: "Démarrer un projet",
+    ctaWhatsapp: "WhatsApp direct",
+    cardFlagship: "Projet phare",
+    cardViewStudy: "Voir l'étude de cas",
+    cardDetailedStudy: "Étude de cas détaillée",
+  },
+  blog: {
+    heroTag: "✦ Savoir & expertise",
+    heroTitle: "Blog",
+    heroHighlight: "& Actualités",
+    heroSubtitle:
+      "Conseils, tendances et insights du digital — partagés par l'équipe CreatrixDev pour vous aider à prendre de meilleures décisions.",
+    readArticle: "Lire l'article",
+    emptyTitle: "Notre blog est en cours de lancement ! 🚀",
+    emptySubtitle: "Revenez bientôt pour découvrir nos premiers articles.",
+    backToBlog: "Retour au blog",
+    ctaTitle: "Un projet ou un défi opérationnel ?",
+    ctaSubtitle:
+      "Échangeons directement avec l'équipe technique pour identifier les solutions adaptées à vos enjeux.",
+    ctaWhatsapp: "Discuter sur WhatsApp",
+    ctaContact: "Formulaire de contact",
+    posts: {
+      post1: {
+        title: "Pourquoi votre entreprise a absolument besoin d'un site web en 2026 - 2027",
+        excerpt:
+          "Dans un monde où 80% des consommateurs recherchent en ligne avant d'acheter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir à l'orée de 2027.",
+        category: "Stratégie",
+      },
+      post2: {
+        title: "Les tendances UI/UX qui domineront le web en 2026 et 2027",
+        excerpt:
+          "Glassmorphism, dark mode immersif, micro-interactions, typographie expressive... Décryptage des tendances visuelles qui façonneront l'expérience utilisateur cette année et pour 2027.",
+        category: "Design",
+      },
+    },
   },
   aiAutomation: {
     heroTag: "IA & Systèmes Intelligents",
