@@ -149,6 +149,14 @@ export interface TranslationDictionary {
     pricingTag: string
     pricingTitle: string
     pricingSubtitle: string
+    nav: {
+      development: string
+      design: string
+      content: string
+      marketing: string
+      itSupport: string
+      training: string
+    }
     sections: {
       dev: {
         title: string

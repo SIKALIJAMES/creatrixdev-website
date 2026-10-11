@@ -155,6 +155,14 @@ export const fr: TranslationDictionary = {
     pricingTitle: "Des formules claires adaptées à votre étape",
     pricingSubtitle:
       "Chaque projet fait l'objet d'un cadrage technique transparent sans frais cachés.",
+    nav: {
+      development: "Développement",
+      design: "Design",
+      content: "Contenu",
+      marketing: "Marketing",
+      itSupport: "Support IT",
+      training: "Formation",
+    },
     sections: {
       dev: {
         title: "Développement Web & Mobile",

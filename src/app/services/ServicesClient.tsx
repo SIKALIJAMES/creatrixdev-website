@@ -16,6 +16,7 @@ export default function ServicesClient() {
     {
       id: 'developpement',
       icon: <Code2 size={28} />,
+      navLabel: t.services.nav.development,
       title: t.services.sections.dev.title,
       subtitle: t.services.sections.dev.subtitle,
       description: t.services.sections.dev.desc,
@@ -24,6 +25,7 @@ export default function ServicesClient() {
     {
       id: 'design',
       icon: <Palette size={28} />,
+      navLabel: t.services.nav.design,
       title: t.services.sections.design.title,
       subtitle: t.services.sections.design.subtitle,
       description: t.services.sections.design.desc,
@@ -32,6 +34,7 @@ export default function ServicesClient() {
     {
       id: 'contenu-digital',
       icon: <Film size={28} />,
+      navLabel: t.services.nav.content,
       title: t.services.sections.content.title,
       subtitle: t.services.sections.content.subtitle,
       description: t.services.sections.content.desc,
@@ -40,6 +43,7 @@ export default function ServicesClient() {
     {
       id: 'marketing',
       icon: <TrendingUp size={28} />,
+      navLabel: t.services.nav.marketing,
       title: t.services.sections.marketing.title,
       subtitle: t.services.sections.marketing.subtitle,
       description: t.services.sections.marketing.desc,
@@ -48,6 +52,7 @@ export default function ServicesClient() {
     {
       id: 'support-it',
       icon: <Server size={28} />,
+      navLabel: t.services.nav.itSupport,
       title: t.services.sections.it.title,
       subtitle: t.services.sections.it.subtitle,
       description: t.services.sections.it.desc,
@@ -56,6 +61,7 @@ export default function ServicesClient() {
     {
       id: 'formation',
       icon: <GraduationCap size={28} />,
+      navLabel: t.services.nav.training,
       title: t.services.sections.training.title,
       subtitle: t.services.sections.training.subtitle,
       description: t.services.sections.training.desc,
@@ -107,7 +113,7 @@ export default function ServicesClient() {
                 href={`#${s.id}`}
                 className="px-3 py-1.5 rounded-lg border border-accent-cyan/20 text-text-muted hover:text-accent-cyan hover:border-accent-cyan/60 font-mono-label transition-all duration-200 text-xs"
               >
-                {s.title.split(' ')[0]}
+                {s.navLabel}
               </a>
             ))}
           </motion.nav>

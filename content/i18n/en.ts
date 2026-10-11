@@ -155,6 +155,14 @@ export const en: TranslationDictionary = {
     pricingTitle: "Transparent plans tailored to your stage",
     pricingSubtitle:
       "Every project undergoes transparent technical scoping with zero hidden fees.",
+    nav: {
+      development: "Development",
+      design: "Design",
+      content: "Content",
+      marketing: "Marketing",
+      itSupport: "IT Support",
+      training: "Training",
+    },
     sections: {
       dev: {
         title: "Web & Mobile Development",
