@@ -19,9 +19,9 @@ export const blogPosts: BlogPost[] = [
     slug: 'pourquoi-avoir-un-site-web-en-2026-2027',
     title: "Pourquoi votre entreprise a absolument besoin d'un site web en 2026 - 2027",
     excerpt:
-      "Dans un monde où 80% des consommateurs recherchent en ligne avant d'acheter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir à l'orée de 2027.",
+      "À l'ère où la grande majorité des clients recherchent une entreprise en ligne avant de la contacter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir.",
     category: 'Stratégie',
-    date: '2026-10-01',
+    date: '2025-01-15',
     readTime: '5 min',
     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&auto=format',
     author: {
@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Glassmorphism, dark mode immersif, micro-interactions, typographie expressive... Décryptage des tendances visuelles qui façonneront l'expérience utilisateur cette année et pour 2027.",
     category: 'Design',
-    date: '2026-10-05',
+    date: '2025-01-20',
     readTime: '7 min',
     image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&auto=format',
     author: {

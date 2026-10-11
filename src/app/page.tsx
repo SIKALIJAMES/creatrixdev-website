@@ -463,7 +463,7 @@ export default function HomePage() {
               <motion.div key={project.title} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5, delay: i * 0.12 }} className="group relative rounded-2xl overflow-hidden border border-white/10 bg-navy-card hover:border-blue-brand/50 transition-all duration-300 hover:shadow-glow-navy flex flex-col justify-between">
                 <div>
                   <div className="relative h-52 overflow-hidden bg-navy-deep">
-                    <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
                     <span className="absolute top-3 left-3 tag-pill bg-blue-brand/20 border-blue-brand/40 text-blue-electric text-[10px]">{project.category}</span>
                   </div>

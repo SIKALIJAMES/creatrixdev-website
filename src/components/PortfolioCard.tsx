@@ -47,7 +47,7 @@ export default function PortfolioCard({
       >
         <div className="grid lg:grid-cols-2 gap-0">
           <div className="relative h-72 lg:h-auto overflow-hidden">
-            <Image src={image} alt={title} fill className="object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+            <Image src={image} alt={title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-navy-card/80 hidden lg:block" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-card/90 via-transparent to-transparent lg:hidden" />
             <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-blue-brand/30 border border-blue-brand/50 text-blue-electric text-[10px] font-semibold px-3 py-1.5 rounded-full">

@@ -276,7 +276,7 @@ export const fr: TranslationDictionary = {
       chatbot: {
         name: "Chatbot WhatsApp & Agent IA",
         target: "Établissements d'enseignement, entreprises de services et institutions recevant un fort volume de sollicitations",
-        desc: "Assistant omnicanal 24h/24 capable de traiter les notes vocales, d'interroger vos fiches officielles et de qualifier les prospects (modèle ISETAG).",
+        desc: "Assistant omnicanal 24h/24 capable de traiter les notes vocales, d'interroger vos fiches officielles et de qualifier les prospects (prototype ISETAG).",
         features: [
           "Compréhension des notes vocales en français et en anglais (Whisper STT)",
           "Recherche documentaire intelligente RAG sur vos programmes et tarifs",
@@ -362,7 +362,7 @@ export const fr: TranslationDictionary = {
       post1: {
         title: "Pourquoi votre entreprise a absolument besoin d'un site web en 2026 - 2027",
         excerpt:
-          "Dans un monde où 80% des consommateurs recherchent en ligne avant d'acheter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir à l'orée de 2027.",
+          "À l'ère où la grande majorité des clients recherchent une entreprise en ligne avant de la contacter, ne pas avoir de site web c'est laisser vos concurrents vous dépasser. Voici pourquoi et comment agir.",
         category: "Stratégie",
       },
       post2: {
@@ -577,7 +577,7 @@ export const fr: TranslationDictionary = {
       },
       q4: {
         q: "Nos données de flotte sont-elles protégées et confidentielles ?",
-        a: "Totalement. Chaque transporteur dispose d'une base PostgreSQL isolée et chiffrée. Vos données de rentabilité et vos clients ne sont jamais partagés ni exposés.",
+        a: "Totalement. Chaque transporteur dispose d'une base PostgreSQL dédiée avec contrôle strict des accès (Row Level Security). Vos données opérationnelles et de rentabilité restent strictement confidentielles.",
       },
     },
     finalCtaTitle: "Votre flotte mérite mieux qu'un tableau Excel.",
@@ -671,6 +671,15 @@ export const fr: TranslationDictionary = {
       subjectLabel: "Sujet de votre demande *",
       subjectPlaceholder: "Sélectionnez un sujet",
       subjectRequired: "Veuillez sélectionner un sujet",
+      subjectOptions: {
+        dev: "Développement Web/Mobile",
+        design: "Design & Branding",
+        content: "Contenu Digital",
+        marketing: "Marketing Digital",
+        support: "Support IT",
+        training: "Formation & Coaching",
+        other: "Autre",
+      },
       messageLabel: "Votre message *",
       messagePlaceholder: "Décrivez vos besoins, votre structure et vos objectifs...",
       messageRequired: "Le message ne peut pas être vide",

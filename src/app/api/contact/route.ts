@@ -6,11 +6,49 @@ interface ContactPayload {
   phone?: string
   subject: string
   message: string
+  website_hp?: string
+}
+
+// In-memory rate limiting map: ip -> timestamps[]
+const rateLimitMap = new Map<string, number[]>()
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const windowMs = 10 * 60 * 1000 // 10 minutes
+  const maxRequests = 5
+
+  const timestamps = rateLimitMap.get(ip) || []
+  const recent = timestamps.filter((t) => now - t < windowMs)
+
+  if (recent.length >= maxRequests) {
+    return true
+  }
+
+  recent.push(now)
+  rateLimitMap.set(ip, recent)
+  return false
 }
 
 export async function POST(request: Request) {
   try {
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+
+    if (ip !== 'unknown' && isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Trop de requêtes. Veuillez patienter avant de réessayer.' },
+        { status: 429 }
+      )
+    }
+
     const body: ContactPayload = await request.json()
+
+    // Protection anti-spam Honeypot
+    if (body.website_hp && body.website_hp.trim().length > 0) {
+      return NextResponse.json(
+        { error: 'Soumission invalide.' },
+        { status: 400 }
+      )
+    }
 
     // Server-side validation
     if (!body.name || !body.email || !body.subject || !body.message) {

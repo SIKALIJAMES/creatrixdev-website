@@ -5,9 +5,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppFloatingButton from '@/components/WhatsAppFloatingButton'
 import { siteConfig } from '@/../content/site'
-import Script from 'next/script'
-import { GA_TRACKING_ID } from '@/lib/analytics'
 import { LanguageProvider } from '@/context/LanguageContext'
+import CookieConsentBanner from '@/components/CookieConsentBanner'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -152,28 +151,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {GA_TRACKING_ID && (
-          <>
-            <Script
-              strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-            />
-            <Script
-              id="google-analytics"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GA_TRACKING_ID}', {
-                    page_path: window.location.pathname,
-                  });
-                `,
-              }}
-            />
-          </>
-        )}
       </head>
       <body className="bg-bg-primary text-text-primary font-body antialiased">
         <LanguageProvider>
@@ -181,6 +158,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <WhatsAppFloatingButton />
+          <CookieConsentBanner />
         </LanguageProvider>
       </body>
     </html>

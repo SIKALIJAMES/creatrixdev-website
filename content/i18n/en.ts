@@ -362,7 +362,7 @@ export const en: TranslationDictionary = {
       post1: {
         title: "Why your business absolutely needs a website in 2026 - 2027",
         excerpt:
-          "In an economy where 80% of buyers research online before purchasing, lacking a website lets competitors take the lead. Here is why and how to take action going into 2027.",
+          "In an economy where the vast majority of clients research a business online before reaching out, lacking a website lets competitors take the lead. Here is why and how to take action going into 2027.",
         category: "Strategy",
       },
       post2: {
@@ -577,7 +577,7 @@ export const en: TranslationDictionary = {
       },
       q4: {
         q: "Is our fleet and financial data kept strictly confidential?",
-        a: "Completely. Each transport operator runs on an isolated, encrypted PostgreSQL database. Your margin data, clients, and operational metrics are never shared or exposed.",
+        a: "Completely. Each transport operator runs on a dedicated PostgreSQL database with strict Row Level Security. Your margin data, clients, and operational metrics remain strictly confidential.",
       },
     },
     finalCtaTitle: "Your fleet deserves better than scattered spreadsheets.",
@@ -671,6 +671,15 @@ export const en: TranslationDictionary = {
       subjectLabel: "Subject of your inquiry *",
       subjectPlaceholder: "Select a topic",
       subjectRequired: "Please select a subject",
+      subjectOptions: {
+        dev: "Web / Mobile Development",
+        design: "Design & Branding",
+        content: "Digital Content",
+        marketing: "Digital Marketing",
+        support: "IT Support",
+        training: "Training & Coaching",
+        other: "Other",
+      },
       messageLabel: "Your Message *",
       messagePlaceholder: "Describe your organization, requirements, and objectives...",
       messageRequired: "Message cannot be empty",

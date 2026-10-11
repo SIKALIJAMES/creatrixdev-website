@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, CheckCircle, XCircle, Loader2 } from 'lucide-react'
 import { trackFormSubmission } from '@/lib/analytics'
+import { useTranslation } from '@/context/LanguageContext'
 
 interface FormData {
   name: string
@@ -12,9 +13,11 @@ interface FormData {
   phone: string
   subject: string
   message: string
+  website_hp?: string
 }
 
 export default function ContactForm() {
+  const { t } = useTranslation()
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -38,7 +41,7 @@ export default function ContactForm() {
       const resData = await res.json()
 
       if (!res.ok) {
-        throw new Error(resData.error || "Une erreur est survenue lors de l'envoi.")
+        throw new Error(resData.error || t.contact.form.errorMessage)
       }
 
       setStatus('success')
@@ -48,7 +51,7 @@ export default function ContactForm() {
       if (err instanceof Error) {
         setErrorMessage(err.message)
       } else {
-        setErrorMessage('Une erreur est survenue.')
+        setErrorMessage(t.contact.form.errorMessage)
       }
       setStatus('error')
     }
@@ -59,18 +62,30 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+      {/* Anti-spam honeypot */}
+      <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+        <label htmlFor="website_hp">Ne pas remplir</label>
+        <input
+          id="website_hp"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register('website_hp')}
+        />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Name */}
         <div>
           <label htmlFor="contact-name" className="font-mono-label text-text-muted block mb-2">
-            Nom complet *
+            {t.contact.form.nameLabel}
           </label>
           <input
             id="contact-name"
             type="text"
-            placeholder="Jean Dupont"
+            placeholder={t.contact.form.namePlaceholder}
             className={inputClasses}
-            {...register('name', { required: 'Le nom est requis' })}
+            {...register('name', { required: t.contact.form.nameRequired })}
           />
           {errors.name && (
             <p className="mt-1 text-red-400 text-xs">{errors.name.message}</p>
@@ -80,16 +95,16 @@ export default function ContactForm() {
         {/* Email */}
         <div>
           <label htmlFor="contact-email" className="font-mono-label text-text-muted block mb-2">
-            Email *
+            {t.contact.form.emailLabel}
           </label>
           <input
             id="contact-email"
             type="email"
-            placeholder="jean@exemple.com"
+            placeholder={t.contact.form.emailPlaceholder}
             className={inputClasses}
             {...register('email', {
-              required: 'L\'email est requis',
-              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Email invalide' },
+              required: t.contact.form.emailRequired,
+              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: t.contact.form.emailInvalid },
             })}
           />
           {errors.email && (
@@ -101,12 +116,12 @@ export default function ContactForm() {
       {/* Phone */}
       <div>
         <label htmlFor="contact-phone" className="font-mono-label text-text-muted block mb-2">
-          Téléphone
+          {t.contact.form.phoneLabel}
         </label>
         <input
           id="contact-phone"
           type="tel"
-          placeholder="+XX XX XX XX XX"
+          placeholder={t.contact.form.phonePlaceholder}
           className={inputClasses}
           {...register('phone')}
         />
@@ -115,22 +130,22 @@ export default function ContactForm() {
       {/* Subject */}
       <div>
         <label htmlFor="contact-subject" className="font-mono-label text-text-muted block mb-2">
-          Sujet *
+          {t.contact.form.subjectLabel}
         </label>
         <select
           id="contact-subject"
           className={`${inputClasses} cursor-pointer`}
-          {...register('subject', { required: 'Choisissez un sujet' })}
+          {...register('subject', { required: t.contact.form.subjectRequired })}
           defaultValue=""
         >
-          <option value="" disabled>Sélectionner un sujet</option>
-          <option value="developpement">Développement Web/Mobile</option>
-          <option value="design">Design & Branding</option>
-          <option value="contenu">Contenu Digital</option>
-          <option value="marketing">Marketing Digital</option>
-          <option value="support">Support IT</option>
-          <option value="formation">Formation & Coaching</option>
-          <option value="autre">Autre</option>
+          <option value="" disabled>{t.contact.form.subjectPlaceholder}</option>
+          <option value="developpement">{t.contact.form.subjectOptions.dev}</option>
+          <option value="design">{t.contact.form.subjectOptions.design}</option>
+          <option value="contenu">{t.contact.form.subjectOptions.content}</option>
+          <option value="marketing">{t.contact.form.subjectOptions.marketing}</option>
+          <option value="support">{t.contact.form.subjectOptions.support}</option>
+          <option value="formation">{t.contact.form.subjectOptions.training}</option>
+          <option value="autre">{t.contact.form.subjectOptions.other}</option>
         </select>
         {errors.subject && (
           <p className="mt-1 text-red-400 text-xs">{errors.subject.message}</p>
@@ -140,16 +155,16 @@ export default function ContactForm() {
       {/* Message */}
       <div>
         <label htmlFor="contact-message" className="font-mono-label text-text-muted block mb-2">
-          Message *
+          {t.contact.form.messageLabel}
         </label>
         <textarea
           id="contact-message"
           rows={5}
-          placeholder="Décrivez votre projet, vos besoins, ou votre question…"
+          placeholder={t.contact.form.messagePlaceholder}
           className={`${inputClasses} resize-none`}
           {...register('message', {
-            required: 'Le message est requis',
-            minLength: { value: 20, message: 'Le message doit contenir au moins 20 caractères' },
+            required: t.contact.form.messageRequired,
+            minLength: { value: 10, message: t.contact.form.messageRequired },
           })}
         />
         {errors.message && (
@@ -164,9 +179,9 @@ export default function ContactForm() {
         className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-accent-cyan to-accent-blue text-bg-primary font-display font-semibold rounded-lg hover:shadow-glow-cyan hover:scale-[1.02] active:scale-100 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
       >
         {status === 'loading' ? (
-          <><Loader2 size={18} className="animate-spin" /> Envoi en cours…</>
+          <><Loader2 size={18} className="animate-spin" /> {t.contact.form.sending}</>
         ) : (
-          <><Send size={18} /> Envoyer le message</>
+          <><Send size={18} /> {t.contact.form.sendButton}</>
         )}
       </button>
 
@@ -180,7 +195,7 @@ export default function ContactForm() {
             className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400"
           >
             <CheckCircle size={18} />
-            <p className="text-sm">Message envoyé avec succès ! Nous vous répondrons rapidement.</p>
+            <p className="text-sm">{t.contact.form.successMessage}</p>
           </motion.div>
         )}
         {status === 'error' && (
@@ -191,7 +206,7 @@ export default function ContactForm() {
             className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400"
           >
             <XCircle size={18} />
-            <p className="text-sm">{errorMessage || 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.'}</p>
+            <p className="text-sm">{errorMessage || t.contact.form.errorMessage}</p>
           </motion.div>
         )}
       </AnimatePresence>

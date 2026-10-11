@@ -55,7 +55,7 @@ export const pricingPlans: PricingPlan[] = [
     name: 'Chatbot WhatsApp & Agent IA',
     target: 'Établissements d’enseignement, entreprises de services et institutions recevant un fort volume de sollicitations',
     description:
-      'Assistant omnicanal 24h/24 capable de traiter les notes vocales, d’interroger vos fiches officielles et de qualifier les prospects (modèle ISETAG).',
+      'Assistant omnicanal 24h/24 capable de traiter les notes vocales, d’interroger vos fiches officielles et de qualifier les prospects (prototype ISETAG).',
     priceDisplay: 'Sur devis après diagnostic gratuit',
     priceFromFcfa: 'Sur devis après diagnostic gratuit',
     estimatedDuration: 'Précisé dans le devis',

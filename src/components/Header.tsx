@@ -48,7 +48,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 flex items-center justify-center relative">
-            <Image src="/logo.png" alt="CreatrixDev Logo" fill className="object-contain" />
+            <Image src="/logo.png" alt="CreatrixDev Logo" fill sizes="40px" className="object-contain" />
           </div>
           <span className="font-display font-bold text-xl text-gradient-cyan tracking-tight">
             CreatrixDev

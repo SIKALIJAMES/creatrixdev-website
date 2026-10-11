@@ -471,6 +471,15 @@ export interface TranslationDictionary {
       subjectLabel: string
       subjectPlaceholder: string
       subjectRequired: string
+      subjectOptions: {
+        dev: string
+        design: string
+        content: string
+        marketing: string
+        support: string
+        training: string
+        other: string
+      }
       messageLabel: string
       messagePlaceholder: string
       messageRequired: string

@@ -121,13 +121,13 @@ export const serviceDetailSections: ServiceDetailSection[] = [
     id: 'support-it',
     iconName: 'Server',
     title: 'Infrastructure & Déploiement Cloud',
-    subtitle: 'Disponibilité, sauvegardes automatiques et sécurité de vos données',
+    subtitle: 'Disponibilité, surveillance continue et sécurité de vos déploiements',
     description:
-      'Vos outils métier doivent fonctionner en continu sans mauvaises surprises. Nous configurons des environnements d’hébergement modernes (Railway, Docker, bases gérées) avec sauvegardes régulières.',
+      'Vos outils métier doivent fonctionner en continu sans mauvaises surprises. Nous configurons des environnements d’hébergement modernes (Railway, Docker, bases gérées) avec surveillance applicative.',
     services: [
       'Déploiement conteneurisé Docker sur Railway et Cloud',
       'Configuration et sécurisation de bases PostgreSQL',
-      'Mise en place de sauvegardes automatiques',
+      'Supervision et maintenance préventive des serveurs',
       'Gestion des noms de domaine et certificats SSL',
       'Surveillance applicative et maintenance corrective',
     ],
